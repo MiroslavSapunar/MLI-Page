@@ -8,7 +8,7 @@ interface Data {
 function InfoCard(data: Data) {
     return (
         <>
-            <div
+            <div id="candidatos"
                 className="block rounded-lg  border-secundary border-2 p-8 transition hover:bg-white/5"
             >
                 <div className="flex items-stretch gap-4">
@@ -124,8 +124,8 @@ export default function AboutUs() {
     ]
 
     return (
-        <section className="bg-primary text-white">
-            <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <section id="candidatos" className="bg-primary text-white">
+            <div className="mx-auto max-w-screen-xl px-4 py-24 sm:px-6 lg:px-8">
                 <div className="max-w-xl">
                     <h2 className="text-3xl font-bold text-secundary sm:text-4xl">Nuestros Candidatos</h2>
 

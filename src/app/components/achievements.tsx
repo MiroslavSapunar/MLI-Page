@@ -15,7 +15,7 @@ export function Card(data: Data) {
 
     return (
         <div
-            className="block rounded-xl border border-primary  shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+            className="block rounded-xl border border-primary  shadow-md transition hover:border-secundary hover:shadow-secundary/50"
         >
             <article className="relative overflow-hidden rounded-xl">
                 <img
@@ -41,7 +41,7 @@ export function Card(data: Data) {
 
                     <div className="mt-12 text-center">
                         <button
-                            className="inline-block rounded bg-pink-600 px-12 p-1 mt-1 mb-2 text-sm font-medium text-white transition hover:bg-pink-700 focus:outline-none focus:ring focus:ring-yellow-400"
+                            className="inline-block rounded bg-secundary px-12 p-1 mt-1 mb-2 text-sm font-medium text-white transition hover:bg-primary hover:text-secundary "
                             onClick={() => setMore(!more)}
                         >
                             + Info
@@ -83,8 +83,9 @@ export default function Achievements() {
     ]
 
     return (
-        <section className="bg-gray-600 ">
-            <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <section id="logros" className="bg-primary ">
+            {/* <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16"> */}
+            <div className="mx-auto max-w-screen-xl px-4 py-24 sm:px-6 lg:px-8 ">
                 <div className="max-w-2xl font-roboto">
                     <h2 className="text-3xl font-bold text-secundary sm:text-4xl">Nuestros logros como Consejeros durante 2022-2024</h2>
 
@@ -97,7 +98,7 @@ export default function Achievements() {
                     </p>
                 </div>
 
-                <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-4">
+                <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 
                     {
                         dataArchivements.map(e =>
@@ -106,14 +107,14 @@ export default function Achievements() {
 
                 </div>
 
-                <div className="mt-12 mx-auto w-2/3 sm:w-1/3 text-center border border-secundary rounded-lg">
+                {/* <div className="mt-12 mx-auto w-2/3 sm:w-1/3 text-center border border-secundary rounded-lg">
                     <a
                         href="https://www.instagram.com/mli.fiuba"
                         className="inline-block rounded bg-pink-600 px-12 py-3 text-sm font-medium text-secundary transition hover:bg-pink-700 focus:outline-none focus:ring focus:ring-yellow-400"
                     >
                         No te pierdas ninguna novedad sobre nuestras cursadas
                     </a>
-                </div>
+                </div> */}
             </div>
         </section>
     )

@@ -10,14 +10,13 @@ const Proposals = dynamic(() => import('./components/proposals'), { ssr: false }
 
 export default function Home() {
   return (
-    <>
-      {/* <NavBar/> */}
+    <div className="font-roboto">
+      <NavBar/>
       <Landing />
       <Achievements />
       <Proposals />
-      <Elections />
-      {/* <Elections/> */}
       <AboutUs/>
-    </>
+      {/* <Elections/> */}
+    </div>
   )
 }
