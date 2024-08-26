@@ -1,5 +1,4 @@
 'use client'
-import { type } from "os";
 import { useEffect, useState } from "react";
 import { UAParser } from "ua-parser-js";
 

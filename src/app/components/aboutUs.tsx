@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface Data {
     source: string,
     position: string,
@@ -12,11 +14,15 @@ function InfoCard(data: Data) {
                 className="block rounded-lg  border-secundary border-2 p-8 transition hover:bg-white/5"
             >
                 <div className="flex items-stretch gap-4">
-                    <img
-                        src={data.source}
-                        alt=""
-                        className='aspect-square w-0 sm:w-20 md:w-40 rounded-lg object-cover'
-                    />
+                    <div className="relative w-0 md:min-w-40 md:h-40 rounded-lg">
+
+                        <Image
+                            src={data.source}
+                            alt={data.name}
+                            fill
+                            className='object-cover object-center'
+                        />
+                    </div>
 
                     <div>
                         <h2 className=" text-lg/tight sm:text-2xl/tight font-semibold ">{data.position}</h2>
@@ -32,14 +38,17 @@ function InfoCardSmall(data: Data) {
     return (
         <>
             <div
-                className="block rounded-md border border-white p-8 transition hover:bg-white/5"
+                className="block rounded-md border border-white p2 md:p-8 transition hover:bg-white/5"
             >
-                <div className="flex items-stretch gap-4">
-                    <img
-                        src={data.source}
-                        alt=""
-                        className='aspect-square w-0 md:w-20 rounded-lg object-cover'
-                    />
+                <div className="flex items-stretch gap-1 md:gap-4">
+                    <div className="relative w-0 md:min-w-20 md:h-20 rounded-lg ">
+                        <Image
+                            src={data.source}
+                            alt={data.name}
+                            fill
+                            className=' object-cover object-center'
+                        />
+                    </div>
 
                     <div>
                         <h2 className=" text-lg/tight font-semibold">{data.position}</h2>
@@ -64,8 +73,8 @@ export default function AboutUs() {
             career: "Ing. Informática",
         },
         {
-            source: "Inti_CEI.png",
-            position: "Vicepresidente",
+            source: "/Inti_CEI.png",
+            position: "Vice Presidente",
             name: "Inti Blanco",
             career: "Ing. Informática",
         }
@@ -85,13 +94,13 @@ export default function AboutUs() {
             career: "Ing. Civil",
         },
         {
-            source: "Inti.png",
+            source: "/Inti.png",
             position: "2º Titular",
             name: "Inti Blanco",
             career: "Ing. informática",
         },
         {
-            source: "Flor.png",
+            source: "/Flor.png",
             position: "2º Suplente",
             name: "Flor Noguera",
             career: "Ing. Informática",
@@ -146,7 +155,7 @@ export default function AboutUs() {
                     </h3>
                 </div>
 
-                <div className="mt-8 grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4">
+                <div className="mt-8 grid grid-cols-2 gap-8 lg:grid-cols-4">
                     {
                         dataConsejo && dataConsejo.map(e =>
                             <InfoCardSmall key={e.name} source={e.source} position={e.position} name={e.name} career={e.career} />)
