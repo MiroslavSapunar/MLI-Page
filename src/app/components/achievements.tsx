@@ -115,7 +115,7 @@ function CardFAQ({ dataCard }: { dataCard: Data }) {
 
             {toggle &&
                 dataCard.long.split("\n").map(p =>
-                    <p className="mt-6 text-xl text-white">{p}</p>
+                    <p className="mt-6 text-xl font-medium text-white">{p}</p>
                 )
             }
         </div>

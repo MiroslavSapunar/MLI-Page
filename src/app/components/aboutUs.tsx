@@ -38,9 +38,9 @@ function InfoCardSmall(data: Data) {
     return (
         <>
             <div
-                className="block rounded-md border border-white p2 md:p-8 transition hover:bg-white/5"
+                className="block rounded-md border border-white p2 p-4 transition hover:bg-white/5"
             >
-                <div className="flex items-stretch gap-2 ">
+                <div className="flex items-stretch gap-2">
                     <div className="relative w-0 md:min-w-20 md:h-20 rounded-lg ">
                         <Image
                             src={data.source}
@@ -155,7 +155,7 @@ export default function AboutUs() {
                     </h3>
                 </div>
 
-                <div className="mt-8 grid grid-cols-2 gap-8 lg:grid-cols-4">
+                <div className="mt-8 grid grid-cols-2 gap-8 md:grid-cols-4">
                     {
                         dataConsejo && dataConsejo.map(e =>
                             <InfoCardSmall key={e.name} source={e.source} position={e.position} name={e.name} career={e.career} />)

@@ -64,13 +64,13 @@ export default function Proposals() {
                 <div className="max-w-3xl ">
                     <h2 className="text-3xl font-bold sm:text-4xl">Nuestras Propuestas</h2>
 
-                    <p className="mt-4 text-xl text-white">
+                    <p className="mt-4 text-xl md:text-lg text-white">
                         Creemos que la Argentina necesita más y mejores ingenieros e ingenieras y que la FIUBA debe ser el motor de transformación del país, aportando más ciencia y técnica cada día. En todos estos años nuestro objetivo siempre ha sido lograr la mejor versión de nuestra Facultad.
                     </p>
-                    <p className="mt-4 text-xl text-primary">
+                    <p className="mt-4 text-xl md:text-lg text-primary">
                         También somos concientes de que no siempre hemos logramos estar a la altura de las circunstacias. A veces simplemente las cosas no se pueden mejorar de un día para el otro y requieren de aun más tiempo y dedicacion que no siempre existe entre las cursadas.
                     </p>
-                    <p className="mt-4 text-xl font-extrabold text-white">
+                    <p className="mt-4 text-xl md:text-lg font-extrabold text-white">
                         Por esto nuestro motto, "La volutand de hacerlo nosotros", nos recuerda a seguir transformando nuestra FIUBA en la Facultad que todos queremos.
                     </p>
                 </div>
