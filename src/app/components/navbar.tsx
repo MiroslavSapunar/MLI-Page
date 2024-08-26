@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 import Image from 'next/image';
-// import MLI from "../../../public/MLI.svg";
+import mli from "../../../public/MLI.svg";
 
 export default function Header() {
     const [navbarOpen, setNavbarOpen] = useState(false);
@@ -19,7 +19,7 @@ export default function Header() {
                     > <div >
                             <Image className="dark:invert"
                                 priority
-                                src="/MLI.svg"
+                                src={mli}
                                 height={48}
                                 width={48}
                                 alt="MLI - FIUBA"
