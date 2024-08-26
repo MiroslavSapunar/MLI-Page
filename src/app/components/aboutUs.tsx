@@ -11,7 +11,7 @@ function InfoCard(data: Data) {
     return (
         <>
             <div id="candidatos"
-                className="block rounded-lg  border-secundary border-2 p-8 transition hover:bg-white/5"
+                className="block rounded-lg  border-secundary border-2 p-4 transition hover:bg-white/5"
             >
                 <div className="flex items-stretch gap-4">
                     <div className="relative w-0 md:min-w-40 md:h-40 rounded-lg">
@@ -40,7 +40,7 @@ function InfoCardSmall(data: Data) {
             <div
                 className="block rounded-md border border-white p2 p-4 transition hover:bg-white/5"
             >
-                <div className="flex items-stretch gap-2">
+                <div className="flex-col md:flex-row items-stretch gap-2">
                     <div className="relative w-0 md:min-w-20 md:h-20 rounded-lg ">
                         <Image
                             src={data.source}
@@ -50,7 +50,7 @@ function InfoCardSmall(data: Data) {
                         />
                     </div>
 
-                    <div>
+                    <div className="pt-1">
                         <h2 className=" text-lg/tight font-semibold">{data.position}</h2>
                         <h3 className="mt-0.5 text-md/tight font-medium">{data.name}</h3>
                         <h4 className="mt-1 text-md/tight text-secundary">{data.career}</h4>

@@ -220,13 +220,14 @@ export default function Achievements() {
             <div className="mx-auto max-w-screen-xl px-4 py-24 sm:px-6 lg:px-8 ">
                 <div className="max-w-3xl ">
                     <h2 className="text-3xl font-bold text-secundary sm:text-4xl">Nuestros logros como Consejeros durante 2022-2024</h2>
-
-
-                    <p className="mt-4 text-xl text-gray-300">
-                        Desde hace 18 años impulsamos cambios profundos y transformadores en nuestra facultad, siempre guiados por el hecho de cursar y transitar día a día las aulas de nuestra FIUBA.
+                    <p className="mt-4 text-xl text-white">
+                        Desde hace 18 años <span className="text-secundary">impulsamos cambios profundos y transformadores en nuestra facultad</span>, siempre guiados por el hecho de cursar y transitar día a día las aulas de nuestra FIUBA.
                     </p>
-                    <p className="mt-4 text-xl text-gray-300 ">
-                        Estamos orgullosos de todas las conquistas estudiantiles que impulsamos como voceros de todos los estudiantes, gracias a respaldo que ustedes nos dan en las urnas.
+                    <p className="mt-4 text-xl text-white ">
+                        Estamos orgullosos de todas las conquistas estudiantiles que impulsamos como voceros de todos los estudiantes, <span className="text-secundary">gracias a respaldo que ustedes nos dan en las urnas.</span>
+                    </p>
+                    <p className="mt-4 text-2xl text-secundary ">
+                        El siguiente es un repaso de todo nuestro trabajo contenido en el intervalo [2022, 2024].
                     </p>
                 </div>
                 {
