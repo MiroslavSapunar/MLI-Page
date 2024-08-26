@@ -1,4 +1,5 @@
 'use client'
+import { type } from "os";
 import { useEffect, useState } from "react";
 import { UAParser } from "ua-parser-js";
 
@@ -211,7 +212,7 @@ export default function Achievements() {
         const parser = new UAParser();
         const userAgent = window.navigator.userAgent;
         const result = parser.setUA(userAgent).getResult();
-        const isMobileDevice = /mobile/i.test(result.device.type);
+        const isMobileDevice = /mobile/i.test(result.device.type ? result.device.type : "");
         setIsMobile(isMobileDevice);
     }, []);
 
