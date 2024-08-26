@@ -1,7 +1,6 @@
 interface Data {
     title: string,
     text: string,
-
 }
 
 const dataProposals: Data[] = [
@@ -50,7 +49,7 @@ function Card({ data }: { data: Data }) {
             <h2 className="mt-4 text-2xl font-bold text-white ">{data.title}</h2>
 
             {
-                data.text.split("\n").map(p =>
+                data.text.split("\n").map((p) =>
                     <p className="mt-1 text-md ">{p}</p>
                 )
             }
@@ -58,11 +57,9 @@ function Card({ data }: { data: Data }) {
     )
 }
 
-
 export default function Proposals() {
     return (
         <section id="propuestas" className="bg-secundary text-primary">
-            {/* <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16"> */}
             <div className="mx-auto max-w-screen-xl px-4 py-24 sm:px-6 lg:px-8 ">
                 <div className="max-w-3xl ">
                     <h2 className="text-3xl font-bold sm:text-4xl">Nuestras Propuestas</h2>
@@ -77,14 +74,11 @@ export default function Proposals() {
                         Por eso el trabajo no se detiene, porque estamos decidos a seguir enfrentando los desafíos que nos prepara el futuro.
                     </p>
                 </div>
-
                 <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 ">
                     {
-                        dataProposals.map(e => <Card data={e} />)
+                        dataProposals.map((e, idx) => <Card key={idx}  data={e} />)
                     }
                 </div>
-
-
             </div>
         </section>
     )
