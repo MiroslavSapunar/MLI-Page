@@ -73,7 +73,7 @@ export default function Header() {
                     </div>
                     <a
                         href="https://www.instagram.com/mli.fiuba"
-                        className="flex text-3xl text-white font-medium mb-4 md:mb-0"
+                        className="flex text-3xl text-white font-medium mb-4 md:mb-0 invisible md:visible"
                     > <div >
                             <Image className="dark:invert"
                                 priority

@@ -1,16 +1,19 @@
 
 import Image from "next/image";
+import portada from '../../../public/Portada.png'
 
 export default function Landing() {
     return (
         <>
-            <div className="relative md:min-h-screen">
+            <div className="relative block sm:min-h-screen">
                 <Image
-                    src='/Portada.png'
+                    src={portada}
                     alt="portada"
                     quality={80}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    // objectFit="cover"
+                    priority
+                    className="object-cover object-center"
                 />
                 <div
                     className="
