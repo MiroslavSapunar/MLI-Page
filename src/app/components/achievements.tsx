@@ -7,7 +7,6 @@ interface Data {
     title: string,
     short: string,
     long: string
-
 }
 
 const dataArchivements: Data[] = [
@@ -91,7 +90,7 @@ const dataArchivements: Data[] = [
     },
     {
         source: "https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
-        title: "Nueva cátedra Palacios- Puebla para el CBC",
+        title: "Nueva cátedra Palacios-Puebla para el CBC",
         short: "Primera cátedra pensada desde FIUBA para dictar contenidos de AM I y Algebra I del CBC, con el objetivo de preparar mejor a los ingresantes a las carreras de Ingeniería.",
         long: "Primera cátedra pensada desde FIUBA para dictar contenidos de AM I y Algebra I del CBC, con el objetivo de preparar mejor a los ingresantes a las carreras de Ingeniería.\nMuchos de los docentes de son tambien docentes o ayudantes en FIUBA"
     }
@@ -116,7 +115,7 @@ function CardFAQ({ dataCard }: { dataCard: Data }) {
 
             {toggle &&
                 dataCard.long.split("\n").map(p =>
-                    <p className="mt-6 text-md text-gray-500 dark:text-gray-300">{p}</p>
+                    <p className="mt-6 text-xl text-white">{p}</p>
                 )
             }
         </div>
@@ -227,10 +226,7 @@ export default function Achievements() {
                         Desde hace 18 años impulsamos cambios profundos y transformadores en nuestra facultad, siempre guiados por el hecho de cursar y transitar día a día las aulas de nuestra FIUBA.
                     </p>
                     <p className="mt-4 text-xl text-gray-300 ">
-                        Estamos orgullosos de todas las conquistas estudiantiles que impulsamos como voceros de nuestros compañeros estudiantes gracias a respaldo que ustedes nos dan en la urnas.
-                    </p>
-                    <p className="mt-4 text-xl text-gray-300 ">
-                        Acontinuación pueden repasar el trabajo de los Consejeros Estudiantiles en el periodo 2022-2024
+                        Estamos orgullosos de todas las conquistas estudiantiles que impulsamos como voceros de todos los estudiantes, gracias a respaldo que ustedes nos dan en las urnas.
                     </p>
                 </div>
                 {

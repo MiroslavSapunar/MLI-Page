@@ -50,7 +50,7 @@ function Card({ data }: { data: Data }) {
 
             {
                 data.text.split("\n").map((p) =>
-                    <p className="mt-1 text-md ">{p}</p>
+                    <p className="mt-3 text-xl ">{p}</p>
                 )
             }
         </div>
@@ -64,14 +64,14 @@ export default function Proposals() {
                 <div className="max-w-3xl ">
                     <h2 className="text-3xl font-bold sm:text-4xl">Nuestras Propuestas</h2>
 
-                    <p className="mt-4 text-2xl text-white">
-                        Creemos que la Argentina necesita más y mejores ingenieros e ingenieras y que la FIUBA debe ser EL motor de transformación del país, aportando más ciencia y más técnica cada día. En todos esto años nuestro objetivo siempre ha sido modernizar nuestras carreras y nuestra Facultad.
+                    <p className="mt-4 text-xl text-white">
+                        Creemos que la Argentina necesita más y mejores ingenieros e ingenieras y que la FIUBA debe ser el motor de transformación del país, aportando más ciencia y técnica cada día. En todos estos años nuestro objetivo siempre ha sido lograr la mejor versión de nuestra Facultad.
                     </p>
-                    <p className="mt-4 text-2xl text-white">
-                        También somos concientes que no siempre logramos estar a la altura de las circunstacias. A veces es imposible llevar la carrera al día y atender las reclamos e inquietudes que nos acercan los compañeros. A veces simplemente las cosas no se pueden cambiar de un día para el otro.
+                    <p className="mt-4 text-xl text-primary">
+                        También somos concientes de que no siempre hemos logramos estar a la altura de las circunstacias. A veces simplemente las cosas no se pueden mejorar de un día para el otro y requieren de aun más tiempo y dedicacion que no siempre existe entre las cursadas.
                     </p>
-                    <p className="mt-4 text-3xl text-white">
-                        Por eso el trabajo no se detiene, porque estamos decidos a seguir enfrentando los desafíos que nos prepara el futuro.
+                    <p className="mt-4 text-xl font-extrabold text-white">
+                        Por esto nuestro motto, "La volutand de hacerlo nosotros", nos recuerda a seguir transformando nuestra FIUBA en la Facultad que todos queremos.
                     </p>
                 </div>
                 <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 ">
