@@ -109,10 +109,10 @@ function CardFAQ({ dataCard }: { dataCard: Data }) {
 
 function MobileGrid() {
 
-    const text = ["¿Cuánto más se pude lograr 🤔?", "Sip, parece mentira pero aún no viste todo 😜", "🎉🎉🎉 Ahora si ya conoces todos nuestros logros 🎉🎉🎉"]
+    const text = ["¿Cuánto más se pude lograr 🤔?", "Sip, parece mentira \npero aún no viste todo 😜", "🎉 Ahora si ya repasate todos nuestros logros 🎉"]
 
     const [data, setData] = useState(dataArchivements.slice(0, 4))
-    const [label, setLabel] = useState("¿Te parecen pocos?, tenemos más para mostrarte 😏");
+    const [label, setLabel] = useState("¿Te parecen pocos?\nTenemos más para mostrarte 😏");
     const [n, setN] = useState(4);
     const [idx, setIdx] = useState(0);
 
@@ -136,11 +136,10 @@ function MobileGrid() {
                     data.map(e => <CardFAQ key={e.title} dataCard={e} />)
                 }
             </div>
-            {/* <button className="bg-secundary text-primary self-center self my-4 mx-auto w-1/2" >¿Pensas que esto es todo?</button> */}
             <div className="mt-4 flex justify-center">
                 <button
                     onClick={update}
-                    className="px-6 py-2 font-bold max:w-3/4 my-4 mx-auto text-primary bg-secundary text-3xl rounded-lg ">
+                    className="px-6 py-2 font-bold max:w-3/4 my-4 mx-auto text-primary bg-secundary text-2xl rounded-lg ">
                     {label}
                 </button>
             </div>
@@ -224,7 +223,7 @@ export default function Achievements({ isMobile }: { isMobile: boolean }) {
             <div className="mx-auto max-w-screen-xl px-4 py-24 sm:px-6 lg:px-8">
                 <h2 className="text-3xl font-bold text-secundary sm:text-4xl">Nuestros logros como Consejeros durante 2022-2024</h2>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2  ">
+                {/* <div className="grid grid-cols-1 lg:grid-cols-2  "> */}
                     <div className="flex lg:pr-6" >
 
                         <p className="mt-4 text-xl text-white">
@@ -236,9 +235,9 @@ export default function Achievements({ isMobile }: { isMobile: boolean }) {
                             Estamos orgullosos de todas las conquistas estudiantiles que impulsamos como voceros de los estudiantes, <span className="text-secundary">solo posibles gracias a respaldo que ustedes nos dan en las urnas.</span>
                         </p>
                     </div>
-                </div>
+                {/* </div> */}
                 <p className="mt-4 text-2xl text-secundary ">
-                    El siguiente es un repaso de todo nuestro trabajo contenido en el intervalo [2022, 2024].
+                    El siguiente es un repaso de todo nuestro trabajo contenido en el intervalo [ <span className="text-white">2022, 2024</span>].
                 </p>
                 {
                     !isMobile &&

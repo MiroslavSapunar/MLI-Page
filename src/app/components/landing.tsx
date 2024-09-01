@@ -30,7 +30,7 @@ export default function Landing() {
                     className="relative mx-auto max-w-screen-xl px-4 pt-24 pb-6 sm:px-6 lg:flex lg:items-center lg:px-8"
                 >
                     <div className="max-w-xl md:max-w-2xl text-left">
-                        <h1 className="text-3xl font-extrabold  sm:text-4xl">
+                        <h1 className="text-5xl font-extrabold  md:text-6xl">
                             <strong className="block font-extrabold text-white"> Movimiento </strong>
                             <strong className="block font-extrabold text-white"> Linealmente </strong>
                             <strong className="block font-extrabold text-secundary"> Independiente </strong>

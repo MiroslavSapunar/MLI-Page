@@ -63,7 +63,7 @@ function InfoCardSmall(data: Data) {
 
 
 
-export default function AboutUs() {
+export default function Candidates() {
 
     const dataCEI: Data[] = [
         {
@@ -82,10 +82,10 @@ export default function AboutUs() {
     ]
     const dataConsejo: Data[] = [
         {
-            source: "/Zele.png",
+            source: "/Rro.png",
             position: "1º Titular",
-            name: "Selene Martinez",
-            career: "Ing. Electrónica",
+            name: "Romina Giménez",
+            career: "Lic. en Sistemas",
         },
         {
             source: "/Yoaco.png",
@@ -100,17 +100,18 @@ export default function AboutUs() {
             career: "Ing. informática",
         },
         {
-            source: "/Flor.png",
+            source: "/Zele.png",
             position: "2º Suplente",
-            name: "Flor Noguera",
+            name: "Selene Martinez",
             career: "Ing. Informática",
         },
         {
-            source: "/Rro.png",
+            source: "/Flor.png",
             position: "3º Titular",
-            name: "Romina Giménez",
-            career: "Lic. en Sistemas",
+            name: "Flor Noguera",
+            career: "Ing. Informática",
         },
+
         {
             source: "/Miro.png",
             position: "3º Suplente",
