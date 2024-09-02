@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 
-export default function Elections() {
+interface Data {
+    title: string,
+    text: string,
+    textLink?: string,
+    link?: string
+}
+
+function Countdown() {
     const [ended, setEnded] = useState(false)
     const [days, setDays] = useState(0)
     const [hours, setHours] = useState(0)
@@ -54,45 +61,76 @@ export default function Elections() {
         <>
             {
                 !ended &&
-                <div className="relative h-screen w-full flex grid-flow-col md:grid-flow-row items-center justify-center bg-primary text-white ">
-                    <div className="col-span-12 md:col-span-6">
-                        {/* <div className="absolute top-0 right-0 bottom-0 left-0 "></div> */}
-
-                        <div className="z-10 text-4xl text-white font-roboto font-bold">
-                            ¡Eleciones del Claustro de Estudiantes!
-                        </div>
-
-                        <div className="flex items-end justify-left z-10 text-secundary">
-                            <div className="m-2 sm:m-5">
-                                <span className=" font-bold text-xl sm:text-5xl">{days}</span>
-                                <p className="text-right">Días</p>
-                            </div>
-                            <div className="m-2 sm:m-5">
-                                <span className=" font-bold text-xl sm:text-5xl">{hours}</span>
-                                <p className="text-right">Horas</p>
-                            </div>
-                            <div className="m-2 sm:m-5">
-                                <span className=" font-bold text-xl sm:text-5xl">{minutes}</span>
-                                <p className="text-right">Minutos</p>
-                            </div>
-                            <div className="m-2 sm:m-5">
-                                <span className=" font-bold text-xl sm:text-5xl">{seconds}</span>
-                                <p className="text-right">Segundos</p>
-                            </div>
-                        </div>
-
-                        {/* <div className="z-10 mt-5">
-                        <a href="#"
-                            className="w-full px-8 py-3 border border-transparent text-base leading-6 font-light rounded-full text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-md md:px-16">
-                            <span>Who We Are?</span>
-                        </a>
-                    </div> */}
+                <div>
+                    <div className="text-4xl text-white font-roboto font-bold text-wrap ">
+                        ¡Elecciones del Claustro de Estudiantes!
                     </div>
-                    <div className="col-span-12 md:col-span-6">
-                        <p>anoter text</p>
+
+                    <div className="flex mt-2 items-end justify-left text-secundary">
+                        <div className="mr-3 sm:mr-4">
+                            <span className="float-right font-bold text-3xl sm:text-5xl">{days > 9 ? days : '0' + days}</span>
+                            <p className="text-right">Días</p>
+                        </div>
+                        <div className="mr-3 sm:mr-4">
+                            <span className="float-right font-bold text-3xl sm:text-5xl">{hours > 9 ? hours : '0' + hours}</span>
+                            <p className="text-right">Horas</p>
+                        </div>
+                        <div className="mr-3 sm:mr-4">
+                            <span className="float-right font-bold text-3xl sm:text-5xl">{minutes > 9 ? minutes : '0' + minutes}</span>
+                            <p className="text-right">Minutos</p>
+                        </div>
+                        <div className="mr-3 sm:mr-4">
+                            <span className="float-right font-bold text-3xl sm:text-5xl">{seconds > 9 ? seconds : '0' + seconds}</span>
+                            <p className="text-right">Segundos</p>
+                        </div>
                     </div>
                 </div>
             }
         </>
+    )
+}
+
+function InfoCard({ title, text, textLink, link }: Data) {
+    return (
+        <>
+            <div className="mt-4">
+                <h1 className="text-2xl font-semibold text-secundary">{title}</h1>
+
+                <p className="py-2 md:py-1 text-white text-xl">
+                    {text}
+                </p>
+                {
+                    textLink &&
+                    <a className="text-secundary text-2xl md:text-xl font-bold" href={link} >{textLink}</a>
+                }
+            </div>
+        </>
+    )
+}
+
+function Info() {
+    const infoData: Data[] = [
+        { title: "¿Qué ocurre?", text: "Este Miércoles 04 de Septiembre se eligen a los representantes estudiantiles en el Consejo Directivo" },
+        { title: "¿Quiénes votan?", text: "Todo estudiante regular de FIUBA que figure en el padrón de elecciones. La votación es de cáracter obligatoria", textLink: "Fijaté acá", link: "https://fi.uba.ar/noticias/renovacion-del-claustro-de-estudiantes" },
+        { title: "¿Dónde y Cómo?", text: "Se votara de 9:00 hs a 20:00, UNICAMENTE en la sede de Av Paseo Colón 850. No habrá actividades academicas/administrativas en las otras sedes" }
+    ]
+
+    return (
+        <div className="grid grid-cols-1 md:ml-2">
+            {
+                infoData.map(e => <InfoCard title={e.title} text={e.text} textLink={e.textLink} link={e.link} />)
+            }
+        </div>
+    )
+}
+
+export default function Elections() {
+    return (
+        <div className="relative w-full bg-primary border-primary">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 grip-4 items-center justify-center text-white mx-auto max-w-screen-xl px-4 py-8 md:py-12 sm:px-6 lg:px-8">
+                <Countdown />
+                <Info />
+            </div>
+        </div>
     )
 }
