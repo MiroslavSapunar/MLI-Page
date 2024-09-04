@@ -10,7 +10,6 @@ interface Data {
 }
 
 function Countdown() {
-    const [ended, setEnded] = useState(false)
     const [days, setDays] = useState(0)
     const [hours, setHours] = useState(0)
     const [minutes, setMinutes] = useState(0)
@@ -52,40 +51,40 @@ function Countdown() {
 
         // If the count down is over, write some text 
         if (distance < 0) {
+            setDays(0);
+            setHours(0);
+            setMinutes(0);
+            setSeconds(0);
             clearInterval(x);
-            setEnded(true);
         }
     }, 1000);
 
     return (
         <>
-            {
-                !ended &&
-                <div>
-                    <div className="text-4xl text-white font-roboto font-bold text-wrap ">
-                        ¡Elecciones del Claustro de Estudiantes!
-                    </div>
+            <div>
+                <div className="text-4xl text-white font-roboto font-bold text-wrap ">
+                    ¡Elecciones del Claustro de Estudiantes!
+                </div>
 
-                    <div className="flex mt-2 items-end justify-left text-secundary">
-                        <div className="mr-3 sm:mr-4">
-                            <span className="float-right font-bold text-3xl sm:text-5xl">{days > 9 ? days : '0' + days}</span>
-                            <p className="text-right">Días</p>
-                        </div>
-                        <div className="mr-3 sm:mr-4">
-                            <span className="float-right font-bold text-3xl sm:text-5xl">{hours > 9 ? hours : '0' + hours}</span>
-                            <p className="text-right">Horas</p>
-                        </div>
-                        <div className="mr-3 sm:mr-4">
-                            <span className="float-right font-bold text-3xl sm:text-5xl">{minutes > 9 ? minutes : '0' + minutes}</span>
-                            <p className="text-right">Minutos</p>
-                        </div>
-                        <div className="mr-3 sm:mr-4">
-                            <span className="float-right font-bold text-3xl sm:text-5xl">{seconds > 9 ? seconds : '0' + seconds}</span>
-                            <p className="text-right">Segundos</p>
-                        </div>
+                <div className="flex mt-2 items-end justify-left text-secundary">
+                    <div className="mr-3 sm:mr-4">
+                        <span className="float-right font-bold text-3xl sm:text-5xl">{days > 9 ? days : '0' + days}</span>
+                        <p className="text-right">Días</p>
+                    </div>
+                    <div className="mr-3 sm:mr-4">
+                        <span className="float-right font-bold text-3xl sm:text-5xl">{hours > 9 ? hours : '0' + hours}</span>
+                        <p className="text-right">Horas</p>
+                    </div>
+                    <div className="mr-3 sm:mr-4">
+                        <span className="float-right font-bold text-3xl sm:text-5xl">{minutes > 9 ? minutes : '0' + minutes}</span>
+                        <p className="text-right">Minutos</p>
+                    </div>
+                    <div className="mr-3 sm:mr-4">
+                        <span className="float-right font-bold text-3xl sm:text-5xl">{seconds > 9 ? seconds : '0' + seconds}</span>
+                        <p className="text-right">Segundos</p>
                     </div>
                 </div>
-            }
+            </div>
         </>
     )
 }
