@@ -3,18 +3,16 @@ import { useState } from "react";
 
 import Image from 'next/image';
 import mli from "../../../public/MLI.svg";
+import Link from "next/link";
 
 export default function Header() {
     const [navbarOpen, setNavbarOpen] = useState(false);
-    const [flyer, setFlyer] = useState(false);
-    const [flyerTwo, setFlyerTwo] = useState(false);
-
     return (
         <header className="fixed top-0 w-full clearNav z-50 bg-primary ">
             <div className="max-w-5xl mx-auto flex flex-wrap px-5 py-2 md:py-3 flex-col md:flex-row">
                 <div className="flex flex-row items-center justify-between p-3 md:p-1">
-                    <a
-                        href="/#"
+                    <Link
+                        href="/"
                         className="flex text-3xl text-white font-medium mb-4 md:mb-0"
                     > <div >
                             <Image className="dark:invert"
@@ -25,7 +23,7 @@ export default function Header() {
                                 alt="MLI - FIUBA"
                             />
                         </div>
-                    </a>
+                    </Link>
                     <button
                         className="text-white pb-4 cursor-pointer leading-none px-3 py-1 md:hidden outline-none focus:outline-none content-end ml-auto"
                         type="button"
@@ -57,19 +55,18 @@ export default function Header() {
                     }
                 >
                     <div className="md:m-auto flex flex-col md:flex-row items-center md:text-base text-xl md:justify-evenly justify-items-start">
-                        <a
-                            href="#logros"
+                        <Link href="/elecciones-2024#logros"
                             className="mr-auto md:px-5 cursor-pointer text-gray-300 hover:text-white font-semibold tr04">
                             Logros
-                        </a>
-                        <a href="#propuestas"
-                            className="mx-auto py-4 md:py-1  md:px-7 cursor-pointer text-gray-300 hover:text-white font-semibold tr04">
+                        </Link>
+                        <Link href="/elecciones-2024#propuestas"
+                            className="mr-auto md:px-5 cursor-pointer text-gray-300 hover:text-white font-semibold tr04">
                             Propuestas
-                        </a>
-                        <a href="#candidatos" 
-                        className="mx-auto md:px-5 cursor-pointer text-gray-300 hover:text-white font-semibold tr04">
-                            Candidatos
-                        </a>
+                        </Link>
+                        <Link href="/elecciones-2024#candidatos"
+                            className="mr-auto md:px-5 cursor-pointer text-gray-300 hover:text-white font-semibold tr04">
+                            Candidat@s
+                        </Link>
                     </div>
                     <a
                         href="https://www.instagram.com/mli.fiuba"
