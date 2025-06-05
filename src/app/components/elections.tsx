@@ -117,7 +117,7 @@ function Info() {
     return (
         <div className="grid grid-cols-1 md:ml-2">
             {
-                infoData.map(e => <InfoCard title={e.title} text={e.text} textLink={e.textLink} link={e.link} />)
+                infoData.map(e => <InfoCard title={e.title} text={e.text} textLink={e.textLink} link={e.link} key={e.title} />)
             }
         </div>
     )
