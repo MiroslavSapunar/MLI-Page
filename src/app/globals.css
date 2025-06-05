@@ -1,7 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+@theme {
+  --color-primary: #101820;
+  --color-secundary: #f9423a;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  
+  --font-family-sans: Graphik, sans-serif;
+  --font-family-serif: Merriweather, serif;
+  --font-family-roboto: Roboto, sans-serif;
+}
 
 .clearNav {
     backdrop-filter: saturate(180%) blur(5px) !important;
