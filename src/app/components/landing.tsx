@@ -13,7 +13,7 @@ export default function Landing() {
     }, []);
 
     return (
-        <div className="relative min-h-screen overflow-hidden">
+        <div className="relative min-h-screen overflow-hidden p-8 md:p-8">
             {/* Background with parallax effect */}
             <div className="absolute inset-0">
                 <Image
@@ -44,7 +44,7 @@ export default function Landing() {
                         {/* Subtitle */}
                         <div className={`transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                             <p className="mt-8 text-xl md:text-2xl text-white/80 font-light max-w-2xl leading-relaxed">
-                                Transformando FIUBA desde 2004. Estudiantes que no esperan soluciones del cielo.
+                                Consejeros estudiantiles y presidencia del CEI desde 2015. <span className="text-secundary font-medium"> Con el respaldo de los estudiantes, seguimos transformando FIUBA.</span>
                             </p>
                         </div>
 
@@ -52,16 +52,20 @@ export default function Landing() {
                         <div className={`transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                             <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-8 max-w-2xl">
                                 <div className="text-center">
-                                    <div className="text-3xl md:text-4xl font-bold text-secundary">20</div>
-                                    <div className="text-sm md:text-base text-white/70 uppercase tracking-wide">Años</div>
+                                    <div className="text-3xl md:text-4xl font-bold text-secundary">20+ años</div>
+                                    <div className="text-sm md:text-base text-white/70 uppercase tracking-wide">Impulsando nuestra</div>
+                                    <div className="text-sm md:text-base text-white/70 uppercase tracking-wide">voz estudiantil</div>
                                 </div>
                                 <div className="text-center">
-                                    <div className="text-3xl md:text-4xl font-bold text-secundary">15+</div>
-                                    <div className="text-sm md:text-base text-white/70 uppercase tracking-wide">Logros</div>
+                                    <div className="text-3xl md:text-4xl font-bold text-secundary">Somos 50+</div>
+                                    <div className="text-sm md:text-base text-white/70 uppercase tracking-wide">Estudiantes</div>
+                                    <div className="text-sm md:text-base text-white/70 uppercase tracking-wide">Graduados</div>
+                                    <div className="text-sm md:text-base text-white/70 uppercase tracking-wide">Docentes</div>
                                 </div>
                                 <div className="text-center col-span-2 md:col-span-1">
-                                    <div className="text-3xl md:text-4xl font-bold text-secundary">∞</div>
-                                    <div className="text-sm md:text-base text-white/70 uppercase tracking-wide">Impacto</div>
+                                    <div className="text-3xl md:text-4xl font-bold text-secundary">HOY</div>
+                                    <div className="text-sm md:text-base text-white/70 uppercase tracking-wide">Construyendo</div>
+                                    <div className="text-sm md:text-base text-white/70 uppercase tracking-wide">El Futuro</div>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +74,7 @@ export default function Landing() {
                         <div className={`transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                             <div className="mt-16 flex flex-col sm:flex-row gap-4">
                                 <Link 
-                                    href="/elecciones-2024"
+                                    href="/elecciones-2024#propuestas"
                                     className="group inline-flex items-center px-8 py-4 bg-secundary text-primary font-semibold text-lg rounded-none transition-all duration-300 hover:bg-white hover:scale-105 hover:shadow-lg"
                                 >
                                     Conocé nuestras propuestas
@@ -87,15 +91,6 @@ export default function Landing() {
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            {/* Scroll indicator */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-                <div className="animate-bounce">
-                    <svg className="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                    </svg>
                 </div>
             </div>
         </div>
