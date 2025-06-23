@@ -7,12 +7,12 @@ interface Data {
 const dataProposals: Data[] = [
     {
         title: "Modernización de los servicios del CEI",
-        text: "Sabemos que los servicios del CEI pueden y deben ser mejores. Lamentablemente el esquema informal han demostrado ser el techo calidad al que se puede aspirar.\nTenemos como objetivo empezar el proceso para que los servicios del CEI tengan una entidad jurídica y salir de una vez de la informalidad, permitiendo por ejemplo incorporar otros medios de pago, como el tan pedido MP.\nÉste proceso ya arrancó con el nuevo estatuto del CEI que redactamos, sometimos a votación entre todas las agrupaciones de la facultad y que fue aprobado, que permite por ejemplo la conformación de una Sociedad Civil sin fines de lucro.\nHabiendo hecho consultas con profesionales en el tema, la idea que más nos convenció es la conformación de una fundación.\nEl motivo es que esto implicaría que todos las ganancias tendrían que invertirse obligadamente en la misma fundación.\nPor otro lado los precios se verían reducidos al poder trabajar con proveedores formales que nos garanticen menores costos.\nY finalmente, algo que no es menor, seria la posibilidad de brindar becas de manera sostenida con las ganacias de los mismos espacios.",
+        text: "Los servicios del CEI pueden ser mucho mejores. Proponemos crear una entidad jurídica formal que permita:\n• Nuevos medios de pago (como Mercado Pago)\n• Precios más bajos con proveedores formales\n• Becas sostenidas financiadas por las ganancias del CEI\nYa iniciamos este proceso con el nuevo estatuto aprobado por todas las agrupaciones.",
         large: true
     },
     {
         title: "Régimen de cursada",
-        text: "Al implementar los planes nuevos, surgió una nueva necesidad. Darles una nueva estructura a la materias, que incluyen la aprobación y la forma de llevar a cabo las cursadas.\nLa gran mayoría de las materias tienen sus propias reglas. Es por esto que queremos clasificar las materias según su enfoque y metodología, haciendo que, podamos crear reglas claras y concisas para la cursada de las mismas.\nEsto significa que se podrá regular, la cantidad de trabajos prácticos, los parciales, la cantidad mínima de asistencia, la necesidad de finales -poder promocionar una materia por ejemplo-, y otros aspectos de las materias según su clasificación."
+        text: "Los planes nuevos necesitan reglas claras de cursada. Proponemos clasificar materias por metodología para unificar:\n• Cantidad de trabajos prácticos y parciales\n• Requisitos de asistencia\n• Posibilidad de promoción\nBasta de que cada materia tenga sus propias reglas confusas."
     },
     {
         title: "Resolver de forma definitiva superposiciones horarias",
@@ -28,7 +28,7 @@ const dataProposals: Data[] = [
     },
     {
         title: "Flexibilización Académica para el Último Tramo de la Carrera",
-        text: "Si del final de la carrera hablamos, es donde más debemos garantizar la posibilidad de reducir las trabas administrativas que pueden alargar innecesariamente su duración y generan una sobrecarga emocional y académica para los estudiantes.\nProponemos, por ejemplo, excepciones de correlativas automáticas cuando se trate de las ultimas 2 o 3 materias que nos restan por cursar, cuando no afectan la calidad de nuestra formación."
+        text: "Las últimas materias no deberían alargarse por trabas administrativas. Proponemos excepciones automáticas de correlativas para las últimas 2-3 materias cuando no afecten la calidad formativa.\nMenos burocracia, más graduados."
     },
     {
         title: "Más espacios de distensión",
@@ -66,7 +66,7 @@ function Card({ data }: { data: Data }) {
                 <h2 className="text-2xl font-bold text-white ">{data.title}</h2>
                 {
                     data.text.split("\n").map((p) =>
-                        <p className="mt-3 text-xl ">{p}</p>
+                        <p key={p} className="mt-3 text-xl ">{p}</p>
                     )
                 }
             </div>
@@ -83,22 +83,14 @@ export default function Proposals() {
 
                     <h2 className="text-3xl font-bold sm:text-4xl">Nuestras Propuestas</h2>
 
-                    {/* <div className="grid grid-cols-1 lg:grid-cols-2  "> */}
-                        <div className="flex lg:pr-6" >
-                            <p className="mt-4 text-xl text-white">
-                                Creemos que la <span className="font-bold text-primary">Argentina necesita más y mejores ingenieros e ingenieras y que la FIUBA debe ser el motor de transformación del país</span>, aportando más ciencia y técnica cada día.
-                            </p>
-
-                        </div>
-                        <div className="flex">
-                            <p className="mt-4 text-xl text-white">
-                                También somos concientes de que <span className="font-bold text-primary" >no siempre hemos logramos estar a la altura de las circunstacias.</span>
-                            </p>
-                        </div>
-                    {/* </div> */}
-                    <p className="mt-4 lg:mt-6 text-2xl text-white">
-                        Elegimos como lema <span className="font-bold text-primary">"La voluntad de hacerlo nosotros"</span>, porque nos recuerda que <span className="font-bold text-primary">para mejorar nuestra FIUBA, hay que estar dispuestos a ser parte de la transformación todos los dias</span>, especialmente aquellos días donde las cosas parecen no mejorar.
-                    </p>
+                    <div className="mt-6 space-y-4">
+                        <p className="text-xl text-white">
+                            <span className="font-bold text-primary">"La voluntad de hacerlo nosotros"</span> - nuestro compromiso para seguir transformando FIUBA.
+                        </p>
+                        <p className="text-lg text-white/90">
+                            Argentina necesita más ingenieros. <span className="font-bold text-primary">FIUBA debe liderar esa transformación.</span>
+                        </p>
+                    </div>
                 </div>
                 <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2 ">
                     {
