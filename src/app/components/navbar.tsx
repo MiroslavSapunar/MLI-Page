@@ -55,18 +55,6 @@ export default function Header() {
                     }
                 >
                     <div className="md:m-auto flex flex-col md:flex-row items-center md:text-base text-xl md:justify-evenly justify-items-start">
-                        <Link href="/elecciones-2024#logros"
-                            className="mr-auto md:px-5 cursor-pointer text-gray-300 hover:text-white font-semibold tr04">
-                            Logros
-                        </Link>
-                        <Link href="/elecciones-2024#propuestas"
-                            className="mr-auto md:px-5 cursor-pointer text-gray-300 hover:text-white font-semibold tr04">
-                            Propuestas
-                        </Link>
-                        <Link href="/elecciones-2024#candidatos"
-                            className="mr-auto md:px-5 cursor-pointer text-gray-300 hover:text-white font-semibold tr04">
-                            Candidat@s
-                        </Link>
                     </div>
                     <a
                         href="https://www.instagram.com/mli.fiuba"
