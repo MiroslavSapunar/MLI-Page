@@ -221,24 +221,16 @@ export default function Achievements({ isMobile }: { isMobile: boolean }) {
     return (
         <section id="logros" className="bg-primary font-roboto">
             <div className="mx-auto max-w-screen-xl px-4 py-24 sm:px-6 lg:px-8">
-                <h2 className="text-3xl font-bold text-secundary sm:text-4xl">Nuestros logros como Consejeros durante 2022-2024</h2>
+                <h2 className="text-3xl font-bold text-secundary sm:text-4xl">Nuestros logros 2022-2024</h2>
 
-                {/* <div className="grid grid-cols-1 lg:grid-cols-2  "> */}
-                    <div className="flex lg:pr-6" >
-
-                        <p className="mt-4 text-xl text-white">
-                            Como consejero estudiantiles <span className="text-secundary">hemos impulsamos cambios profundos en nuestra facultad</span>, siempre guiados por el hecho de cursar y transitar día a día las aulas de nuestra FIUBA.
-                        </p>
-                    </div>
-                    <div className="flex " >
-                        <p className="mt-4 text-xl text-white ">
-                            Estamos orgullosos de todas las conquistas estudiantiles que impulsamos como voceros de los estudiantes, <span className="text-secundary">solo posibles gracias a respaldo que ustedes nos dan en las urnas.</span>
-                        </p>
-                    </div>
-                {/* </div> */}
-                <p className="mt-4 text-2xl text-secundary ">
-                    El siguiente es un repaso de todo nuestro trabajo contenido en el intervalo [ <span className="text-white">2022, 2024</span>].
-                </p>
+                <div className="mt-6 space-y-4">
+                    <p className="text-xl text-white">
+                        <span className="text-secundary font-semibold">15+ cambios concretos</span> que transformaron tu experiencia en FIUBA.
+                    </p>
+                    <p className="text-lg text-white/80">
+                        Desde nuevos planes de estudio hasta becas de ayuda económica. <span className="text-secundary">Resultados reales, no promesas.</span>
+                    </p>
+                </div>
                 {
                     !isMobile &&
                     <DesktopkGrid />
