@@ -139,7 +139,7 @@ export default function Candidates() {
                 <div className="max-w-xl">
                     <h2 className="text-3xl font-bold text-secundary sm:text-4xl">Nuestros Candidatos</h2>
 
-                    <h3 className="text-2xl mt-5 text-gray-300">
+                    <h3 className="text-2xl mt-5 text-gray-light">
                         Centro de Estudiantes
                     </h3>
                 </div>
@@ -151,7 +151,7 @@ export default function Candidates() {
                     }
                 </div>
                 <div className="max-w-xl">
-                    <h3 className="text-2xl mt-5 text-gray-300">
+                    <h3 className="text-2xl mt-5 text-gray-light">
                         Claustro Estudiantil en el Consejo Directivo
                     </h3>
                 </div>

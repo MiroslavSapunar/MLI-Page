@@ -62,7 +62,7 @@ function Countdown() {
     return (
         <>
             <div>
-                <div className="text-4xl text-white font-roboto font-bold text-wrap ">
+                <div className="text-4xl text-white font-bold text-wrap ">
                     ¡Elecciones del Claustro de Estudiantes!
                 </div>
 

@@ -6,6 +6,15 @@
   --color-white: #ffffff;
   --color-black: #000000;
   
+  --color-gray-light: #d1d5db;
+  --color-gray-dark: #1f2937;
+  
+  --color-election-mli: #FFD700;
+  --color-election-libres: #87CEEB;
+  --color-election-estudiantil: #98FB98;
+  --color-election-gradiente: #DDA0DD;
+  --color-election-proyecto: #F0E68C;
+  
   --font-family-sans: Graphik, sans-serif;
   --font-family-serif: Merriweather, serif;
   --font-family-roboto: Roboto, sans-serif;
@@ -19,3 +28,27 @@
   .tr04 {
     transition: 0.4s;
   }
+
+  /* Animation delay utilities for staggered animations */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  .animation-delay-600 { animation-delay: 600ms; }
+  .animation-delay-700 { animation-delay: 700ms; }
+  .animation-delay-800 { animation-delay: 800ms; }
+  .animation-delay-900 { animation-delay: 900ms; }
+  .animation-delay-1000 { animation-delay: 1000ms; }
+
+  /* Transition delay utilities for staggered transitions */
+  .transition-delay-100 { transition-delay: 100ms; }
+  .transition-delay-200 { transition-delay: 200ms; }
+  .transition-delay-300 { transition-delay: 300ms; }
+  .transition-delay-400 { transition-delay: 400ms; }
+  .transition-delay-500 { transition-delay: 500ms; }
+  .transition-delay-600 { transition-delay: 600ms; }
+  .transition-delay-700 { transition-delay: 700ms; }
+  .transition-delay-800 { transition-delay: 800ms; }
+  .transition-delay-900 { transition-delay: 900ms; }
+  .transition-delay-1000 { transition-delay: 1000ms; }
