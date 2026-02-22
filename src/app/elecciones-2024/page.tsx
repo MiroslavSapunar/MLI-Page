@@ -1,6 +1,5 @@
 'use client'
 import { useState, useEffect } from 'react';
-import { UAParser } from "ua-parser-js";
 
 import NavBar from "../components/navbar";
 import Elections from '../components/elections';
@@ -13,18 +12,15 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const parser = new UAParser();
-    const userAgent = window.navigator.userAgent;
-    const result = parser.setUA(userAgent).getResult();
-    const isMobileDevice = /mobile/i.test(result.device.type ? result.device.type : "");
+    const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     setIsMobile(isMobileDevice);
   }, []);
 
   return (
-    <div className="font-roboto">
+    <div>
       <NavBar />
-      <Achievements isMobile={isMobile} />
       <Proposals />
+      <Achievements isMobile={isMobile} />
       <Candidates />
       <Elections/>
     </div>
