@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Data {
     source?: string,
@@ -8,84 +8,13 @@ interface Data {
     long: string
 }
 
-const dataArchivements: Data[] = [
-    {
-        title: "Nuevos Planes 2020",
-        short: "Tras varios años de trabajo junto a toda la comunidad educativa, docente y autoridades, como consejeros estudiantiles logramos un hito histórico\:\nSe actualizaron los contenidos, materias y planes de estudio de todas las carreras, algunas con casi 35 años de antiguedad.",
-        long: "Tras varios años de trabajo junto a toda la comunidad educativa, docente y autoridades, como consejeros estudiantiles logramos un hito histórico\:\nSe actualizaron los contenidos, materias y planes de estudio de todas las carreras, algunas con casi 35 años de antiguedad.\nSe logro una reducción nominal de horas y duración en cuatrimestres de las carreras quitando contenidos repetidos entre asignaturas u obsoletos.\nEsto significa carreras con duración estipulados en papel y en la realidad mucho más cercanos, realistas y realizables.\nHoy contamos con carreras modernas y actualizadas para un mundo que vive el auge de la 4ta revolucion industrial.",
-    },
-    {
-        title: "Incorporación de Pensamiento Computacional al CBC",
-        short: "Estos nuevos contenidos básicos de programación para todas las carreras, vienen de la mano de los cambios que ha experimentado el ámbito profesional de todas las ingenierias en los últimos 25 años.",
-        long: "Una de los grandes cambios que acompañaron a los planes nuevos, fue la incorporación de la nueva materia Pensamiento Computacional a la currícula del CBC.\nEstos nuevos contenidos básicos de programación para todas las carreras, vienen de la mano de los cambios que ha experimentado el ámbito profesional de todas las ingenierias en los últimos 25 años.\nLos docentes de la materia son ayudantes y docentes de cátedras del Dpto de Computación de FIUBA."
-    },
-    {
-        title: "No más peligro de caida de mármoles en PC",
-        short: "En el medio de los problemas que generaron los mármoles de PC, discutimos con las autoridades alternativas para reducir el impacto en nuestras cursadas, seguimos de cerca el desarrollo de la obra y exigimos que se acelerarán los tiempos de asignación y adquisición de fondos para las medidas de prevención y las obras necesarias.",
-        long: "En el medio de los problemas que generaron los mármoles de PC, discutimos con las autoridades alternativas para reducir el impacto en nuestras cursadas, seguimos de cerca el desarrollo de la obra y exigimos que se acelerarán los tiempos de asignación y adquisición de fondos para las medidas de prevención y las obras necesarias.\nPese a la incomodidad generada por los andamios de la obra, y la limitación física en la sede, logramos que eso no afecte al desarrollo de los parciales y finales al exigir y lograr migrar las ultimas semanas de clases y evaluaciones a la sede de LH de las materias iniciales, evitando demoras y postergaciones de parciales.\nHoy podemos celebrar que las obras estan casi terminadas y la sede de PC casi libre de andamios y de peligros futuros."
-    },
-    {
-        title: "Ningún condicional se quedó sin cursar",
-        short: "Fuimos la voz  del reclamo de los compañeros que habían quedado como condicionales en materias y que temían quedar sin cursar. La organizacion estudiantil fue imprecindible para encontrar soluciones en los diferentes cursos y que todos los estudiantes fuesen asignados y nadie se quedara sin cursar.",
-        long: "Fuimos la voz  del reclamo de los compañeros que habían quedado como condicionales en materias y que temían quedar sin cursar. La organizacion estudiantil fue imprecindible para encontrar soluciones en los diferentes cursos y que todos los estudiantes fuesen asignados y nadie se quedara sin cursar.\nEntre los casos se encuentran las materias de Electrotecnia, Principios de Ig. industrial, TDA, Redes de comunicación, Orga del computador, OyDE, Ing. Ambiental, Transformación de materiales, Higiene."
-    },
-    {
-        title: "Álgebra II promocionable",
-        short: "En un trabajo conjunto con el Director del dpto de Matemática, logramos una nueva cursada piloto de aprobación directa por promoción por parciales para Álgebra II.",
-        long: "En un trabajo conjunto con el Director del dpto de Matemática, logramos una nueva cursada piloto de aprobación directa por promoción por parciales para Álgebra II. \nLa nueva cursada se materializó en un 56% de aprobados en el último cuatrimestre, un 11% más que con la aprobación solo por finales.\nEstos datos nos alientan a seguir impulsando la cursada promocionable a más materias"
-    },
-    {
-        title: "Simplificamos el trámite de certificado de trabajo",
-        short: "Desde hace varios años, para presentar un certificado de trabajo, constaba de muchos requisitos, en los cuales se encontraba presentar tres recibos de sueldo, una nota y un permiso de la Afip.\nEs por eso que nuestro centro de estudiantes, impulsó e implementó un proceso mucho más eficiente, en el cual solo es necesario un recibo de sueldo para quienes se encuentran en relación de dependencia y un alta de afip junto a un pago o factura para monotributistas. ",
-        long: "Desde hace varios años, para presentar un certificado de trabajo, constaba de muchos requisitos, en los cuales se encontraba presentar tres recibos de sueldo, una nota y un permiso de la Afip.\nEs por eso que nuestro centro de estudiantes, impulsó e implementó un proceso mucho más eficiente, en el cual solo es necesario un recibo de sueldo para quienes se encuentran en relación de dependencia y un alta de afip junto a un pago o factura para monotributistas. \nEn este mismo proceso se incorporó los casos de pasantías (que si bien es un logro que compartimos antes, no estaba correctamente reglamentado). En esta actualización también entran los ayudantes ad honorem, que con la resolución de su nombramiento y un certificado emitido por cualquier autoridad del departamento correspondiente.\n Este cambio se verá aplicado en el proximo periodo de presentación de certificados"
-    },
-    {
-        title: "Cursada Mixta Virtual/Presencial",
-        short: "Logramos implementar una cursada híbrida, que tome lo mejor de la cursada tradicional e interacción presencial, con las ventajas de la virtualidad, para que sea más flexible a aquellos que viajan largas distancias o tienen que trabajar, para que ningún compañero se quede sin cursar.",
-        long: "Luego de la Pandemia, quedó demostrado que la virtualidad es una herramienta más para nuestras cursadas y carreras.\nLogramos implementar una cursada híbrida, que tome lo mejor de la cursada tradicional e interacción presencial, con las ventajas de la virtualidad, para que sea más flexible a aquellos que viajan largas distancias o tienen que trabajar, para que ningún compañero se quede sin cursar.\nEste es un paso más en la modernización de nuestra Facultad y carreras."
-    },
-    {
-        title: "Eliminamos el requisito de 72hs hábiles para inscribirte a finales",
-        short: "El anacrónico requisito se redujo a solo 48hs previas incluyendo feriados y fines de semana. Un paso más en la modernización de FIUBA.",
-        long: "El requisito, que tenía sentido cuando uno tenía que ir al dpto personalmente anotarse a un final, se convertía en una traba cuando uno no contemplada los días no laborales para anotarse a través del SIU.\nEl anacrónico requisito se redujo a solo 48hs previas incluyendo feriados y fines de semana. Un paso más en la modernización de FIUBA."
-    },
-    {
-        title: "Resultados públicos de las encuestas",
-        short: "Logramos el acceso a la información pública y anónima de las encuestas que realizamos cuando terminamos una la cursada.",
-        long: "Logramos el acceso a la información pública y anónima de las encuestas que realizamos cuando terminamos una la cursada.\nCreemos que más información a la hora de elegir entre cursos/materias enriquece a toda la comunidad académica.\nReconociendo la tarea de nuestros docentes y señalando los aspectos que deben ser revisados. "
-    },
-    {
-        title: "Logramos las equivalencias automáticas entre planes de Ing. Informática",
-        short: "Esto se hizo para aceitar la transición entre planes de estudios; Reglamentamos las equivalencias automaticas para más de 68 materias de Ing. Informática",
-        long: "Esto se hizo para aceitar la transición entre planes de estudios; Reglamentamos las equivalencias automaticas para más de 68 materias de Ing. Informática\nAntes de que se implementará esta medida, el trámite era tedioso, los estudiante teníamos solicitar la equivalencia manualmente, y podía tardar desde semanas, hasta varios meses. \nCon el nuevo procedimiento las equivalencias son automáticas, y no requiere de ninguna acción por parte de los estudiantes."
-    },
-    {
-        title: "Más clases de consultas",
-        short: "Impartimos clases de consultas gratuitas de Álgebra II, Am II y Proba, dadas por compañeros que son ayudantes en esas materias.",
-        long: "Impartimos clases de consultas gratuitas de Álgebra II, Am II y Proba, dadas por compañeros que son ayudantes en esas materias.\nTrabajamos con el Dpto de matemática para que se puedan dar clases de consulta oficiales durante la cursada."
-    },
-    {
-        title: "Más y mejores cursos de verano",
-        short: "Trabajamos con la Sec. de Gestion Académica para expandir la oferta académica de los cursos de verano",
-        long: "Trabajamos con la Sec. de Gestion Académica para expandir la oferta académica de los cursos de verano, haciendo que se pueda cursar Algebra A 62, y Análisis Matemático en el cbc, y pensamiento computacional en UBA XXI.\nEn FIUBA, incorporamos un formulario en donde los estudiantes podemos votar por las materias que queremos que aparezcan en la oferta .Gracias a esto último conseguimos más materias para Ingeniería Química."
-    },
-    {
-        title: "Becas de ayuda económica",
-        short: "Cuatrimestre a Cuatrimestre seguimos la adjudicación de las Becas de Ayuda Económica de FIUBA. Junto a SIGVAS -la secretaria encargada de la selección y entrega de las becas-.",
-        long: "Cuatrimestre a Cuatrimestre seguimos la adjudicación de las Becas de Ayuda Económica de FIUBA. Junto a SIGVAS -la secretaria encargada de la selección y entrega de las becas-, nos ocupamos de que se maximicen la disponibilidad de recursos en cada asignación, permitiendo que estos últimos dos años llegaramos a asistir con la beca a más de 150 estudiantes por cuatrimestre. Incluso exigiendo partidas excepcionales para que no queden recursos inmovilizados sin ser ejecutados.\nMás recursos para que todos podamos cursar y terminar nuestras carreras"
-    },
-    {
-        title: "Nueva cátedra Palacios-Puebla para el CBC",
-        short: "Primera cátedra pensada desde FIUBA para dictar contenidos de AM I y Algebra I del CBC, con el objetivo de preparar mejor a los ingresantes a las carreras de Ingeniería.",
-        long: "Primera cátedra pensada desde FIUBA para dictar contenidos de AM I y Algebra I del CBC, con el objetivo de preparar mejor a los ingresantes a las carreras de Ingeniería.\nMuchos de los docentes de son tambien docentes o ayudantes en FIUBA"
-    }
-]
+let dataArchivements: Data[] = [];
 
 function CardFAQ({ dataCard }: { dataCard: Data }) {
     const [toggle, setToggle] = useState(false);
     return (
 
-        <div className="p-8 rounded-lg bg-gray-800">
+        <div className="p-8 rounded-lg bg-gray-dark">
             <button className="flex items-center justify-between w-full"
                 onClick={(e) => setToggle(!toggle)}
             >
@@ -218,8 +147,37 @@ function DesktopkGrid() {
 }
 
 export default function Achievements({ isMobile }: { isMobile: boolean }) {
+    const [isDataLoaded, setIsDataLoaded] = useState(false);
+
+    useEffect(() => {
+        const loadData = async () => {
+            if (dataArchivements.length === 0) {
+                try {
+                    const data = await import('../../data/achievements.json');
+                    dataArchivements = data.default;
+                    setIsDataLoaded(true);
+                } catch (error) {
+                    console.error('Error loading achievements data:', error);
+                }
+            } else {
+                setIsDataLoaded(true);
+            }
+        };
+        loadData();
+    }, []);
+
+    if (!isDataLoaded) {
+        return (
+            <section id="logros" className="bg-primary">
+                <div className="mx-auto max-w-screen-xl px-4 py-24 sm:px-6 lg:px-8">
+                    <div className="text-center text-white text-xl">Cargando logros...</div>
+                </div>
+            </section>
+        );
+    }
+
     return (
-        <section id="logros" className="bg-primary font-roboto">
+        <section id="logros" className="bg-primary">
             <div className="mx-auto max-w-screen-xl px-4 py-24 sm:px-6 lg:px-8">
                 <h2 className="text-3xl font-bold text-secundary sm:text-4xl">Nuestros logros 2022-2024</h2>
 
