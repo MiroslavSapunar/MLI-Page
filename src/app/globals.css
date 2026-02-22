@@ -9,11 +9,11 @@
   --color-gray-light: #d1d5db;
   --color-gray-dark: #1f2937;
   
-  --color-election-mli: #FFD700;
-  --color-election-libres: #87CEEB;
-  --color-election-estudiantil: #98FB98;
-  --color-election-gradiente: #DDA0DD;
-  --color-election-proyecto: #F0E68C;
+  --color-election-mli: #f9423a;
+  --color-election-libres: #FFD700;
+  --color-election-estudiantil: #FF8C00;
+  --color-election-gradiente: #22C55E;
+  --color-election-proyecto: #87CEEB;
   
   --font-family-sans: Graphik, sans-serif;
   --font-family-serif: Merriweather, serif;

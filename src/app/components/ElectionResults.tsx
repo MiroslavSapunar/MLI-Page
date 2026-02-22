@@ -11,61 +11,44 @@ const electionData = [
 
 function PieChart({ data }: { data: typeof electionData }) {
     const [isVisible, setIsVisible] = useState(false);
-    
+
     useEffect(() => {
-        const timer = setTimeout(() => setIsVisible(true), 500);
+        const timer = setTimeout(() => setIsVisible(true), 300);
         return () => clearTimeout(timer);
     }, []);
 
-    const size = 300;
-    const strokeWidth = 40;
-    const radius = (size - strokeWidth) / 2;
-    const circumference = 2 * Math.PI * radius;
-    
-    let cumulativePercentage = 0;
+    // Normalize percentages to sum to 100%
+    const totalPercentage = data.reduce((sum, d) => sum + d.percentage, 0);
+
+    // Build conic-gradient stops
+    let cumulative = 0;
+    const gradientStops = data.flatMap((item) => {
+        const normalized = (item.percentage / totalPercentage) * 100;
+        const start = cumulative;
+        cumulative += normalized;
+        return [
+            `${item.colorVar} ${start}%`,
+            `${item.colorVar} ${cumulative}%`
+        ];
+    }).join(', ');
 
     return (
-        <div className="relative">
-            <svg width={size} height={size} className="transform -rotate-90">
-                {/* Background circle */}
-                <circle
-                    cx={size / 2}
-                    cy={size / 2}
-                    r={radius}
-                    fill="none"
-                    stroke="rgba(255,255,255,0.1)"
-                    strokeWidth={strokeWidth}
-                />
-                
-                {/* Data segments */}
-                {data.map((item, index) => {
-                    const offset = circumference - (cumulativePercentage / 100) * circumference;
-                    const strokeDasharray = `${(item.percentage / 100) * circumference} ${circumference}`;
-                    
-                    const segment = (
-                        <circle
-                            key={index}
-                            cx={size / 2}
-                            cy={size / 2}
-                            r={radius}
-                            fill="none"
-                            stroke={item.colorVar}
-                            strokeWidth={strokeWidth}
-                            strokeDasharray={isVisible ? strokeDasharray : '0 ' + circumference}
-                            strokeDashoffset={offset}
-                            className="transition-all duration-1000 ease-out"
-                            style={{ transitionDelay: `${index * 200}ms` }}
-                            strokeLinecap="round"
-                        />
-                    );
-                    
-                    cumulativePercentage += item.percentage;
-                    return segment;
-                })}
-            </svg>
-            
+        <div className="relative flex items-center justify-center">
+            {/* Pie chart using conic-gradient */}
+            <div
+                className={`w-72 h-72 rounded-full transition-all duration-1000 ease-out ${isVisible ? 'scale-100 opacity-100 rotate-0' : 'scale-75 opacity-0 -rotate-180'}`}
+                style={{
+                    background: `conic-gradient(from -360deg, ${gradientStops})`
+                }}
+            >
+                {/* Inner circle for donut effect */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-44 h-44 rounded-full bg-primary" />
+                </div>
+            </div>
+
             {/* Center text */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+            <div className={`absolute flex flex-col items-center justify-center text-white transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
                 <div className="text-2xl font-bold">8,037</div>
                 <div className="text-sm opacity-80">votos totales</div>
             </div>
