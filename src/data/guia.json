@@ -1,0 +1,425 @@
+{
+  "sections": [
+    {
+      "id": "editorial",
+      "title": "Bienvenida",
+      "icon": "👋",
+      "description": "Por qué existe esta guía y cómo usarla",
+      "items": [
+        {
+          "title": "¿Por qué esta guía?",
+          "content": "En este monstruo de burocracias que es la UBA, el cotidiano de la vida académica no es para nada sencillo. Las reglamentaciones vigentes se encuentran esparcidas en múltiples resoluciones y tienen tantos años que la gran mayoría de los actores de la Facultad solo conoce lo que el boca en boca fue generando a lo largo del tiempo.\n\nEsto ha producido infinidad de mitos, rumores, desinformación, y muchos teléfonos descompuestos donde prácticamente todas las veces los perjudicados somos los estudiantes, dado que el uso y costumbre universitario es dejarle la última palabra al profesor.",
+          "tags": ["introduccion", "bienvenida", "derechos"]
+        },
+        {
+          "title": "¿Cómo usar esta guía?",
+          "content": "El primer paso para hacer valer nuestros derechos es conocerlos en detalle. Aquel que sabe es aquel que está realmente convencido de estar reclamando lo que legalmente le corresponde, se planta con mucha más firmeza, no se deja pisotear, y tampoco le pueden vender un buzón.\n\nTené este material siempre a mano para cuando te surja un inconveniente y necesites sacarte dudas. ¿Me pueden dejar sin cursar la materia? ¿Puede el profesor hacer eso con los recuperatorios? ¿Qué onda con esta superposición horaria que tengo? ¿Cómo es el tema del 2 en la libreta?",
+          "tags": ["introduccion", "uso", "dudas"]
+        },
+        {
+          "title": "La importancia de organizarse",
+          "content": "No solo de informarse trata el cuento. ¿Qué pasa en las situaciones donde el accionar es ambiguo o incluso desfavorable con nosotros por mera omisión en los estatutos? Hay cuestiones que no se resuelven haciendo uso de los reglamentos y que terminan escalando a una situación gremial.\n\nEntender la importancia y la necesidad de la participación colectiva, de involucrarse y organizarse para conseguir soluciones; que las soluciones mágicas no existen y que de las malas salimos entre todos o no salimos más.",
+          "tags": ["organizacion", "participacion", "gremial", "cei"]
+        }
+      ]
+    },
+    {
+      "id": "inscripcion",
+      "title": "Inscripción",
+      "icon": "📝",
+      "description": "Todo sobre cómo anotarte a las materias",
+      "items": [
+        {
+          "title": "¿Cuándo se publica la oferta académica?",
+          "content": "La publicación de la oferta académica se lleva adelante el miércoles previo al inicio de la semana de inscripción a las materias, para poder dar tiempo a una buena planificación de tu cuatrimestre y detectar, entre todos, las posibles inconsistencias en los horarios y cursos.",
+          "links": [
+            {
+              "text": "Calendario Académico",
+              "url": "https://www.fi.uba.ar/estudiantes/calendario-academico"
+            }
+          ],
+          "tags": ["inscripcion", "oferta", "cursos", "calendario"]
+        },
+        {
+          "title": "¿Cómo funcionan las prioridades?",
+          "content": "Las prioridades determinan el orden en el que nos inscribimos a las materias. Se publican el jueves anterior a la semana de inscripción.\n\nLa misma se calcula mediante una fórmula que combina regularidad, promedio y cantidad de materias aprobadas. El sistema te asigna una prioridad del 1 al 120, siendo las prioridades más bajas las primeras que tienen acceso al sistema.\n\nLa inscripción dura 4 días (2 semanas previas al inicio de cursada), de lunes a jueves de 9:00 hs a 21:00 hs, avanzando una prioridad cada media hora (30 por día), hasta llegar a 120 el jueves a la noche.",
+          "tags": ["inscripcion", "prioridad", "prioridades", "orden"]
+        },
+        {
+          "title": "¿Cómo presento el certificado de trabajo?",
+          "content": "El certificado de trabajo te permite mejorar tu prioridad. Antes del inicio de cada cuatrimestre, se abre un formulario en el cual debés presentar los siguientes papeles dependiendo de tu situación laboral:\n\n• En relación de dependencia → El último recibo de sueldo\n• Monotributistas → Constancia de inscripción de AFIP + Último pago del monotributo o última factura emitida\n• Ayudante Ad-honorem → Certificado expedido por una autoridad del respectivo departamento Docente\n\nNota: Si sos trabajador informal, lamentablemente la facultad no reconoce a los trabajadores que no están registrados.",
+          "tags": ["trabajo", "certificado", "prioridad", "laboral", "monotributo"]
+        },
+        {
+          "title": "¿Qué pasa si no estoy conforme con mi prioridad?",
+          "content": "Podés mandar un mail a tramitaciones@fi.uba.ar para que revisen si el cálculo de tu prioridad se realizó correctamente.",
+          "links": [
+            {
+              "text": "Contactar Tramitaciones",
+              "url": "mailto:tramitaciones@fi.uba.ar"
+            }
+          ],
+          "tags": ["prioridad", "reclamo", "tramitaciones"]
+        },
+        {
+          "title": "¿Cómo me inscribo en el SIU?",
+          "content": "La primera vez que accedés al SIU, debés generar la contraseña de acceso a través de \"Olvidaste tu contraseña o sos usuario nuevo?\".\n\nEl SIU es fundamental, ya que es la plataforma en la cual nos vamos a inscribir a materias durante toda nuestra carrera. Ante cualquier problema podés mandar un mail a ayuda@fi.uba.ar para que te lo solucionen.\n\nEl sistema nos permite anotarnos hasta en 10 materias. Esto es útil cuando tenemos más de un plan de materias a cursar.",
+          "links": [
+            {
+              "text": "Ayuda SIU",
+              "url": "mailto:ayuda@fi.uba.ar"
+            }
+          ],
+          "tags": ["siu", "guarani", "inscripcion", "sistema", "contraseña"]
+        },
+        {
+          "title": "¿Qué son las encuestas estudiantiles?",
+          "content": "Todos los estudiantes tenemos acceso a información acerca de las diferentes materias de nuestras carreras. Podemos ver los resultados globales de las encuestas institucionales en la web de FIUBA.\n\nEn las encuestas tenemos acceso al rendimiento general de cursos y profesores. Con una calificación del 1 al 5 se evalúan conceptos como trato con los estudiantes, claridad a la hora de explicar y funcionamiento general del curso.",
+          "tags": ["encuestas", "profesores", "cursos", "calificacion"]
+        },
+        {
+          "title": "¿Qué pasa si me quedo sin vacantes?",
+          "content": "Cuando se acaban todas las vacantes de los diferentes cursos de una misma materia, el sistema habilita una opción de inscripción conocida como condicional.\n\nAl quedar inscripto en esta condición, el departamento de la materia deberá asignarte a uno de los cursos. Algo muy importante: uno es condicional de la materia, no de uno de sus cursos en particular.",
+          "tags": ["vacantes", "condicional", "cupo", "inscripcion"]
+        },
+        {
+          "title": "¿Me pueden dejar sin cursar una materia obligatoria?",
+          "content": "NO. En el caso de las materias obligatorias, tenés el derecho a que la facultad te asigne en un curso sí o sí, nunca te pueden dejar sin cursar. Eso sí, es posible que el curso asignado no sea el que prefieras.\n\nMuy importante: SIEMPRE TENÉS QUE INSCRIBIRTE A ALGÚN CURSO. Si no estás inscripto vía sistema, podés quedar afuera de la materia.\n\nSi te quedás sin cupo en una materia electiva, el departamento de dicha materia debe darte un cupo en otra materia electiva que dependa del mismo.",
+          "tags": ["obligatoria", "cursar", "derecho", "vacantes", "electiva"]
+        }
+      ]
+    },
+    {
+      "id": "cursada",
+      "title": "Cursada",
+      "icon": "📚",
+      "description": "Parciales, recuperatorios y todo sobre cursar",
+      "items": [
+        {
+          "title": "¿Cuál es el régimen de cursada actual?",
+          "content": "La facultad posee un Régimen de Cursada que apunta a organizar su funcionamiento. Este fue aprobado en 1999 y desde entonces no se actualizó.\n\nEn 2020, debido a la pandemia, la facultad tuvo que adaptarse a la virtualidad. Surgieron nuevas modalidades y formas de evaluación. Sin embargo, cuando regresamos a la presencialidad, estos cambios no fueron discutidos ni ordenados de manera institucional.\n\nLa flexibilidad no puede transformarse en arbitrariedad. Las condiciones de cursada tienen que ser una herramienta pedagógica al servicio del aprendizaje, no un filtro que complique o desgaste.",
+          "tags": ["regimen", "cursada", "normativa", "reglamento"]
+        },
+        {
+          "title": "¿Cuántos recuperatorios me corresponden?",
+          "content": "Los profesores tienen que garantizar dos instancias de recuperación por cada parcial, ubicando una instancia dentro del período de cursada, y otra dentro de la primera semana de finales, preferentemente en los mismos días y horarios de clase.\n\nLas materias tienen diferentes metodologías de evaluación, pero todas deben garantizar instancias para recuperar los contenidos.",
+          "tags": ["recuperatorio", "parcial", "evaluacion", "instancias"]
+        },
+        {
+          "title": "¿Cuándo me tienen que dar las notas?",
+          "content": "Los resultados deben ser comunicados por cartelera (ya sea física o virtual del campus) con un mínimo de 7 días previos a la siguiente oportunidad, o preferentemente con mayor antelación.",
+          "tags": ["notas", "resultados", "plazo", "correccion"]
+        },
+        {
+          "title": "¿Pueden quedarse con mi examen?",
+          "content": "Los profesores pueden quedarse con el original del examen, pero siempre dando la posibilidad de dejarte hacer una copia del mismo.",
+          "tags": ["examen", "copia", "original", "parcial"]
+        },
+        {
+          "title": "¿Cómo se calcula la nota final de cursada?",
+          "content": "La calificación final de la cursada deberá tener en cuenta todas las notas en su instancia de aprobación, es decir que los profesores NO te pueden promediar las instancias que no hayas aprobado.",
+          "tags": ["nota", "calificacion", "promedio", "cursada"]
+        },
+        {
+          "title": "¿Qué son los parciales diferidos?",
+          "content": "Existen materias que tienen parciales unificados para todos sus cursos los días sábados, aún cuando estas no se dicten ese día.\n\nSi estás anotado a una materia el día sábado, podés pedir un parcial diferido que suele ser el lunes posterior o viernes anterior y no perder la clase de tu materia.\n\nTambién se deben tener en cuenta motivos laborales o religiosos.",
+          "tags": ["diferido", "parcial", "sabado", "unificado"]
+        },
+        {
+          "title": "¿Qué pasa si dejo una materia?",
+          "content": "Si dejás una materia, por el motivo que sea y en el momento de cursada que sea, no pasa nada. Podés volver a cursarla el cuatrimestre siguiente o cuando prefieras.\n\nSolamente tenés que volver a anotarte vía SIU Guaraní en la semana de inscripción. No te va un 2, ni se asienta en el SIU Guaraní.",
+          "tags": ["dejar", "abandonar", "materia", "recursar"]
+        },
+        {
+          "title": "¿Cómo me puede ayudar el CEI con problemas de cursada?",
+          "content": "El CEI como órgano gremial de los estudiantes, también se encarga de colaborar con la resolución de problemas particulares que ocurren en los cursos.\n\nNo es extraño que haya problemas de diferente índole: cantidad de docentes, problemas con horarios de cursos críticos, problemas con los condicionales, etc. Acercate al CEI si tenés algún problema.",
+          "tags": ["cei", "problema", "ayuda", "gremial", "reclamo"]
+        }
+      ]
+    },
+    {
+      "id": "finales",
+      "title": "Finales",
+      "icon": "🎯",
+      "description": "Períodos, el temido 2, y prórrogas",
+      "items": [
+        {
+          "title": "¿Cómo funcionan los períodos de finales?",
+          "content": "Las fechas de finales se organizan en tres períodos consecutivos, por lo general con cinco llamados cada uno, que se desarrollan durante el período de finales del cuatrimestre.\n\nEn ese esquema, cada estudiante cuenta con hasta tres oportunidades para rendir el mismo examen final. Si no lográs aprobar en esas instancias, debés recursar la materia.",
+          "tags": ["final", "periodo", "llamados", "fechas"]
+        },
+        {
+          "title": "¿Puede haber superposición de finales?",
+          "content": "NO puede haber superposición de fechas de finales entre asignaturas obligatorias recomendadas para cursar en un mismo cuatrimestre, según el plan de estudios vigente.",
+          "tags": ["superposicion", "final", "fechas", "obligatorias"]
+        },
+        {
+          "title": "¿Puedo rendir antes si me estoy por recibir?",
+          "content": "Las evaluaciones integradoras se tomarán en el período de finales, salvo para estudiantes que hayan finalizado de cursar todas las materias de la carrera.\n\nEsto significa que, si te estás por recibir, podés pedir una fecha intermedia dentro del cuatrimestre para no tener que esperar un cuatrimestre más para poder rendir.",
+          "tags": ["recibir", "graduacion", "fecha", "especial", "integradora"]
+        },
+        {
+          "title": "¿Cuándo me tienen que dar los resultados del final?",
+          "content": "Los resultados de la evaluación deberán ser comunicados con un plazo máximo de 72 hs antes de la siguiente fecha de final, o de una semana en el caso de que la siguiente fecha de final esté establecida pasados más de 10 días de la anterior.",
+          "tags": ["resultado", "nota", "plazo", "final"]
+        },
+        {
+          "title": "¿Cuándo me ponen el 2 en el analítico?",
+          "content": "El insuficiente (o 2) recién se asienta en el SIU-Guaraní, y por lo tanto en el analítico, cuando:\n\n• Rendiste 3 veces mal el final\n• Rendiste al menos una vez y volvés a cursar la materia\n• Rendiste alguna vez y dejás vencer la materia",
+          "tags": ["dos", "2", "insuficiente", "analitico", "aplazo"]
+        },
+        {
+          "title": "¿Qué es la prórroga para rendir final?",
+          "content": "Una vez pasados los 3 períodos consecutivos de finales, la cursada vence y hay que volver a cursar la materia. Sin embargo, existe la posibilidad de pedir prórroga y conseguir un período más de fechas de final.\n\nMotivos que dan prórroga automática:\n• Intercambio académico\n• Enfermedad propia o de familiar directo\n• Aumento de la carga laboral\n\nSi no es alguno de estos motivos, tenés que hablar con el docente y él decidirá si otorga o no la prórroga.",
+          "links": [
+            {
+              "text": "Formulario de Prórroga",
+              "url": "https://cms.fi.uba.ar/uploads/Pedido_de_prorroga_2016_6d3c73103b.pdf"
+            }
+          ],
+          "tags": ["prorroga", "vencimiento", "cursada", "extension"]
+        }
+      ]
+    },
+    {
+      "id": "promocion",
+      "title": "Promoción",
+      "icon": "⭐",
+      "description": "El régimen de promoción en materias iniciales",
+      "items": [
+        {
+          "title": "¿Existe la promoción en FIUBA?",
+          "content": "Dentro del régimen de cursada vigente no existe una normativa que permita o regule la posibilidad de promocionar una materia (a diferencia del CBC). Sin embargo, algunas materias durante la carrera adoptan esta modalidad según las consideraciones del cuerpo docente a cargo.",
+          "tags": ["promocion", "aprobar", "directo", "sin final"]
+        },
+        {
+          "title": "¿Por qué se implementó la promoción en materias iniciales?",
+          "content": "Al inicio de la carrera, en las materias iniciales se observa la mayor tasa de desaprobados y recursantes. Es muy habitual que los estudiantes aprobemos los parciales, pero luego dejemos el final hasta que esté por vencer.\n\nEsto tiene una relación directa con la alta deserción de estudiantes en los primeros cuatrimestres.\n\nPor ello, el claustro de estudiantes junto con los responsables de materias iniciales, impulsamos la posibilidad de implementar un régimen de promoción desde el primer cuatrimestre de 2024, dando como resultado una mejora en la tasa de aprobación y una baja en la deserción.",
+          "tags": ["promocion", "iniciales", "desercion", "aprobacion"]
+        }
+      ]
+    },
+    {
+      "id": "tramites",
+      "title": "Trámites",
+      "icon": "📋",
+      "description": "Certificados, excepciones y gestiones administrativas",
+      "items": [
+        {
+          "title": "¿Cómo pido una excepción de correlatividad?",
+          "content": "Para poder cursar una materia, debemos tener aprobadas todas las correlativas que establece el plan de estudios (con finales incluidos).\n\nSi te falta alguna correlativa, existe la posibilidad de pedir una excepción de correlatividad completando un formulario. El docente a cargo de la materia debe aprobarlo.\n\nSe recomienda siempre hablar con el docente antes de las inscripciones para saber si está dispuesto a aceptar el pedido.",
+          "links": [
+            {
+              "text": "Formulario de Excepción",
+              "url": "https://cms.fi.uba.ar/uploads/Pedido_de_excepcion_2016_f77cee96e0.pdf"
+            }
+          ],
+          "tags": ["correlatividad", "excepcion", "correlativa", "tramite"]
+        },
+        {
+          "title": "¿Puedo cursar materias de otra carrera?",
+          "content": "Sí. Mediante la resolución 168 podemos cursar materias de otras carreras y después pedir que la Comisión Curricular de nuestra carrera nos reconozca una cantidad de créditos o una materia equivalente.\n\nTenés que hablar previamente con la Comisión Curricular para confirmar la cantidad de créditos o la materia a reconocer.",
+          "links": [
+            {
+              "text": "Formulario Resolución 168",
+              "url": "https://cms.fi.uba.ar/uploads/Formulario_para_cursar_por_RES_168_2020_795aabfb00.pdf"
+            }
+          ],
+          "tags": ["otra carrera", "creditos", "equivalencia", "168"]
+        },
+        {
+          "title": "¿Cómo pido el certificado analítico?",
+          "content": "Para solicitar el certificado Analítico se debe enviar un mail a tramitaciones@fi.uba.ar donde te enviarán un formulario para completar y te harán las solicitudes correspondientes para poder realizar el trámite.",
+          "links": [
+            {
+              "text": "Contactar Tramitaciones",
+              "url": "mailto:tramitaciones@fi.uba.ar"
+            }
+          ],
+          "tags": ["analitico", "certificado", "tramite"]
+        },
+        {
+          "title": "¿Cómo obtengo el certificado de alumno regular?",
+          "content": "Se realiza a través del SIU Guaraní, en la parte de Trámites → Solicitud de Constancias y Certificados.",
+          "links": [
+            {
+              "text": "SIU Guaraní",
+              "url": "https://guaraniautogestion.fi.uba.ar/g3w/"
+            }
+          ],
+          "tags": ["regular", "certificado", "constancia", "siu"]
+        },
+        {
+          "title": "¿Cómo hago la simultaneidad de carrera?",
+          "content": "Para realizar la Simultaneidad de Carrera se deberá mandar un mail a tramitaciones@fi.uba.ar.",
+          "links": [
+            {
+              "text": "Contactar Tramitaciones",
+              "url": "mailto:tramitaciones@fi.uba.ar"
+            }
+          ],
+          "tags": ["simultaneidad", "carrera", "doble"]
+        },
+        {
+          "title": "¿Cómo es la prueba de suficiencia de inglés?",
+          "content": "Con los nuevos planes de estudio es un requisito de graduación acreditar conocimientos de idioma a través de una evaluación.\n\nLos estudiantes conseguimos que se reconozca a aquellos que hayan rendido algún tipo de examen internacional. Para ello tenés que completar un formulario a través del campus virtual, donde también podés encontrar las fechas para rendir la evaluación o presentar la solicitud de equivalencia.",
+          "tags": ["ingles", "idioma", "suficiencia", "graduacion"]
+        },
+        {
+          "title": "¿Cómo tramito el título?",
+          "content": "Se debe abonar en Tesorería (planta baja, ingresando a la derecha) y luego llevar los documentos que se solicitan al Departamento de Títulos y Planes (al lado del Departamento de Alumnos).",
+          "links": [
+            {
+              "text": "Requisitos para el Título",
+              "url": "http://www.fi.uba.ar/es/node/764"
+            }
+          ],
+          "tags": ["titulo", "graduacion", "diploma", "tramite"]
+        }
+      ]
+    },
+    {
+      "id": "regularidad",
+      "title": "Regularidad",
+      "icon": "✅",
+      "description": "Requisitos para mantener tu condición de alumno regular",
+      "items": [
+        {
+          "title": "¿Cuáles son los requisitos para ser alumno regular?",
+          "content": "La Facultad de Ingeniería tiene un régimen de regularidad. Los requisitos son:\n\n• Aprobar, como mínimo, 2 asignaturas en el lapso de 2 años académicos consecutivos\n\n• El 33% de los créditos totales de la carrera (incluidos los del CBC) no deben superarse en aplazos (no aplica en los últimos 48 créditos)\n\n• El doble del número de años académicos de la duración estimada de la carrera como plazo máximo para completar todas las obligaciones",
+          "links": [
+            {
+              "text": "Régimen de Regularidad",
+              "url": "http://www.fi.uba.ar/archivos/ResCS441109.pdf"
+            }
+          ],
+          "tags": ["regularidad", "regular", "requisitos", "condicion"]
+        },
+        {
+          "title": "¿Qué pasa si pierdo la regularidad?",
+          "content": "En el caso de perder la regularidad, tenés que enviar a tramitaciones@fi.uba.ar un mail solicitando readmisión y seguir los pasos correspondientes.\n\nTe van a solicitar algunos documentos y entregar una carta explicando la situación por la cual se perdió la regularidad junto con cualquier otra documentación que se tenga para respaldar esto (certificado de trabajo u otro documento que avale que haya habido un problema).",
+          "links": [
+            {
+              "text": "Solicitar Readmisión",
+              "url": "mailto:tramitaciones@fi.uba.ar"
+            }
+          ],
+          "tags": ["regularidad", "readmision", "perder", "recuperar"]
+        }
+      ]
+    },
+    {
+      "id": "becas",
+      "title": "Becas",
+      "icon": "💰",
+      "description": "Ayudas económicas disponibles para estudiantes",
+      "items": [
+        {
+          "title": "¿Qué becas hay disponibles?",
+          "content": "Como estudiantes tenemos la posibilidad de acceder a becas de ayuda económica y de investigación mientras estemos realizando nuestra carrera. Estas varían en monto y duración.\n\nActualmente hay becas que provienen de:\n• Estado Nacional\n• UBA\n• Nuestra facultad\n• Instituciones privadas\n\nToda la información al respecto la podés encontrar en la pestaña de becas de la página web de la facultad.",
+          "links": [
+            {
+              "text": "Ver Becas Disponibles",
+              "url": "https://fi.uba.ar/bienestar/becas"
+            }
+          ],
+          "tags": ["beca", "ayuda", "economica", "dinero", "investigacion"]
+        }
+      ]
+    },
+    {
+      "id": "pasantias",
+      "title": "Pasantías",
+      "icon": "💼",
+      "description": "Experiencia laboral durante la carrera",
+      "items": [
+        {
+          "title": "¿Cómo funcionan las pasantías?",
+          "content": "Dentro de los términos establecidos por la Ley 26.427, se ha implementado un sistema de pasantías con el objeto de extender el sistema educativo a la realización de prácticas de trabajo que complementen la especialidad teórica.\n\nLa ley establece:\n• El horario no debe extenderse de las 4 hs diarias\n• El período debe ser de 12 meses\n• Puede extenderse por 6 meses más\n\nEn la Unidad Coordinadora de Pasantías esperan múltiples ofertas. Las principales empresas del país buscan estudiantes y egresados de la Facultad de Ingeniería.",
+          "links": [
+            {
+              "text": "Bolsa de Trabajo",
+              "url": "https://www.fi.uba.ar/externo/bolsa-de-trabajo"
+            }
+          ],
+          "tags": ["pasantia", "trabajo", "empresa", "experiencia", "laboral"]
+        }
+      ]
+    },
+    {
+      "id": "intercambios",
+      "title": "Intercambios",
+      "icon": "✈️",
+      "description": "Estudiar en el exterior",
+      "items": [
+        {
+          "title": "¿Qué condiciones debo cumplir para un intercambio?",
+          "content": "La primera condición es ser alumno regular de la facultad. Según cada programa de intercambio se requiere un mínimo de créditos.\n\nRespecto al idioma varía según el país pero se recomienda tener un buen nivel de inglés.",
+          "links": [
+            {
+              "text": "Intercambios Académicos",
+              "url": "https://www.fi.uba.ar/estudiantes/intercambios-academicos"
+            }
+          ],
+          "tags": ["intercambio", "exterior", "extranjero", "estudiar"]
+        },
+        {
+          "title": "¿Me reconocen créditos al volver?",
+          "content": "Sí. Tenés que llevar un plan de materias a la comisión curricular de tu carrera para que puedas sacar el máximo provecho académico durante tu estancia afuera y te asegures qué te pueden reconocer y qué no.",
+          "tags": ["creditos", "reconocimiento", "intercambio", "equivalencia"]
+        }
+      ]
+    },
+    {
+      "id": "participacion",
+      "title": "Participación",
+      "icon": "🗳️",
+      "description": "Espacios donde tu voz importa",
+      "items": [
+        {
+          "title": "¿De dónde vienen nuestros derechos?",
+          "content": "Nuestros derechos no salieron de una galera, ni de la buena voluntad de los que gestionan nuestra facultad. Son el resultado del trabajo y de la lucha del Claustro de Estudiantes que continúa día a día y cuya materialización es el régimen de cursada.\n\nEsta es la piedra fundacional que erige todo lo demás y es indispensable conocerla y entenderla para poder hacer valer todos juntos nuestros derechos.",
+          "tags": ["derechos", "historia", "lucha", "estudiantes"]
+        },
+        {
+          "title": "¿Qué es el CEI?",
+          "content": "El Centro de Estudiantes de Ingeniería \"La Línea Recta\" es el gremio de los estudiantes fiubenses, fue fundado en 1894 y tiene el orgullo de ser el centro de estudiantes más antiguo de América Latina.\n\nEs la gran herramienta de coordinación y organización estudiantil. Cualquier problema que tengas con alguna materia, profesor o de cualquier otro tema de la Facultad, tenés que acudir al CEI.\n\nCada dos años el conjunto de los estudiantes discute y elige, por medio de una elección, una dirección general del Centro: La comisión directiva (12 miembros con voz y voto). Ninguno de estos miembros cobra sueldo por su tarea. Las reuniones son abiertas a todos los estudiantes.",
+          "tags": ["cei", "centro", "estudiantes", "gremio", "linea recta"]
+        },
+        {
+          "title": "¿Qué es el Consejo Directivo?",
+          "content": "La UBA en su Estatuto determina como órgano de gobierno de las facultades un Consejo Directivo. Está conformado por 16 miembros divididos en tres claustros:\n\n• 8 Profesores\n• 4 Graduados\n• 4 Estudiantes\n\nComo órgano de gobierno máximo, se encarga de tomar las decisiones que llevan adelante nuestra facultad, desde pedidos de simultaneidad de carreras hasta definir planes de estudio, así como votar al Decano.\n\nCada 2 años se renuevan los representantes estudiantiles y de graduados, y cada 4 el de profesores.",
+          "tags": ["consejo", "directivo", "gobierno", "representantes"]
+        },
+        {
+          "title": "¿Qué son los Consejos Asesores y Comisiones Curriculares?",
+          "content": "Nuestra facultad está organizada en departamentos, los cuales asesoran a la misma en la toma de decisiones. Para discutir estas decisiones existen Consejos Asesores, donde los estudiantes tenemos representación.\n\nLas Comisiones Curriculares son las encargadas de:\n• Asegurar que las materias cumplan con el contenido a dictar\n• Tratar simultaneidades y equivalencias\n• Otorgar créditos por actividades extracurriculares\n• Discutir y mejorar los planes de estudios\n\nEn ambos espacios los estudiantes tenemos representación.",
+          "tags": ["comision", "curricular", "consejo", "asesor", "departamento"]
+        }
+      ]
+    },
+    {
+      "id": "mli",
+      "title": "Sobre MLI",
+      "icon": "✊",
+      "description": "Quiénes somos y qué hacemos",
+      "items": [
+        {
+          "title": "¿Qué es el MLI?",
+          "content": "El Movimiento Linealmente Independiente es una agrupación estudiantil independiente y horizontal, nacida en el 2005 desde el seno de los estudiantes de FIUBA.\n\nSomos un grupo de estudiantes organizados, con distintas experiencias políticas dentro de la facultad, que no quiso esperar que las cosas las cambie otro, que entiende la diversidad de la sociedad y de la Facultad y construye a partir de ella.\n\nEl MLI se encuentra en permanente construcción y busca el continuo crecimiento.",
+          "tags": ["mli", "agrupacion", "historia", "quienes somos"]
+        },
+        {
+          "title": "¿Qué significa ser independientes?",
+          "content": "Que no respondemos a partidos políticos, intereses económicos de ninguna índole, funcionarios de la FIUBA o del gobierno; respondemos a nosotros mismos de manera horizontal.",
+          "tags": ["independiente", "politica", "autonomia"]
+        },
+        {
+          "title": "¿Qué significa ser horizontales?",
+          "content": "Que no tenemos jerarquías. Nadie manda sobre el otro, todos decidimos, la palabra de todos vale por igual, todos participamos y todos tenemos las mismas responsabilidades.",
+          "tags": ["horizontal", "democracia", "participacion"]
+        }
+      ]
+    }
+  ]
+}
