@@ -1,4 +1,6 @@
+'use client'
 import Image from "next/image";
+import { useTheme } from "@/context/ThemeContext";
 
 interface Data {
     source: string,
@@ -7,63 +9,70 @@ interface Data {
     career: string,
 }
 
-function InfoCard(data: Data) {
+function InfoCard({ data, isDark }: { data: Data; isDark: boolean }) {
     return (
-        <>
-            <div id="candidatos"
-                className="block rounded-lg  border-secundary border-2 p-4 transition hover:bg-white/5"
-            >
-                <div className="flex items-stretch gap-4">
-                    <div className="relative w-0 md:min-w-40 md:h-40 rounded-lg">
+        <div className={`block rounded-lg border-2 p-4 transition-all duration-300 ${
+            isDark
+                ? 'border-secundary hover:bg-white/5'
+                : 'border-secundary bg-white shadow-sm hover:shadow-md'
+        }`}>
+            <div className="flex items-stretch gap-4">
+                <div className="relative w-0 md:min-w-40 md:h-40 rounded-lg">
+                    <Image
+                        src={data.source}
+                        alt={data.name}
+                        fill
+                        className='object-cover object-center'
+                    />
+                </div>
 
-                        <Image
-                            src={data.source}
-                            alt={data.name}
-                            fill
-                            className='object-cover object-center'
-                        />
-                    </div>
-
-                    <div>
-                        <h2 className=" text-lg/tight sm:text-2xl/tight font-semibold ">{data.position}</h2>
-                        <h3 className="mt-0.5 text-lg/tight font-medium">{data.name}</h3>
-                        <h4 className="mt-1 text-secundary">{data.career}</h4>
-                    </div>
+                <div>
+                    <h2 className={`text-lg/tight sm:text-2xl/tight font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                        {data.position}
+                    </h2>
+                    <h3 className={`mt-0.5 text-lg/tight font-medium ${isDark ? 'text-white' : 'text-gray-700'}`}>
+                        {data.name}
+                    </h3>
+                    <h4 className="mt-1 text-secundary">{data.career}</h4>
                 </div>
             </div>
-        </>
-    )
-}
-function InfoCardSmall(data: Data) {
-    return (
-        <>
-            <div
-                className="block rounded-md border border-white p2 p-4 transition hover:bg-white/5"
-            >
-                <div className="flex-col md:flex-row items-stretch gap-2">
-                    <div className="relative w-0 md:min-w-20 md:h-20 rounded-lg ">
-                        <Image
-                            src={data.source}
-                            alt={data.name}
-                            fill
-                            className=' object-cover object-center'
-                        />
-                    </div>
-
-                    <div className="pt-1">
-                        <h2 className=" text-lg/tight font-semibold">{data.position}</h2>
-                        <h3 className="mt-0.5 text-md/tight font-medium">{data.name}</h3>
-                        <h4 className="mt-1 text-md/tight text-secundary">{data.career}</h4>
-                    </div>
-                </div>
-            </div>
-        </>
+        </div>
     )
 }
 
+function InfoCardSmall({ data, isDark }: { data: Data; isDark: boolean }) {
+    return (
+        <div className={`block rounded-md border p-4 transition-all duration-300 ${
+            isDark
+                ? 'border-white hover:bg-white/5'
+                : 'border-gray-200 bg-white shadow-sm hover:shadow-md'
+        }`}>
+            <div className="flex-col md:flex-row items-stretch gap-2">
+                <div className="relative w-0 md:min-w-20 md:h-20 rounded-lg">
+                    <Image
+                        src={data.source}
+                        alt={data.name}
+                        fill
+                        className='object-cover object-center'
+                    />
+                </div>
 
+                <div className="pt-1">
+                    <h2 className={`text-lg/tight font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                        {data.position}
+                    </h2>
+                    <h3 className={`mt-0.5 text-md/tight font-medium ${isDark ? 'text-white' : 'text-gray-700'}`}>
+                        {data.name}
+                    </h3>
+                    <h4 className="mt-1 text-md/tight text-secundary">{data.career}</h4>
+                </div>
+            </div>
+        </div>
+    )
+}
 
 export default function Candidates() {
+    const { isDark } = useTheme();
 
     const dataCEI: Data[] = [
         {
@@ -78,91 +87,46 @@ export default function Candidates() {
             name: "Inti Blanco",
             career: "Ing. Informática",
         }
-
     ]
+
     const dataConsejo: Data[] = [
-        {
-            source: "/Rro.png",
-            position: "1º Titular",
-            name: "Romina Giménez",
-            career: "Lic. en Sistemas",
-        },
-        {
-            source: "/Yoaco.png",
-            position: "1º Suplente",
-            name: "Joaquin Álvarez",
-            career: "Ing. Civil",
-        },
-        {
-            source: "/Inti.png",
-            position: "2º Titular",
-            name: "Inti Blanco",
-            career: "Ing. informática",
-        },
-        {
-            source: "/Zele.png",
-            position: "2º Suplente",
-            name: "Selene Martinez",
-            career: "Ing. Informática",
-        },
-        {
-            source: "/Flor.png",
-            position: "3º Titular",
-            name: "Flor Noguera",
-            career: "Ing. Informática",
-        },
-
-        {
-            source: "/Miro.png",
-            position: "3º Suplente",
-            name: "Miroslav Sapunar",
-            career: "Ing. Informática",
-        },
-        {
-            source: "/Yaco.png",
-            position: "4º Titular",
-            name: "Yaco Santamarina",
-            career: "Ing. Informática",
-        },
-        {
-            source: "/Rochi.png",
-            position: "4º Suplente",
-            name: "Rocio Rodríguez",
-            career: "Ing. en Petroléo",
-        }
-
+        { source: "/Rro.png", position: "1º Titular", name: "Romina Giménez", career: "Lic. en Sistemas" },
+        { source: "/Yoaco.png", position: "1º Suplente", name: "Joaquin Álvarez", career: "Ing. Civil" },
+        { source: "/Inti.png", position: "2º Titular", name: "Inti Blanco", career: "Ing. informática" },
+        { source: "/Zele.png", position: "2º Suplente", name: "Selene Martinez", career: "Ing. Informática" },
+        { source: "/Flor.png", position: "3º Titular", name: "Flor Noguera", career: "Ing. Informática" },
+        { source: "/Miro.png", position: "3º Suplente", name: "Miroslav Sapunar", career: "Ing. Informática" },
+        { source: "/Yaco.png", position: "4º Titular", name: "Yaco Santamarina", career: "Ing. Informática" },
+        { source: "/Rochi.png", position: "4º Suplente", name: "Rocio Rodríguez", career: "Ing. en Petroléo" }
     ]
 
     return (
-        <section id="candidatos" className="bg-primary text-white">
+        <section id="candidatos" className={`transition-colors duration-500 ${isDark ? 'bg-primary' : 'bg-gray-50'}`}>
             <div className="mx-auto max-w-screen-xl px-4 py-24 sm:px-6 lg:px-8">
                 <div className="max-w-xl">
                     <h2 className="text-3xl font-bold text-secundary sm:text-4xl">Nuestros Candidatos</h2>
-
-                    <h3 className="text-2xl mt-5 text-gray-light">
+                    <h3 className={`text-2xl mt-5 ${isDark ? 'text-gray-light' : 'text-gray-600'}`}>
                         Centro de Estudiantes
                     </h3>
                 </div>
 
                 <div className="mt-8 grid grid-cols-2 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    {
-                        dataCEI && dataCEI.map(e =>
-                            <InfoCard key={e.name} source={e.source} position={e.position} name={e.name} career={e.career} />)
-                    }
+                    {dataCEI.map(e =>
+                        <InfoCard key={e.name} data={e} isDark={isDark} />
+                    )}
                 </div>
+
                 <div className="max-w-xl">
-                    <h3 className="text-2xl mt-5 text-gray-light">
+                    <h3 className={`text-2xl mt-5 ${isDark ? 'text-gray-light' : 'text-gray-600'}`}>
                         Claustro Estudiantil en el Consejo Directivo
                     </h3>
                 </div>
 
                 <div className="mt-8 grid grid-cols-2 gap-8 md:grid-cols-4">
-                    {
-                        dataConsejo && dataConsejo.map(e =>
-                            <InfoCardSmall key={e.name} source={e.source} position={e.position} name={e.name} career={e.career} />)
-                    }
+                    {dataConsejo.map(e =>
+                        <InfoCardSmall key={e.name} data={e} isDark={isDark} />
+                    )}
                 </div>
-
             </div>
         </section>
     )

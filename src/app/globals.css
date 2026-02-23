@@ -52,3 +52,12 @@
   .transition-delay-800 { transition-delay: 800ms; }
   .transition-delay-900 { transition-delay: 900ms; }
   .transition-delay-1000 { transition-delay: 1000ms; }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
