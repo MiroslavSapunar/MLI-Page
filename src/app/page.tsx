@@ -142,8 +142,13 @@ export default function Home() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </span>
-                            <span className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                                Explorá la guía estudiantil
+                            <span className="flex flex-col">
+                                <span className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                                    Guía del estudiante
+                                </span>
+                                <span className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
+                                    Nueva edición digital
+                                </span>
                             </span>
                         </Link>
                     </div>
