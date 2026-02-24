@@ -143,6 +143,8 @@ export default function GuiaPage() {
     const [openItems, setOpenItems] = useState<Set<string>>(new Set())
     const [isNavSticky, setIsNavSticky] = useState(false)
     const navRef = useRef<HTMLDivElement>(null)
+    const navScrollRef = useRef<HTMLDivElement>(null)
+    const buttonRefs = useRef<Map<string, HTMLButtonElement>>(new Map())
 
     const sections: GuiaSection[] = guiaData.sections
 
@@ -172,6 +174,23 @@ export default function GuiaPage() {
         handleScroll()
         return () => window.removeEventListener('scroll', handleScroll)
     }, [sections])
+
+    // Auto-scroll navigation to keep active section visible
+    useEffect(() => {
+        if (activeSection && navScrollRef.current) {
+            const activeButton = buttonRefs.current.get(activeSection)
+            if (activeButton) {
+                const nav = navScrollRef.current
+                const buttonLeft = activeButton.offsetLeft
+                const buttonWidth = activeButton.offsetWidth
+                const navWidth = nav.offsetWidth
+
+                // Center the button in the nav
+                const targetScroll = buttonLeft - (navWidth / 2) + (buttonWidth / 2)
+                nav.scrollTo({ left: targetScroll, behavior: 'smooth' })
+            }
+        }
+    }, [activeSection])
 
     // Toggle item open/closed
     const toggleItem = (id: string) => {
@@ -321,7 +340,7 @@ export default function GuiaPage() {
                     } ${isNavSticky ? 'border-b' : ''} ${isDark ? 'border-white/10' : 'border-gray-200'}`}
             >
                 <div className="max-w-4xl mx-auto px-4">
-                    <nav className="flex gap-2 py-3 overflow-x-auto scrollbar-hide">
+                    <nav ref={navScrollRef} className="flex gap-2 py-3 overflow-x-auto scrollbar-hide">
                         {sections.map(section => {
                             const isActive = activeSection === section.id
                             const hasResults = !searchQuery || visibleSections.some(s => s.id === section.id)
@@ -329,6 +348,9 @@ export default function GuiaPage() {
                             return (
                                 <button
                                     key={section.id}
+                                    ref={(el) => {
+                                        if (el) buttonRefs.current.set(section.id, el)
+                                    }}
                                     onClick={() => scrollToSection(section.id)}
                                     disabled={!hasResults}
                                     className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 ${isActive
