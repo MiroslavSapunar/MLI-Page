@@ -1,7 +1,8 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
 import { useTheme } from "@/context/ThemeContext"
+import NavBar from '../components/navbar'
+import Link from 'next/link'
 
 /**
  * Quiénes Somos - MLI History & Story Page
@@ -31,12 +32,11 @@ function useScrollReveal() {
 }
 
 export default function QuienesSomos() {
-    const { isDark, toggleTheme } = useTheme()
+    const { isDark } = useTheme()
     const [scrollY, setScrollY] = useState(0)
 
     const intro = useScrollReveal()
     const timeline = useScrollReveal()
-    const cta = useScrollReveal()
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY)
@@ -54,36 +54,7 @@ export default function QuienesSomos() {
     return (
         <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-primary' : 'bg-[#fafafa]'}`}>
             {/* Floating Header */}
-            <header className={`fixed top-6 left-6 right-6 z-50 flex justify-between items-center`}>
-                <Link
-                    href="/"
-                    className={`px-4 py-2 rounded-full backdrop-blur-xl transition-colors ${
-                        isDark
-                            ? 'bg-white/10 text-white'
-                            : 'bg-white/80 text-gray-900 shadow-sm'
-                    }`}
-                >
-                    ← Volver
-                </Link>
-                <button
-                    onClick={toggleTheme}
-                    className={`p-3 rounded-full backdrop-blur-xl transition-colors ${
-                        isDark
-                            ? 'bg-white/10 hover:bg-white/20'
-                            : 'bg-white/80 hover:bg-white shadow-sm'
-                    }`}
-                >
-                    {isDark ? (
-                        <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
-                        </svg>
-                    ) : (
-                        <svg className="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                        </svg>
-                    )}
-                </button>
-            </header>
+            <NavBar />
 
             {/* Hero - Large Text */}
             <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
@@ -189,46 +160,9 @@ export default function QuienesSomos() {
                 </div>
             </section>
 
-            {/* Values - Large Text */}
-            {/* <section
-                ref={values.ref}
-                className="py-32 px-6"
-            >
-                <div className="max-w-5xl mx-auto">
-                    <div className={`space-y-24 transform transition-all duration-1000 ${values.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}>
-                        {[
-                            { num: '01', title: 'Independencia', text: 'No respondemos a partidos políticos, intereses económicos, ni funcionarios. Respondemos solo a los estudiantes.' },
-                            { num: '02', title: 'Horizontalidad', text: 'No tenemos jerarquías. Nadie manda sobre el otro. Todos decidimos, la palabra de todos vale por igual.' },
-                            { num: '03', title: 'Acción', text: '15+ logros concretos que transformaron FIUBA. Resultados reales, no promesas vacías.' },
-                        ].map((value, i) => (
-                            <div key={i} className="grid md:grid-cols-12 gap-8 items-start">
-                                <div className="md:col-span-2">
-                                    <span className={`text-sm font-mono ${isDark ? 'text-white/30' : 'text-gray-400'}`}>
-                                        {value.num}
-                                    </span>
-                                </div>
-                                <div className="md:col-span-3">
-                                    <h3 className={`text-2xl font-serif ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                                        {value.title}
-                                    </h3>
-                                </div>
-                                <div className="md:col-span-7">
-                                    <p className={`text-xl font-light leading-relaxed ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
-                                        {value.text}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section> */}
-
-            {/* CTA Section */}
-            <section
-                ref={cta.ref}
-                className={`py-32 px-6 ${isDark ? 'bg-secundary/10' : 'bg-secundary/5'}`}
-            >
-                <div className={`max-w-3xl mx-auto text-center transform transition-all duration-1000 ${cta.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}>
+            {/* CTA Section - Styled to match page narrative */}
+            <section className={`py-32 px-6 ${isDark ? 'bg-secundary/10' : 'bg-secundary/5'}`}>
+                <div className="max-w-3xl mx-auto text-center">
                     <h2 className={`text-4xl md:text-5xl font-serif font-light ${isDark ? 'text-white' : 'text-gray-900'}`}>
                         La historia continúa
                         <br />
@@ -258,37 +192,12 @@ export default function QuienesSomos() {
                                     : 'border-gray-300 text-gray-700 hover:bg-gray-100'
                             }`}
                         >
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z" />
-                            </svg>
                             @mli.fiuba
                         </a>
                     </div>
                 </div>
             </section>
-
-            {/* Footer */}
-            <footer className={`py-16 px-6 border-t ${isDark ? 'border-white/10' : 'border-gray-200'}`}>
-                <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div className={`font-serif text-xl ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                        MLI
-                    </div>
-                    <div className="flex gap-8">
-                        <Link href="/guia" className={`hover:text-secundary transition-colors ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
-                            Guía
-                        </Link>
-                        <Link href="/elecciones-2024" className={`hover:text-secundary transition-colors ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
-                            Propuestas
-                        </Link>
-                        <Link href="/" className={`hover:text-secundary transition-colors ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
-                            Inicio
-                        </Link>
-                    </div>
-                    <div className={`text-sm ${isDark ? 'text-white/40' : 'text-gray-400'}`}>
-                        © 2026
-                    </div>
-                </div>
-            </footer>
+            
         </div>
     )
 }
