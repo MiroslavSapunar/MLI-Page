@@ -1,0 +1,340 @@
+{
+  "sections": [
+    {
+      "id": "introduccion",
+      "title": "Bienvenida",
+      "icon": "👋",
+      "description": "Qué es el CBC y por qué esta guía",
+      "items": [
+        {
+          "title": "¿Por qué esta guía?",
+          "content": "En este monstruo de burocracias que es la UBA, el día a día de la vida académica no es para nada sencillo. Las reglamentaciones vigentes están esparcidas en múltiples resoluciones, muchas de ellas con tantos años que la gran mayoría de los actores de la facultad solo conoce lo que el boca en boca fue transmitiendo a lo largo del tiempo.\n\nEl primer paso es estar informados. El o la estudiante que sabe cómo actuar es quien puede reclamar lo que legalmente le corresponde, sin dejarse pisar y plantándose con mucha más firmeza.",
+          "tags": ["introduccion", "bienvenida", "derechos"]
+        },
+        {
+          "title": "¿Qué es el Ciclo Básico Común?",
+          "content": "El Ciclo Básico Común (CBC) es el primer año obligatorio para todas las carreras de grado de la Universidad de Buenos Aires (UBA). Su objetivo es brindar una formación académica inicial y una base común de conocimientos antes de comenzar con las materias específicas de cada carrera.\n\nEstá compuesto por 6 materias cuatrimestrales, distribuidas de la siguiente manera:\n\n2 materias comunes a todas las carreras:\n• Introducción al Conocimiento de la Sociedad y el Estado (ICSE)\n• Introducción al Pensamiento Científico (IPC)\n\n2 materias según la orientación general de la carrera:\n• Física\n• Introducción al Pensamiento Computacional\n\n2 materias específicas de la carrera elegida (Ingeniería):\n• Análisis Matemático\n• Álgebra",
+          "tags": ["cbc", "materias", "primer año", "ingenieria"]
+        },
+        {
+          "title": "¿Cómo usar esta guía?",
+          "content": "En este manual vas a encontrar información útil para tu paso por el CBC: para que la incorpores, la tengas en cuenta y empieces a usarla en tu día a día; para que la puedas llevar siempre con vos por si te surge algún inconveniente y necesitás sacarte dudas como:\n\n• ¿Me asigna las materias o las elijo yo?\n• ¿Puede el profesor hacer eso con los recuperatorios?\n• ¿Qué pasa si se me superpone la cursada con el trabajo?\n\nY si surge un problema que no podés resolver con el manual, podés acercarte al Centro de Estudiantes de Ingeniería \"La Línea Recta\" (CEI), y confiar en nuestro rol desde el MLI como presidencia del mismo. Siempre vamos a estar para ayudarte, ya sea de manera presencial o escribiéndonos a nuestra página de Instagram: @mli.fiuba",
+          "links": [
+            {
+              "text": "@mli.fiuba",
+              "url": "https://www.instagram.com/mli.fiuba"
+            }
+          ],
+          "tags": ["guia", "uso", "dudas", "cei", "mli"]
+        }
+      ]
+    },
+    {
+      "id": "inscripcion",
+      "title": "Inscripción",
+      "icon": "📝",
+      "description": "Todo sobre cómo inscribirte al CBC",
+      "items": [
+        {
+          "title": "¿Cómo se asignan las materias?",
+          "content": "Si estás comenzando el CBC por primera vez, se te asignan aleatoriamente 3 de las 6 materias, de forma automática luego de que termines la inscripción. Para verificar qué materias vas a cursar podés entrar a la página web del CBC y consultar el apartado \"Asignación de materias\" de la plataforma de trámites.\n\nPara el segundo cuatrimestre, es necesario realizar una reconfirmación de cursos. Esto le indica al sistema que querés continuar, y es lo que permite que se te asignen las materias correspondientes.\n\nEn caso de que estés recursando materias del CBC, deberás inscribirte manualmente, ya que el sistema no las asigna de forma automática. Esta inscripción se hace por el SIU y se avisa a través de redes, suele ser aproximadamente 15 días antes del inicio de cursada.\n\nPodés anotarte hasta un máximo de 3 materias por cuatrimestre.",
+          "links": [
+            {
+              "text": "Página del CBC",
+              "url": "https://www.cbc.uba.ar"
+            }
+          ],
+          "tags": ["inscripcion", "materias", "asignacion", "siu"]
+        },
+        {
+          "title": "Requisitos si sos argentino/a",
+          "content": "Para realizar el proceso de inscripción, necesitás tener el DNI argentino vigente.\n\nEstudios secundarios: Necesitás el certificado de estudios medios completos legalizado por la Dirección de Legalizaciones de la UBA. La legalización se debe hacer por TAD, en la opción de \"Solicitud de Legalización de títulos secundarios y convalidación de secundarios\".\n\nSi todavía no emitieron tu título, tenés que presentar una constancia de estudios secundarios completos en trámite.",
+          "tags": ["inscripcion", "requisitos", "argentino", "dni", "titulo", "secundario"]
+        },
+        {
+          "title": "Requisitos si sos extranjero/a",
+          "content": "Si terminaste tus estudios en un país con convenio con Argentina (la mayoría en Latinoamérica), tenés que presentar la Convalidación expedida por el Ministerio de Educación argentino.\n\nSi tu título fue emitido en un país no hispanohablante, deberás presentar además certificado de idioma español.\n\nSi terminaste el secundario en un país sin convenio con Argentina, tenés que hacer el Reconocimiento de estudios en el Ministerio de Educación argentino.\n\nLa Convalidación o Reconocimiento deberán estar legalizados por la UBA.\n\nSi sos extranjero/a y todavía no tenés el DNI argentino, podés inscribirte provisoriamente con el documento de identidad que usaste para tramitar la Convalidación.",
+          "tags": ["inscripcion", "requisitos", "extranjero", "convalidacion", "reconocimiento"]
+        },
+        {
+          "title": "¿Cómo es el proceso de inscripción paso a paso?",
+          "content": "El proceso tiene tres etapas:\n\n1. Preinscripción online: Ingresá a la Plataforma de Inscripciones, completá tu DNI, nombre y apellido. Si nunca te inscribiste antes, el sistema te redirige automáticamente al formulario de Pre Ingreso a la UBA. Completá tus datos básicos. Una vez finalizado, recibirás un mail con más instrucciones (puede demorar hasta 96 h).\n\n2. Presentación de documentación: Necesitás entregar una copia de tu título legalizado en las fechas específicas. También es obligatoria la Encuesta para Ingresantes.\n\n3. Materias asignadas automáticamente: Si es tu primer año en la UBA, no elegís las materias: el sistema te asigna hasta 3 por cuatrimestre. Si desaprobás alguna, al recursarla sí vas a poder elegir el turno y día.",
+          "tags": ["inscripcion", "proceso", "pasos", "preinscripcion", "documentacion"]
+        },
+        {
+          "title": "¿Cómo elijo sede y horario?",
+          "content": "Vas a tener que elegir dos opciones de sede y turno cuando esté habilitado el sistema (aun si cursás por UBA XXI).\n\nLa asignación depende de la disponibilidad según tu carrera, sede y modalidad.",
+          "tags": ["inscripcion", "sede", "horario", "turno"]
+        }
+      ]
+    },
+    {
+      "id": "cursada",
+      "title": "La Cursada",
+      "icon": "📚",
+      "description": "Parciales, promoción, finales y más",
+      "items": [
+        {
+          "title": "¿Cómo es el sistema de evaluación?",
+          "content": "Las materias cuentan con dos parciales, a excepción de Análisis Matemático y Álgebra que tienen tres.\n\nLas calificaciones van del 0 al 10 y se aprueba con 4 o más (el 4 representa el 60% del examen).",
+          "tags": ["cursada", "parciales", "evaluacion", "notas"]
+        },
+        {
+          "title": "¿Cómo funciona la promoción?",
+          "content": "Si el promedio de los dos parciales es 7 o más, promocionás la materia y no necesitás rendir examen final.\n\nEn las materias Análisis y Álgebra se rinden 3 parciales en vez de 2, lo cual cambia el cálculo del promedio. La suma de las 3 notas debe dar 20 o más para promocionar.",
+          "tags": ["cursada", "promocion", "promedio", "parciales"]
+        },
+        {
+          "title": "¿Cuándo accedo al examen final?",
+          "content": "Accedés al final si:\n• Aprobaste ambos parciales (aunque el promedio sea menor a 7).\n• Aprobaste uno solo y luego aprobaste el recuperatorio del otro.\n\nPara Análisis y Álgebra, accedés al final si:\n• Aprobaste los tres parciales (y la suma de las tres notas da entre 12 y 20).\n• Aprobaste un parcial y luego aprobaste el recuperatorio del resto.\n\nPodés rendir el examen final hasta en tres oportunidades consecutivas.",
+          "tags": ["cursada", "final", "examen", "recuperatorio"]
+        },
+        {
+          "title": "¿Cuándo quedo libre en una materia?",
+          "content": "Quedás libre si:\n• El promedio es menor a 4.\n• Desaprobás ambos parciales (o los tres en Análisis y Álgebra).\n• No aprobás el final en sus tres oportunidades.",
+          "tags": ["cursada", "libre", "reprobada", "desaprobado"]
+        }
+      ]
+    },
+    {
+      "id": "modalidades",
+      "title": "Otras Modalidades",
+      "icon": "🔄",
+      "description": "Intensivos, libres, equivalencias y UBA XXI",
+      "items": [
+        {
+          "title": "¿Cómo funciona el Intensivo de Verano?",
+          "content": "Podés acceder a partir de 2 o 3 materias aprobadas y si estás por terminar el CBC.\n\nPresencial: Según la materia, puede ofrecer dos modalidades de evaluación:\n• Promoción a partir de dos parciales, con opción de recuperatorio en dos instancias durante el desarrollo del intensivo.\n• Instancia de examen integrador.\n\nVirtual: Tiene como única instancia evaluatoria el examen integrador.",
+          "links": [
+            {
+              "text": "Más información en CBC",
+              "url": "https://www.cbc.uba.ar"
+            }
+          ],
+          "tags": ["intensivo", "verano", "virtual", "presencial"]
+        },
+        {
+          "title": "¿Existe un Intensivo de Invierno?",
+          "content": "Durante las vacaciones de invierno se abren las inscripciones para dar de forma intensiva (virtual):\n• IPC\n• ICSE\n\nImportante: Solo se puede cursar una materia, que cuenta con dos parciales y un final, aunque se puede promocionar.",
+          "tags": ["intensivo", "invierno", "ipc", "icse", "virtual"]
+        },
+        {
+          "title": "¿Puedo rendir una materia en modalidad libre?",
+          "content": "Sí, la modalidad libre permite rendir sin cursar previamente. Consta de una instancia escrita eliminatoria y, si se aprueba, una instancia oral.\n\nTurnos disponibles: marzo, julio y diciembre.\n\nNo podés rendir libre si:\n• Estás en tu primer cuatrimestre.\n• La materia está en condición regular.\n• La materia está en condición de examen final.",
+          "tags": ["libre", "examen", "oral", "escrito"]
+        },
+        {
+          "title": "¿Cómo pido equivalencias?",
+          "content": "Podés solicitar equivalencias si cursaste materias en otra universidad o carrera. Para hacerlo debés contactarte con alguno de los siguientes mails y seguir los pasos que te indiquen, y completar el trámite de pase en el TAD.\n\n• informacion@cbc.uba.ar\n• ayuda@cbc.uba.ar\n• alumnos@cbc.uba.ar",
+          "tags": ["equivalencias", "pase", "otra universidad", "tramite"]
+        },
+        {
+          "title": "¿Qué es UBA XXI?",
+          "content": "UBA XXI es el programa virtual del CBC, en el cual la cursada es virtual y asincrónica, y se rinden presencialmente solo los parciales y finales.",
+          "links": [
+            {
+              "text": "Portal UBA XXI",
+              "url": "https://ubaxxi.uba.ar/ingresantes/"
+            }
+          ],
+          "tags": ["uba xxi", "virtual", "asincronica", "programa"]
+        }
+      ]
+    },
+    {
+      "id": "tramites",
+      "title": "Trámites",
+      "icon": "📋",
+      "description": "Reconfirmación, constancias y certificados",
+      "items": [
+        {
+          "title": "¿Qué es la reconfirmación para ingresantes?",
+          "content": "Al terminar el primer cuatrimestre, durante el receso de invierno, llega a todos los estudiantes una encuesta y una solicitud de rematriculación para confirmar que continuarán con la carrera en el segundo cuatrimestre. Es obligatorio completarla para que te asignen las materias.",
+          "tags": ["tramites", "reconfirmacion", "rematriculacion", "ingresantes"]
+        },
+        {
+          "title": "¿Cómo obtengo la constancia de alumno regular?",
+          "content": "La constancia de alumno regular acredita que estás cursando activamente en el CBC. Podés solicitarla a través de la plataforma de trámites del CBC.",
+          "links": [
+            {
+              "text": "Plataforma CBC",
+              "url": "https://www.cbc.uba.ar"
+            }
+          ],
+          "tags": ["tramites", "constancia", "alumno regular"]
+        },
+        {
+          "title": "¿Cómo obtengo la constancia de examen?",
+          "content": "La constancia de examen certifica que te presentaste a rendir. Podés solicitarla a través de la plataforma de trámites del CBC.",
+          "tags": ["tramites", "constancia", "examen"]
+        },
+        {
+          "title": "¿Qué es el Informe de Actividad Académica?",
+          "content": "Es un documento donde figuran las materias aprobadas y sus notas.\n\nSi cursaste antes de 2020, se solicita por mail al Departamento de Alumnos de la última sede.\n\nLa legalización del certificado se hace por TAD, opción \"Solicitud de Certificación de Programas Académicos CBC\".",
+          "tags": ["tramites", "informe", "actividad academica", "notas", "certificado"]
+        }
+      ]
+    },
+    {
+      "id": "sedes",
+      "title": "Conocé las Sedes",
+      "icon": "🏛️",
+      "description": "Las sedes de FIUBA y dónde cursás el CBC",
+      "items": [
+        {
+          "title": "Sede Paseo Colón",
+          "content": "Ubicada en Av. Paseo Colón 850 (San Telmo).\n\nEsta es la sede central de FIUBA, donde se concentran la mayoría de las oficinas administrativas de la Facultad. Aunque como estudiante del CBC no cursarás materias en esta sede, podés aprovechar todos sus espacios:\n\n• Biblioteca\n• Comedor\n• CEI (Centro de Estudiantes de Ingeniería - La Línea Recta): Este espacio está siempre abierto para cualquier duda o inconveniente que tengas.",
+          "tags": ["sedes", "paseo colon", "san telmo", "biblioteca", "comedor", "cei"]
+        },
+        {
+          "title": "Sede Las Heras",
+          "content": "Ubicada en Av. Las Heras 2214 (Recoleta).\n\nEsta es la sede principal utilizada por el CBC de Ingeniería, por lo que realizarás todo tu primer año en este edificio. También se cursan otras carreras de grado y se utiliza para clases específicas, seminarios o actividades complementarias.\n\nEn este edificio también podés aprovechar todos sus espacios como biblioteca, salas de estudio y comedor.\n\nAmbas sedes están conectadas por transporte público (aprox. 20-30 minutos entre ellas).\n\nSi sos nuevo, te recomendamos participar en las recorridas virtuales o presenciales que ofrecen durante la semana de ingreso.",
+          "tags": ["sedes", "las heras", "recoleta", "cbc", "biblioteca", "comedor"]
+        }
+      ]
+    },
+    {
+      "id": "primer-dia",
+      "title": "Tu Primer Día",
+      "icon": "🎒",
+      "description": "Tips para tu primer día de clases",
+      "items": [
+        {
+          "title": "¿Cómo me preparo antes de ir?",
+          "content": "Antes de salir, revisá en la plataforma de trámites qué materia cursás ese día, en qué aula y a qué hora. Es importante que lleves tu documentación (DNI). Podés llevar tu equipo de mate, vasito de café o té para sobrellevar la cursada. En caso de olvidarte, podés acercarte al comedor a cargar el agua o comprarte tu vaso de café.",
+          "tags": ["primer dia", "preparacion", "aula", "documentacion"]
+        },
+        {
+          "title": "¿A qué hora conviene llegar?",
+          "content": "Te recomendamos llegar al menos 20 minutos antes para familiarizarte con el edificio, ubicar tu aula y elegir un buen lugar.\n\nAl ingresar por la puerta de Av. Las Heras, prestá atención al código QR o al correo electrónico disponible al ingresar; este registro vincula tu DNI y te permite atravesar los molinetes sin inconvenientes.",
+          "tags": ["primer dia", "horario", "llegar", "molinetes", "qr"]
+        },
+        {
+          "title": "¿Cómo es el inicio de la clase?",
+          "content": "Las clases suelen empezar con una presentación del profesor y una explicación del programa. Habrá compañeros nuevos, así que no dudes en presentarte, es una gran motivación tener un grupo de estudio.\n\nSi tenés dudas sobre el CBC (que es común para todas las carreras de Ingeniería), preguntá en la secretaría o a un tutor.",
+          "tags": ["primer dia", "clase", "profesor", "grupo de estudio"]
+        },
+        {
+          "title": "¿Qué hago si tengo dudas durante la cursada?",
+          "content": "Podés buscar al Centro de Estudiantes de Ingeniería (CEI) ubicado en la sede de Paseo Colón o comunicarte vía Instagram (@mli.fiuba).\n\nSi algo no sale como esperabas o te equivocás, no te preocupes, es parte de este nuevo proceso y es totalmente normal. ¡Muchos éxitos en este inicio!",
+          "links": [
+            {
+              "text": "@mli.fiuba",
+              "url": "https://www.instagram.com/mli.fiuba"
+            }
+          ],
+          "tags": ["dudas", "consultas", "cei", "instagram", "mli"]
+        }
+      ]
+    },
+    {
+      "id": "becas",
+      "title": "Becas",
+      "icon": "💰",
+      "description": "Becas externas disponibles para estudiantes del CBC",
+      "items": [
+        {
+          "title": "Becas Progresar",
+          "content": "Es un programa del Ministerio de Educación destinado a jóvenes de entre 16 y 24 años (con excepciones de edad si tenés hijos a cargo). Otorga un ingreso mensual para cubrir gastos de estudio y es compatible con otras becas.\n\nRequisitos:\n• Ser argentino/a (nativo o por opción).\n• Cursar en una institución pública.\n• Cumplir con los topes de ingresos familiares establecidos.\n• Aprobar al menos el 50% de las materias del año anterior.\n\nLa inscripción se realiza a través de sarmientobecas.educacion.gob.ar con tu DNI y datos bancarios. Recordá que la beca se renueva anualmente.",
+          "links": [
+            {
+              "text": "Portal Becas Progresar",
+              "url": "https://sarmientobecas.educacion.gob.ar"
+            }
+          ],
+          "tags": ["becas", "progresar", "ministerio", "ingreso mensual"]
+        },
+        {
+          "title": "Becas Fundación YPF",
+          "content": "La beca de Fundación YPF está destinada a estudiantes de primer año de carreras vinculadas a las Ingenierías, Tecnología, Ciencias de la Tierra y Ambiente de Universidades Nacionales Públicas. Otorga un ingreso mensual que ayudará en tu recorrido universitario y proporciona material y eventos para enriquecer tu carrera.\n\nRequisitos:\n• Ser argentino/a (nativo o por opción).\n• Tener hasta 24 años de edad a la fecha de presentación.\n• Tener una carta de recomendación de uno de los profesores con los que hayas cursado.\n• Carta de interés donde mencionás tu interés en formar parte del programa.\n• Entregar la documentación respaldatoria necesaria.",
+          "links": [
+            {
+              "text": "Portal Becas YPF",
+              "url": "https://becas.fundacionypf.org.ar/"
+            }
+          ],
+          "tags": ["becas", "ypf", "fundacion", "ingenieria"]
+        },
+        {
+          "title": "Beca de Ayuda Económica Sarmiento",
+          "content": "Es un programa destinado a estudiantes destacados de universidades públicas que se encuentran en situaciones de vulnerabilidad socioeconómica. Otorga un beneficio económico mensual durante 12 meses, atención sin cargo en el Hospital de Clínicas y el de Odontología.\n\nRequisitos principales:\n• Ser estudiante regular de una universidad pública.\n• Contar con un promedio alto (generalmente superior a 7).\n• Demostrar una situación socioeconómica que justifique el apoyo.\n• No ser beneficiario de otras becas nacionales.\n\nLa inscripción se realiza de forma online a través de sarmientobecas.educacion.gob.ar.",
+          "links": [
+            {
+              "text": "Portal Becas Sarmiento",
+              "url": "https://sarmientobecas.educacion.gob.ar"
+            }
+          ],
+          "tags": ["becas", "sarmiento", "ayuda economica", "hospital"]
+        },
+        {
+          "title": "Becas en FIUBA",
+          "content": "Una vez que logres entrar a FIUBA hay un programa de becas al cual podrás acceder al ser alumno de FIUBA. Podés consultar con la oficina de becas de la facultad para asesoramiento personalizado y fechas de convocatoria (generalmente salen en marzo y agosto).",
+          "tags": ["becas", "fiuba", "facultad", "convocatoria"]
+        }
+      ]
+    },
+    {
+      "id": "bienestar",
+      "title": "Bienestar Estudiantil",
+      "icon": "🏃",
+      "description": "Deportes, cultura y acompañamiento",
+      "items": [
+        {
+          "title": "¿Qué deportes puedo hacer en FIUBA?",
+          "content": "El Área de Deportes ofrece variedad de actividades físicas y coordina equipos representativos. Como estudiante del CBC, tenés acceso a:\n\n• Uso de instalaciones y equipos: Podés unirte a disciplinas como fútbol (11 y futsal), básquet, vóley, handball, rugby, hockey, natación y tenis.\n• Torneos Interfacultades: Representar a Ingeniería en competencias de la UBA.\n• Actividades recreativas: Participar en clases de ajedrez, arquería, náutica o taekwondo.\n\nPodés contactarte mediante el mail de la secretaría de deportes (deportes@fi.uba.ar). También podés acercarte de manera presencial a la sede de Paseo Colón, la secretaría de deportes se encuentra en planta baja frente al Centro de Estudiantes de Ingeniería.",
+          "links": [
+            {
+              "text": "Deportes FIUBA",
+              "url": "https://fi.uba.ar/bienestar/deportes"
+            }
+          ],
+          "tags": ["deportes", "futbol", "basquet", "voley", "torneos", "actividades"]
+        },
+        {
+          "title": "¿Qué actividades culturales hay?",
+          "content": "La Secretaría de Bienestar Estudiantil, junto a la Secretaría de Cultura, gestionan diversos talleres culturales. Como ingresante del CBC, podés sumarte a:\n\n• Participar en talleres: Inscribirte en cursos de canto, ensamble musical, salsa, fotografía o guitarra.\n• Muestras culturales: Asistir o participar en las exhibiciones que la secretaría organiza al finalizar cada cuatrimestre.\n• Coro de la Facultad: Sumarte a los ensayos y presentaciones oficiales.\n\nPodés contactarte mediante el mail de la secretaría de cultura (cultura@fi.uba.ar). También podés acercarte de manera presencial a la sede de Paseo Colón, la secretaría de cultura se encuentra en el subsuelo.",
+          "links": [
+            {
+              "text": "Cultura FIUBA",
+              "url": "https://fi.uba.ar/bienestar/cultura"
+            }
+          ],
+          "tags": ["cultura", "talleres", "canto", "musica", "fotografia", "coro"]
+        }
+      ]
+    },
+    {
+      "id": "genero",
+      "title": "Protocolo de Género",
+      "icon": "💜",
+      "description": "Prevención y acción ante violencia de género",
+      "items": [
+        {
+          "title": "¿Qué es el Protocolo de Género de la UBA?",
+          "content": "La Universidad de Buenos Aires mantiene un compromiso firme contra la violencia sexual, psicológica, económica, social, familiar, laboral y física. Este protocolo constituye el marco institucional para prevenir, detectar y sancionar estas situaciones en todas las facultades, rigiendo para las relaciones laborales y educativas que se desarrollen en el ámbito de la UBA.",
+          "tags": ["genero", "protocolo", "violencia", "uba"]
+        },
+        {
+          "title": "¿A quiénes involucra el protocolo?",
+          "content": "El protocolo alcanza a toda la comunidad universitaria:\n\n• Funcionarios/as, docentes y no docentes.\n• Estudiantes y personal académico temporario.\n• Terceros que presten servicios en las instalaciones de la Universidad.",
+          "tags": ["genero", "protocolo", "comunidad", "alcance"]
+        },
+        {
+          "title": "¿Qué situaciones regula?",
+          "content": "Interviene ante acciones u omisiones de violencia sexual basada en el sexo, género, orientación sexual, identidad o expresión de género. Esto incluye:\n\n• Acoso sexual: Comentarios o conductas con connotación sexual que impliquen hostigamiento o asedio.\n• Hechos de connotación sexista: Acciones que discriminen, subordinen o estereotipen a las personas por su género o identidad.\n• Violencia sexual: Vulneración del derecho a decidir voluntariamente sobre la vida sexual mediante engaño, amenaza o uso de la fuerza.\n\nEstas situaciones pueden ocurrir tanto en el espacio físico como a través de medios telefónicos o virtuales.",
+          "tags": ["genero", "acoso", "violencia sexual", "discriminacion", "sexismo"]
+        },
+        {
+          "title": "¿Cómo y dónde denunciar?",
+          "content": "Si sos víctima o presenciás una situación, tenés derecho a realizar una consulta o denuncia administrativa. El proceso se rige por los principios de gratuidad, respeto, privacidad, no revictimización y prevención.\n\n• FIUBA: Contactá al Área de Género y Diversidad en genero@fi.uba.ar o acercate a la oficina de Bienestar Estudiantil.\n• UBA Central: Escribí al Comité de Género a comitegenero@uba.ar.\n• Ayuda inmediata (Nacional): Llamá a la Línea 144 (gratuita, las 24 hs).",
+          "tags": ["genero", "denuncia", "linea 144", "contacto"]
+        },
+        {
+          "title": "¿Qué recursos y prevención hay disponibles?",
+          "content": "La UBA garantiza el asesoramiento mediante equipos interdisciplinarios y ofrece:\n\n• Acompañamiento: Asesoría legal gratuita y apoyo psicológico.\n• Formación: Capacitaciones obligatorias y talleres de sensibilización para docentes y estudiantes.\n• Acción en FIUBA: Campañas como el \"Mes de la Mujer\" con actividades para toda la comunidad.\n\nImportante: Si presenciás maltrato o discriminación, es fundamental dar a conocer la situación para asegurar ambientes seguros y libres de violencia. La UBA promueve ambientes seguros y asegura que cualquier forma de discriminación será sancionada. No hay plazos para denunciar y se garantiza la protección contra represalias.",
+          "tags": ["genero", "recursos", "prevencion", "asesoria", "apoyo psicologico"]
+        }
+      ]
+    }
+  ]
+}
