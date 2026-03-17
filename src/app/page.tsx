@@ -132,22 +132,40 @@ export default function Home() {
                         </h1>
                     </div>
 
-                    <div className={`mt-12 transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
+                    <div className={`mt-12 flex flex-col gap-4 transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
                         <Link
                             href="/guia"
                             className="inline-flex items-center gap-4 group"
                         >
-                            <span className="w-16 h-16 rounded-full bg-secundary flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <span className="w-14 h-14 rounded-full bg-secundary flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </span>
                             <span className="flex flex-col">
                                 <span className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                                    Guía del estudiante
+                                    Guía del Estudiante Fiubense
                                 </span>
                                 <span className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
-                                    Nueva edición digital
+                                    Tus derechos y trámites en FIUBA
+                                </span>
+                            </span>
+                        </Link>
+                        <Link
+                            href="/guia-cbc"
+                            className="inline-flex items-center gap-4 group"
+                        >
+                            <span className={`w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform ${isDark ? 'bg-white/10' : 'bg-gray-100'}`}>
+                                <svg className={`w-5 h-5 ${isDark ? 'text-white' : 'text-gray-900'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </span>
+                            <span className="flex flex-col">
+                                <span className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                                    Guía del Estudiante del CBC
+                                </span>
+                                <span className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
+                                    Tu primer año en la UBA
                                 </span>
                             </span>
                         </Link>

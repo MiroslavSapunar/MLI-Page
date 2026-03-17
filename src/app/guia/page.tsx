@@ -283,9 +283,18 @@ export default function GuiaPage() {
                         Guía del Estudiante
                         <span className="text-secundary"> Fiubense</span>
                     </h1>
-                    <p className={`text-lg mb-6 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
+                    <p className={`text-lg mb-4 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
                         Todo lo que necesitás saber sobre tus derechos, trámites y oportunidades en FIUBA
                     </p>
+                    <Link
+                        href="/guia-cbc"
+                        className="inline-flex items-center gap-2 text-secundary hover:underline font-medium mb-6"
+                    >
+                        Acá está la Guía del CBC
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </Link>
 
                     {/* Search Bar */}
                     <div className="relative">
