@@ -205,7 +205,7 @@ export default function Home() {
                                 Somos una agrupación estudiantil independiente y horizontal, nacida en los pasillos de FIUBA.
                             </p>
                             <p className={`text-xl leading-relaxed ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
-                                Nunca hemos esperamos que las cosas las cambie otro.
+                                Nunca hemos esperado que las cosas las cambie otro.
                             </p>
                         </div>
 
@@ -269,7 +269,7 @@ export default function Home() {
                             },
                             {
                                 title: 'Resultados concretos',
-                                description: '20 años transformando la facultad: más cursos en materias colapsadas, mejoras edilicias y los planes de estudio 2020. Y seguimos sumando',
+                                description: '20 años transformando la facultad: más cursos en materias colapsadas, mejoras edilicias y los planes de estudio 2020. Y seguimos sumando.',
                                 icon: '✓'
                             }
                         ].map((value, index) => (
@@ -329,7 +329,7 @@ export default function Home() {
                                 En estas <span className="text-secundary">elecciones</span>
                             </p>
                             <h2 className={`mt-2 text-5xl md:text-7xl font-black ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                                Infórmate, participá y votá
+                                Informate, participá y votá
                             </h2>
 
                             <div className="mt-12 flex flex-wrap gap-4">

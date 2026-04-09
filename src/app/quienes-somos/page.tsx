@@ -45,7 +45,7 @@ export default function QuienesSomos() {
     }, [])
 
     const milestones = [
-        { year: '2005', title: 'Fundación', desc: 'Nace MLI desde el seno de los estudiantes de FIUBA' },
+        { year: '2005', title: 'Fundación', desc: 'Nace como una agrupación de y para los estudiantes de FIUBA' },
         { year: '2015', title: 'Presidencia CEI', desc: 'Asumimos la conducción del Centro de Estudiantes' },
         { year: '2022', title: 'Nuevos planes', desc: 'Impulsamos la reforma de los planes de estudio' },
         { year: '2024', title: 'Victoria electoral', desc: 'Lista más votada con el 35% de los votos' },
@@ -169,7 +169,7 @@ export default function QuienesSomos() {
                         <em className="text-secundary">con vos</em>
                     </h2>
                     <p className={`mt-6 text-xl ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
-                        Súmate a transformar FIUBA
+                        Sumate a transformar FIUBA
                     </p>
 
                     <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
