@@ -4,8 +4,8 @@ export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host') || ''
   const { pathname } = request.nextUrl
 
-  // Handle padron2026 subdomain
-  if (hostname.startsWith('padron2026.')) {
+  // Handle padron2026 subdomain (with or without www prefix)
+  if (hostname.startsWith('padron2026.') || hostname.startsWith('www.padron2026.')) {
     // Avoid rewriting if already on the padron2026 path or requesting static assets
     if (pathname.startsWith('/padron2026') || pathname.startsWith('/_next') || pathname.startsWith('/api')) {
       return NextResponse.next()

@@ -50,9 +50,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <head>
-        <link rel="preload" href="/padron_de_estudiantes.csv" as="fetch" crossOrigin="anonymous" />
-      </head>
       <body className="font-roboto">
         <ThemeProvider>
           {children}
