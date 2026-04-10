@@ -1,13 +1,27 @@
 'use client'
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Image from 'next/image';
 import mli from "../../../public/MLI.svg";
 import Link from "next/link";
 import { useTheme } from "@/context/ThemeContext";
 
+function getHomeHref(): string {
+    if (typeof window === 'undefined') return '/';
+    const hostname = window.location.hostname;
+    console.log(hostname);
+    // If on a subdomain (e.g. padron2026.mli-fiuba.com.ar), link to the main domain
+    const parts = hostname.split('.');
+    if (parts.length > 2) {
+        const mainDomain = parts.slice(1).join('.');
+        return `https://${mainDomain}`;
+    }
+    return '/';
+}
+
 export default function NavBar() {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const { isDark, toggleTheme } = useTheme();
+    const homeHref = useMemo(() => getHomeHref(), []);
 
     return (
         // <header className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
@@ -134,7 +148,7 @@ export default function NavBar() {
             : 'bg-white/90 backdrop-blur-md border-b border-gray-200'
             }`}>
             <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
-                <Link href="/" className="flex items-center gap-2 group">
+                <Link href={homeHref} className="flex items-center gap-2 group">
                     <svg className={`w-4 h-4 transition-transform group-hover:-translate-x-1 ${isDark ? 'text-white' : 'text-gray-900'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>

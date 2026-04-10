@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, useRef, useCallback } from 'react'
-import Image from 'next/image'
 import { useTheme } from '@/context/ThemeContext'
+import NavBar from '@/app/components/navbar'
 
 type Estudiante = {
   documento: string
@@ -51,7 +51,7 @@ function normalize(str: string): string {
 }
 
 export default function Padron2026() {
-  const { isDark, toggleTheme } = useTheme()
+  const { isDark } = useTheme()
   const [padron, setPadron] = useState<Estudiante[]>([])
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<Estudiante[] | null>(null)
@@ -117,37 +117,7 @@ export default function Padron2026() {
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-primary text-white' : 'bg-white text-gray-900'}`}>
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 lg:px-16 py-4">
-        <Image
-          src="/MLI.svg"
-          alt="MLI"
-          width={48}
-          height={48}
-          className={isDark ? 'invert' : ''}
-        />
-        <div className="flex items-center gap-4">
-          <a
-            href="https://www.instagram.com/mli.fiuba/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/instagram.svg"
-              alt="Instagram"
-              width={24}
-              height={24}
-              className={isDark ? 'invert' : ''}
-            />
-          </a>
-          <button
-            onClick={toggleTheme}
-            className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${isDark ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-100 hover:bg-gray-200'}`}
-          >
-            {isDark ? '☀️' : '🌙'}
-          </button>
-        </div>
-      </header>
+      <NavBar />
 
       {/* Toast */}
       {toast && (
