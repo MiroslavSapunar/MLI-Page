@@ -1,27 +1,26 @@
 'use client'
-import { useState, useMemo } from "react";
+import { useState, useEffect } from "react";
 import Image from 'next/image';
 import mli from "../../../public/MLI.svg";
 import Link from "next/link";
 import { useTheme } from "@/context/ThemeContext";
 
-function getHomeHref(): string {
-    if (typeof window === 'undefined') return '/';
-    const hostname = window.location.hostname;
-    console.log(hostname);
-    // If on a subdomain (e.g. padron2026.mli-fiuba.com.ar), link to the main domain
-    const parts = hostname.split('.');
-    if (parts.length > 2) {
-        const mainDomain = parts.slice(1).join('.');
-        return `https://${mainDomain}`;
-    }
-    return '/';
-}
-
 export default function NavBar() {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const { isDark, toggleTheme } = useTheme();
-    const homeHref = useMemo(() => getHomeHref(), []);
+    const [homeHref, setHomeHref] = useState('/');
+
+    useEffect(() => {
+        const hostname = window.location.hostname;
+        // Strip www. prefix, then check for subdomain
+        const cleanHost = hostname.replace(/^www\./, '');
+        const parts = cleanHost.split('.');
+        // If on a subdomain (e.g. padron2026.mli-fiuba.ar), link to the main domain
+        if (parts.length > 2) {
+            const mainDomain = parts.slice(1).join('.');
+            setHomeHref(`https://${mainDomain}`);
+        }
+    }, []);
 
     return (
         // <header className={`fixed top-0 w-full z-50 transition-colors duration-300 ${

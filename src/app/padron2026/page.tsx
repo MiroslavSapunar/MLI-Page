@@ -214,10 +214,10 @@ export default function Padron2026() {
                     <p className={isDark ? 'text-white/70' : 'text-gray-600'}>
                       Si creés que es un error, enviá un email a{' '}
                       <a
-                        href="mailto:academica@fi.uba.ar"
+                        href="mailto:tramitaciones@fi.uba.ar"
                         className="text-secundary underline hover:opacity-80"
                       >
-                        academica@fi.uba.ar
+                        tramitaciones@fi.uba.ar
                       </a>
                     </p>
                   </div>
