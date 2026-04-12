@@ -1,0 +1,232 @@
+[
+  {
+    "id": "al-lado-del-estudiante",
+    "title": "Siempre al lado del",
+    "titleAccent": "estudiante",
+    "items": [
+      {
+        "title": "El Cuartito",
+        "text": "Estamos donde pasan las cosas, en lo cotidiano, en el acompañamiento cara a cara. En el cuartito de planta baja de PC siempre hay un lugar a donde acercarse, preguntar, frenar a tomar un mate y ordenar lo que se complicó. Entre clases, antes de un parcial, después de una inscripción fallida: compartir el mismo ritmo de la facultad, entender lo que pasa y poder acompañar desde ese lugar."
+      },
+      {
+        "title": "Nuestro Instagram",
+        "text": "Siempre estamos leyendo y respondiendo mensajes, tratando de dar una mano en lo que va surgiendo. Cuando hay inscripciones o se abren trámites todo explota y se hace difícil llegar a cada consulta al instante, pero insistimos porque estamos en la misma: cursando, estudiando, resolviendo sobre la marcha.",
+        "stat": "+500",
+        "statLabel": "consultas por mes"
+      },
+      {
+        "title": "Informando siempre lo que pasa en la facu",
+        "text": "Vamos siguiendo de cerca todo lo que pasa en la facultad. Cuando algo no se entiende del todo o queda en el aire, cuando faltan guías de cómo resolver un trámite o cierto link no aparece en ningún lado, tratamos de ordenarlo, hacer que circule y llegue a quienes debe llegar: los estudiantes."
+      },
+      {
+        "title": "Visita guiada al CBC",
+        "text": "Iniciamos visitas guiadas por el edificio de Las Heras para ingresantes al CBC de ingeniería, junto a algunos docentes que dictan clases en las materias de Análisis y Álgebra, para que puedan conocer las aulas, los pasillos y sacarse todas las dudas que uno tiene cuando recién arranca."
+      }
+    ]
+  },
+  {
+    "id": "infraestructura",
+    "title": "Infraestructura",
+    "titleAccent": "en crisis",
+    "intro": "La infraestructura de nuestra facultad está en una situación crítica. Hay dos principales culpables: la falta de financiamiento y la gestión actual.",
+    "callout": "Reparar aulas no es la responsabilidad del Centro de Estudiantes pero no vamos a dejar de reclamar para que se hagan cargo quienes correspondan.",
+    "items": [
+      {
+        "title": "Baños",
+        "text": "En mal estado y con falta de insumos."
+      },
+      {
+        "title": "Biblioteca LH",
+        "text": "Organización de una mudanza sin antelación, sin consultar a los trabajadores y sin pensar en las necesidades del estudiante."
+      },
+      {
+        "title": "Pizarras",
+        "text": "Donamos $1.1M para colaborar con la renovación completa en todas las sedes. El resultado: compras equivocadas, demoras, devoluciones y resultado final muy inferior a lo esperado.",
+        "stat": "$1.1M",
+        "statLabel": "donados para renovación"
+      },
+      {
+        "title": "Aula Magna (Pabellón de Industrias)",
+        "text": "Un aula olvidada en pésimas condiciones. Los docentes venían reclamando pero hubo total inacción por parte de la facultad. Intervinimos poniendo tanto la plata como la gestión y en conjunto con Exactas coordinamos el cambio de la pizarra, que se encontraba inutilizable."
+      }
+    ]
+  },
+  {
+    "id": "comedor",
+    "title": "Se renueva el",
+    "titleAccent": "Comedor del CEI",
+    "subtitle": "En Las Heras como en Paseo Colón",
+    "intro": "Trabajamos para que el comedor vuelva a ser un lugar con oferta variada y precios accesibles, que mejore, crezca y se modernice cuatrimestre a cuatrimestre.",
+    "items": [
+      {
+        "title": "CUIT y Personería Jurídica",
+        "text": "Estamos a la espera de la finalización del trámite en IGJ para ser oficialmente una sociedad civil. El CEI arrastraba problemas legales y juicios laborales desde 2006. Este año, habiendo prescrito el riesgo de juicios millonarios, pudimos avanzar con el blanqueo."
+      },
+      {
+        "title": "Pago digital",
+        "text": "Implementamos una solución temporaria con QR para poder arrancar el cuatrimestre con pagos digitales. Cuando el CUIT del CEI esté resuelto, podremos también incorporar posnet."
+      },
+      {
+        "title": "Política de precios accesibles",
+        "text": "El Comedor tiene que ofrecer al estudiante no solo variedad y servicio sino precios accesibles orientados a cuidar el bolsillo. Que comer algo durante la estadía en FIUBA no implique un presupuesto.",
+        "stat": "+80%",
+        "statLabel": "aumento en ventas con la nueva propuesta"
+      },
+      {
+        "title": "Menú ampliado",
+        "text": "Sumamos opciones de meriendas y desayunos para alivianar las largas jornadas. También mejoramos el plato del día para que quienes almuercen puedan acceder a una alimentación variada y saludable."
+      },
+      {
+        "title": "Heladera nueva",
+        "text": "Incorporamos una nueva heladera para ensaladas, postres y yogures."
+      },
+      {
+        "title": "Instalación eléctrica",
+        "text": "Renovación de la instalación eléctrica y las luminarias del salón de PC. Esto permite volver a habilitar los microondas, el dispenser de agua caliente continua, el baño maría y el calientaplatos."
+      },
+      {
+        "title": "Mostradores renovados",
+        "text": "Renovamos los mostradores de ambos salones para mejorar el servicio. Los de PC se habían arruinado completamente en 2022 por culpa de una inundación de un laboratorio del 5to piso."
+      }
+    ]
+  },
+  {
+    "id": "derechos",
+    "title": "Defendiendo y conquistando",
+    "titleAccent": "derechos estudiantiles",
+    "subtitle": "Apertura de nuevos cursos",
+    "items": [
+      {
+        "title": "Transformación de Materiales (Ing. Industrial)",
+        "text": "A raíz de las quejas por el destrato de los docentes y la superposición horaria, hablamos con el departamento y logramos la apertura de una nueva comisión."
+      },
+      {
+        "title": "Física para Informáticos",
+        "text": "Esta materia se encuentra en un cuatrimestre avanzado de la carrera y no contaba con una oferta horaria que contemplara a los estudiantes que trabajan. Finalmente, ahora tendrá una comisión en el turno vespertino."
+      },
+      {
+        "title": "Programación Concurrente & Ingeniería de Software II (Ing. Informática)",
+        "text": "Como una de las carreras con mayor cantidad de estudiantes, siempre nos encontramos con el mismo problema: la falta de cupos. Ahora estas dos materias cuentan con una comisión más para poder garantizar clases con menor densidad de estudiantes."
+      }
+    ],
+    "callout": "Estos avances apuntan a un objetivo claro: que más estudiantes puedan inscribirse y cursar en condiciones más justas y ordenadas."
+  },
+  {
+    "id": "resoluciones",
+    "title": "Resoluciones: tuvimos que poner por escrito el",
+    "titleAccent": "sentido común",
+    "intro": "Técnicamente son cosas básicas, pero tuvimos tantos pedidos y reclamos que quedaban sin poder resolverse \"por no haber regla clara al respecto\", que directamente fuimos, las escribimos y las hicimos aprobar.",
+    "items": [
+      {
+        "title": "Basta de temas nuevos en los recuperatorios",
+        "text": "En varias materias, casi a modo de castigo por no aprobar el parcial en primera instancia, se agregaban temas nuevos a los recuperatorios. A partir de ahora, un recuperatorio solo puede incluir los mismos temas que la planificación de la primera instancia."
+      },
+      {
+        "title": "Finales en orden",
+        "text": "Logramos que se reglamente una separación mínima de cinco días entre cada instancia de final, garantizando mayor accesibilidad. Ante la demora en la entrega de notas de diciembre, conseguimos que se establezca su publicación dentro del mismo mes."
+      },
+      {
+        "title": "Vista y registro de tu examen: podés sacar foto!",
+        "text": "Se terminó no solo que alguien te impida ver tu examen corregido sino que te puedan cuestionar que quieras llevarte una copia para tener registro. Vos elegís: sacale fotocopia o sacale foto con tu teléfono."
+      },
+      {
+        "title": "Exámenes sacados de la galera",
+        "text": "Nos tocó intervenir más de una vez tras recibir cataratas de mensajes con quejas sobre evaluaciones en las que aparecían temas que no se habían dado en clase, ejercicios imposibles o con un esquema completamente alejado de lo visto. Tuvimos que exigir que se garantizara una evaluación acorde a lo enseñado y acordado."
+      },
+      {
+        "title": "Soluciones para un inicio de cuatri turbulento",
+        "text": "A partir de la suspensión de actividades del 19/02/25, impulsamos en el Consejo Directivo una resolución que prorrogó automáticamente las cursadas que se vencieron y habilitó excepciones de correlatividad para todos los estudiantes afectados."
+      },
+      {
+        "title": "La planificación académica se respeta",
+        "text": "Tuvimos que intervenir por modificaciones inconsultas, arbitrarias e injustificadas en fechas de parciales, entregas o incluso cambios \"a escondidas\" en fechas de finales en el SIU Guaraní, sin siquiera avisar por mail."
+      },
+      {
+        "title": "No a la coerción",
+        "text": "Algunas materias intentaron \"arreglar\" el reclamo con modificaciones perjudiciales para sus estudiantes, como cambios en el calendario, en el tipo de examen o incluso diciendo: \"ahora vamos a tomar asistencia\". El tiempo de los estudiantes no es algo de lo que se pueda disponer libremente."
+      }
+    ]
+  },
+  {
+    "id": "representacion",
+    "title": "Un CEI que te represente en tus",
+    "titleAccent": "cursadas",
+    "intro": "Uno de nuestros roles como CEI es intervenir en representación de las y los estudiantes ante los equipos docentes, buscando siempre resolver situaciones que podrían implicarles un perjuicio académico.",
+    "items": [
+      {
+        "title": "Basta de represalias",
+        "text": "Nos encontramos con un escenario inaceptable: que estudiantes no se puedan sentir tranquilos de pedir ayuda luego de vivir abusos de autoridad dentro del aula, por amenazas de recibir represalias si reclamaban algo."
+      },
+      {
+        "title": "Queremos cursar sin miedo",
+        "text": "Notamos que existe miedo a que los docentes los \"tomen de punto\", a no poder aprobar más o a quedar expuestos en las clases. Es importante entender que la dinámica en el aula no siempre fue así."
+      },
+      {
+        "title": "Reconstruir la confianza dentro de la comunidad",
+        "text": "Nos preocupa que se rompa el tejido social que sostiene a la comunidad FIUBA. Como comunidad, perdemos todos. Creemos que es fundamental apostar a construir espacios de diálogo y resolución colectiva. Podemos mediar, canalizar los reclamos y buscar salidas que contemplen a todas las partes."
+      }
+    ]
+  },
+  {
+    "id": "regimen-cursada",
+    "title": "2026: Se renueva el",
+    "titleAccent": "régimen de cursada",
+    "intro": "El Consejo Directivo aprobó que, para fin de año, la facultad deberá tener un nuevo reglamento que ordene las dinámicas de enseñanza y evaluación de las materias para volver a ordenar el caos actual.",
+    "items": [
+      {
+        "title": "Régimen de cursada nuevo",
+        "text": "El régimen actual, aprobado en 1999, se volvió obsoleto. La pandemia y las nuevas tecnologías trajeron cursadas a distancia, y se modificaron las modalidades de estudio y de dictado de clases. Propusimos una resolución para dar un debate profundo que termine en un régimen nuevo. La flexibilidad no puede transformarse en arbitrariedad. Las condiciones de cursada tienen que ser una herramienta pedagógica al servicio del aprendizaje."
+      },
+      {
+        "title": "Analítico firmado por SIU",
+        "text": "Logramos automatizar el analítico parcial: ahora se descarga desde el SIU, de forma simple, rápida y sin trámites presenciales."
+      },
+      {
+        "title": "Bioingeniería",
+        "text": "Participamos en la creación de la nueva carrera de FIUBA, siendo la voz estudiantil para asegurar recursos adecuados y que no afecte a las carreras existentes."
+      }
+    ]
+  },
+  {
+    "id": "titulos-intermedios",
+    "title": "Tenemos",
+    "titleAccent": "títulos intermedios!",
+    "intro": "Ahora sí, oficialmente los estudiantes vamos a poder obtener el título de Bachiller en Ciencias de la Ingeniería tras completar nuestro 5to cuatrimestre de cursada. La tramitación entra en vigencia a mediados de abril.",
+    "items": [
+      {
+        "title": "Punto de partida: Materias promocionables",
+        "text": "Impulsamos un sistema de promoción en Análisis II y Álgebra Lineal, al que luego se sumó Electricidad y Magnetismo. En todos los casos, el impacto fue claro: más aprobaciones y un avance más continuo en la carrera. Priorizar el recorrido real de los estudiantes permite ordenar la cursada, reducir obstáculos innecesarios y hacer más lógico el avance dentro de la facultad."
+      },
+      {
+        "title": "Créditos automáticos por ayudantías",
+        "text": "Conseguimos el reconocimiento de ayudantías (incluido CBC): 1 crédito por cuatrimestre, hasta 4 en total."
+      },
+      {
+        "title": "Vuelve el Remando",
+        "text": "Recuperamos este espacio de estudio que existía desde 2010 y se frenó con la pandemia, clave para batallar con la experiencia del CBC."
+      }
+    ]
+  },
+  {
+    "id": "universidad-publica",
+    "title": "Defendiendo la",
+    "titleAccent": "Universidad pública",
+    "subtitle": "No arancelada y de Calidad",
+    "intro": "No todas las adversidades que enfrentan los estudiantes tienen raíz en la facultad. En múltiples ocasiones las problemáticas bajan de la Administración Nacional, lo que nos demanda estar atentos y actuar frente a este tipo de escenarios.",
+    "items": [
+      {
+        "title": "FIUBA dijo presente en las 3 marchas multitudinarias",
+        "text": "Miles de estudiantes, docentes y no docentes salimos a las calles a manifestarnos a favor de la educación y en contra de su desfinanciamiento. En septiembre del año pasado, el Congreso dictaminó insistir con la Ley de Financiamiento Universitario por sobre el Veto del gobierno nacional. A 6 meses, sigue sin cumplirse."
+      },
+      {
+        "title": "Asambleas y clases públicas",
+        "text": "En 2024, cuando más de 40 facultades habían optado por la Toma de sus sedes, decidimos llamar a Asambleas. Apoyamos a los docentes en las clases públicas que llevaron adelante, además de la jornada de visibilización que organizamos en 2025."
+      }
+    ],
+    "stats": [
+      { "value": "-50%", "label": "Caída de salarios universitarios desde nov 2023" },
+      { "value": "+290%", "label": "Inflación acumulada desde nov 2023" },
+      { "value": "-45,6%", "label": "Caída de transferencias a universidades 2023-2026" }
+    ]
+  }
+]
