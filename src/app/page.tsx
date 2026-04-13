@@ -52,7 +52,7 @@ export default function Home() {
         <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-primary' : 'bg-white'}`}>
             {/* Sticky Side Navigation - Desktop */}
             <nav className={`fixed left-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-4`}>
-                {['Inicio', 'Nosotros', 'Valores', 'Elecciones'].map((item, i) => (
+                {['Inicio', 'Nosotros', 'Valores', 'Guías'].map((item, i) => (
                     <a
                         href={`#${item}`}
                         key={i}
@@ -67,16 +67,14 @@ export default function Home() {
             </nav>
 
             {/* Bottom Navigation - Mobile */}
-            <nav className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex gap-2 px-4 py-3 rounded-full backdrop-blur-xl ${
-                isDark ? 'bg-white/10' : 'bg-gray-900/10'
-            }`}>
-                {['Inicio', 'Nosotros', 'Valores', 'Elecciones'].map((item, i) => (
+            <nav className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex gap-2 px-4 py-3 rounded-full backdrop-blur-xl ${isDark ? 'bg-white/10' : 'bg-gray-900/10'
+                }`}>
+                {['Inicio', 'Nosotros', 'Valores', 'Guías'].map((item, i) => (
                     <a
                         href={`#${item}`}
                         key={i}
-                        className={`px-3 py-1.5 text-xs font-medium rounded-full transition-colors ${
-                            isDark ? 'text-white/70 hover:bg-white/20 hover:text-white' : 'text-gray-700 hover:bg-gray-900/20 hover:text-gray-900'
-                        }`}
+                        className={`px-3 py-1.5 text-xs font-medium rounded-full transition-colors ${isDark ? 'text-white/70 hover:bg-white/20 hover:text-white' : 'text-gray-700 hover:bg-gray-900/20 hover:text-gray-900'
+                            }`}
                     >
                         {item}
                     </a>
@@ -116,9 +114,9 @@ export default function Home() {
             </div>
 
             {/* Hero Section - Split Layout */}
-            <section id="Inicio" ref={heroSection.ref} className="min-h-screen grid lg:grid-cols-2">
+            <section id="Inicio" ref={heroSection.ref} className="min-h-screen grid lg:grid-cols-3 overflow-visible">
                 {/* Left - Text */}
-                <div className="flex flex-col justify-center px-8 lg:px-16 py-20 lg:py-0">
+                <div className="flex flex-col justify-center px-8 lg:px-16 py-20 lg:py-0 overflow-visible z-10">
                     <div className={`transform transition-all duration-1000 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
                         <span className={`text-sm uppercase tracking-[0.3em] ${isDark ? 'text-secundary' : 'text-secundary'}`}>
                             Desde 2005
@@ -132,48 +130,42 @@ export default function Home() {
                         </h1>
                     </div>
 
-                    <div className={`mt-12 flex flex-col gap-4 transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
+                    <div className={`mt-12 flex flex-wrap gap-4 transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
                         <Link
-                            href="/guia"
-                            className="inline-flex items-center gap-4 group"
+                            href="/propuestas"
+                            className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-secundary text-white font-semibold rounded-full hover:bg-secundary/90 transition-colors"
                         >
-                            <span className="w-14 h-14 rounded-full bg-secundary flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </span>
-                            <span className="flex flex-col">
-                                <span className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                                    Guía del Estudiante Fiubense
-                                </span>
-                                <span className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
-                                    Tus derechos y trámites en FIUBA
-                                </span>
-                            </span>
+                            Nuestras Propuestas
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
                         </Link>
                         <Link
-                            href="/guia-cbc"
-                            className="inline-flex items-center gap-4 group"
+                            href="/logros"
+                            className={`inline-flex items-center justify-center gap-3 px-8 py-4 font-semibold rounded-full border-2 transition-colors ${isDark
+                                ? 'border-white text-white hover:bg-white/10'
+                                : 'border-gray-900 text-gray-900 hover:bg-gray-900/10'
+                                }`}
                         >
-                            <span className={`w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform ${isDark ? 'bg-white/10' : 'bg-gray-100'}`}>
-                                <svg className={`w-5 h-5 ${isDark ? 'text-white' : 'text-gray-900'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </span>
-                            <span className="flex flex-col">
-                                <span className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                                    Guía del Estudiante del CBC
-                                </span>
-                                <span className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
-                                    Tu primer año en la UBA
-                                </span>
-                            </span>
+                            Nuestros logros
                         </Link>
+                        <a
+                            href="#Guías"
+                            className={`inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-full transition-colors ${isDark
+                                ? 'bg-white/10 text-white hover:bg-white/20'
+                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                }`}
+                        >
+                            Guías del Estudiante
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
 
                 {/* Right - Image */}
-                <div className={`relative hidden lg:block transform transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+                <div className={`relative hidden lg:block lg:col-span-2 transform transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
                     <Image
                         src={portada}
                         alt="FIUBA"
@@ -297,13 +289,12 @@ export default function Home() {
                     <div className={`mt-12 text-center transform transition-all duration-700 delay-500 ${valuesSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         <Link
                             href="/quienes-somos"
-                            className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-colors ${
-                                isDark
+                            className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-colors ${isDark
                                     ? 'bg-white/10 text-white hover:bg-white/20'
                                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                            }`}
+                                }`}
                         >
-                            Que veinte años no es nada... 
+                            Que veinte años no es nada...
                             {/* <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg> */}
@@ -312,8 +303,8 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Elections 2026 Section */}
-            <section id="Elecciones" ref={ctaSection.ref} className="min-h-screen lg:min-h-0 pt-20 pb-32 relative overflow-hidden">
+            {/* Guías Section */}
+            <section id="Guías" ref={ctaSection.ref} className="min-h-screen lg:min-h-0 pt-20 pb-32 relative overflow-hidden">
                 <div className={`absolute inset-0 ${isDark ? 'bg-secundary/20' : 'bg-secundary/10'}`} />
                 <div className="max-w-7xl mx-auto px-8 lg:px-16 relative">
                     <div className={`grid lg:grid-cols-12 gap-8 lg:gap-16 items-start`}>
@@ -326,51 +317,72 @@ export default function Home() {
                         {/* Content */}
                         <div className={`lg:col-span-10 lg:pt-8 transform transition-all duration-700 delay-200 ${ctaSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                             <p className={`text-xl leading-relaxed ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
-                                En estas <span className="text-secundary">elecciones</span>
+                                Todo lo que <span className="text-secundary">necesitás saber</span>
                             </p>
                             <h2 className={`mt-2 text-5xl md:text-7xl font-black ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                                Informate, participá y votá
+                                Guías del Estudiante
                             </h2>
 
-                            <div className="mt-12 flex flex-wrap gap-4">
-                                {/* Primary CTA */}
+                            <div className="mt-12 flex flex-col gap-6">
                                 <Link
-                                    href="/propuestas"
-                                    className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-secundary text-white font-semibold rounded-full hover:bg-secundary/90 transition-colors"
+                                    href="/guia"
+                                    className="inline-flex items-center gap-4 group"
                                 >
-                                    Nuestras Propuestas
-                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
+                                    <span className="w-14 h-14 rounded-full bg-secundary flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </span>
+                                    <span className="flex flex-col">
+                                        <span className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                                            Guía del Estudiante Fiubense
+                                        </span>
+                                        <span className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
+                                            Tus derechos y trámites en FIUBA
+                                        </span>
+                                    </span>
                                 </Link>
-                                {/* Secondary CTA */}
                                 <Link
-                                    href="/logros"
-                                    className={`inline-flex items-center justify-center gap-3 px-8 py-4 font-semibold rounded-full border-2 transition-colors ${isDark
-                                        ? 'border-white text-white hover:bg-white/10'
-                                        : 'border-gray-900 text-gray-900 hover:bg-gray-900/10'
-                                    }`}
+                                    href="/guia-cbc"
+                                    className="inline-flex items-center gap-4 group"
                                 >
-                                    Nuestros logros
+                                    <span className={`w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform ${isDark ? 'bg-white/10' : 'bg-gray-100'}`}>
+                                        <svg className={`w-5 h-5 ${isDark ? 'text-white' : 'text-gray-900'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </span>
+                                    <span className="flex flex-col">
+                                        <span className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                                            Guía del Estudiante del CBC
+                                        </span>
+                                        <span className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
+                                            Tu primer año en la UBA
+                                        </span>
+                                    </span>
                                 </Link>
-                                {/* Contact CTA */}
                                 <a
                                     href="https://www.instagram.com/mli.fiuba"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`inline-flex items-center justify-center gap-3 px-8 py-4 font-semibold rounded-full transition-colors ${isDark
-                                        ? 'bg-white/10 text-white hover:bg-white/20'
-                                        : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                                    }`}
+                                    className="inline-flex items-center gap-4 group"
                                 >
-                                    <Image
-                                        className={isDark ? 'invert' : ''}
-                                        src="/instagram.svg"
-                                        height={20}
-                                        width={20}
-                                        alt="Instagram"
-                                    />
-                                    Escribinos acá
+                                    <span className={`w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform ${isDark ? 'bg-white/10' : 'bg-gray-100'}`}>
+                                        <Image
+                                            className={isDark ? 'invert' : ''}
+                                            src="/instagram.svg"
+                                            height={20}
+                                            width={20}
+                                            alt="Instagram"
+                                        />
+                                    </span>
+                                    <span className="flex flex-col">
+                                        <span className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                                            Escribinos
+                                        </span>
+                                        <span className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
+                                            @mli.fiuba en Instagram
+                                        </span>
+                                    </span>
                                 </a>
                             </div>
                         </div>
