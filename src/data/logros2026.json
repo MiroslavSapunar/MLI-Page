@@ -3,6 +3,12 @@
     "id": "al-lado-del-estudiante",
     "title": "Siempre al lado del",
     "titleAccent": "estudiante",
+    "images": [
+      {
+        "src": "/Bandera CEI Congreso.jpeg",
+        "alt": "Bandera del CEI frente al Congreso"
+      }
+    ],
     "items": [
       {
         "title": "El Cuartito",
@@ -30,6 +36,16 @@
     "titleAccent": "en crisis",
     "intro": "La infraestructura de nuestra facultad está en una situación crítica. Hay dos principales culpables: la falta de financiamiento y la gestión actual.",
     "callout": "Reparar aulas no es la responsabilidad del Centro de Estudiantes pero no vamos a dejar de reclamar para que se hagan cargo quienes correspondan.",
+    "images": [
+      {
+        "src": "/Pizarra Sucia.jpg",
+        "alt": "Pizarra en mal estado"
+      },
+      {
+        "src": "/Pizarra Limpia.jpeg",
+        "alt": "Pizarra renovada"
+      }
+    ],
     "items": [
       {
         "title": "Baños",
@@ -57,6 +73,20 @@
     "titleAccent": "Comedor del CEI",
     "subtitle": "En Las Heras como en Paseo Colón",
     "intro": "Trabajamos para que el comedor vuelva a ser un lugar con oferta variada y precios accesibles, que mejore, crezca y se modernice cuatrimestre a cuatrimestre.",
+    "images": [
+      {
+        "src": "/Palta con huevo.jpg",
+        "alt": "Nueva oferta del comedor"
+      },
+      {
+        "src": "/heladera.jpeg",
+        "alt": "Heladera nueva del comedor"
+      },
+      {
+        "src": "/bipper-comedor.jpg",
+        "alt": "Pago digital con QR en el comedor"
+      }
+    ],
     "items": [
       {
         "title": "CUIT y Personería Jurídica",
@@ -95,6 +125,12 @@
     "title": "Defendiendo y conquistando",
     "titleAccent": "derechos estudiantiles",
     "subtitle": "Apertura de nuevos cursos",
+    "images": [
+      {
+        "src": "/aula-LH.jpeg",
+        "alt": "Aula en Las Heras"
+      }
+    ],
     "items": [
       {
         "title": "Transformación de Materiales (Ing. Industrial)",
@@ -116,6 +152,12 @@
     "title": "Resoluciones: tuvimos que poner por escrito el",
     "titleAccent": "sentido común",
     "intro": "Técnicamente son cosas básicas, pero tuvimos tantos pedidos y reclamos que quedaban sin poder resolverse \"por no haber regla clara al respecto\", que directamente fuimos, las escribimos y las hicimos aprobar.",
+    "images": [
+      {
+        "src": "/biblioteca.jpeg",
+        "alt": "Columnas FIUBA"
+      }
+    ],
     "items": [
       {
         "title": "Basta de temas nuevos en los recuperatorios",
@@ -152,6 +194,16 @@
     "title": "Un CEI que te represente en tus",
     "titleAccent": "cursadas",
     "intro": "Uno de nuestros roles como CEI es intervenir en representación de las y los estudiantes ante los equipos docentes, buscando siempre resolver situaciones que podrían implicarles un perjuicio académico.",
+    "images": [
+      {
+        "src": "/Clase Publica Huergo.jpeg",
+        "alt": "Clase pública en Huergo"
+      },
+      {
+        "src": "/Asamblea.jpeg",
+        "alt": "Asamblea estudiantil"
+      }
+    ],
     "items": [
       {
         "title": "Basta de represalias",
@@ -172,6 +224,12 @@
     "title": "2026: Se renueva el",
     "titleAccent": "régimen de cursada",
     "intro": "El Consejo Directivo aprobó que, para fin de año, la facultad deberá tener un nuevo reglamento que ordene las dinámicas de enseñanza y evaluación de las materias para volver a ordenar el caos actual.",
+    "images": [
+      {
+        "src": "/Huergo.png",
+        "alt": "FIUBA en la marcha universitaria"
+      }
+    ],
     "items": [
       {
         "title": "Régimen de cursada nuevo",
@@ -192,6 +250,12 @@
     "title": "Tenemos",
     "titleAccent": "títulos intermedios!",
     "intro": "Ahora sí, oficialmente los estudiantes vamos a poder obtener el título de Bachiller en Ciencias de la Ingeniería tras completar nuestro 5to cuatrimestre de cursada. La tramitación entra en vigencia a mediados de abril.",
+    "images": [
+      {
+        "src": "/Charla de Ingresantes.jpeg",
+        "alt": "Charla para ingresantes en FIUBA"
+      }
+    ],
     "items": [
       {
         "title": "Punto de partida: Materias promocionables",
@@ -213,6 +277,16 @@
     "titleAccent": "Universidad pública",
     "subtitle": "No arancelada y de Calidad",
     "intro": "No todas las adversidades que enfrentan los estudiantes tienen raíz en la facultad. En múltiples ocasiones las problemáticas bajan de la Administración Nacional, lo que nos demanda estar atentos y actuar frente a este tipo de escenarios.",
+    "images": [
+      {
+        "src": "/Marcha bandera.jpg",
+        "alt": "Marcha universitaria con banderas"
+      },
+      {
+        "src": "/clases-publicas.jpeg",
+        "alt": "Clases públicas"
+      }
+    ],
     "items": [
       {
         "title": "FIUBA dijo presente en las 3 marchas multitudinarias",
@@ -224,9 +298,18 @@
       }
     ],
     "stats": [
-      { "value": "-50%", "label": "Caída de salarios universitarios desde nov 2023" },
-      { "value": "+290%", "label": "Inflación acumulada desde nov 2023" },
-      { "value": "-45,6%", "label": "Caída de transferencias a universidades 2023-2026" }
+      {
+        "value": "-50%",
+        "label": "Caída de salarios universitarios desde nov 2023"
+      },
+      {
+        "value": "+290%",
+        "label": "Inflación acumulada desde nov 2023"
+      },
+      {
+        "value": "-45,6%",
+        "label": "Caída de transferencias a universidades 2023-2026"
+      }
     ]
   }
 ]

@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { useTheme } from "@/context/ThemeContext"
 import NavBar from "../components/navbar"
 import CTASection from '../components/CTASection'
@@ -12,6 +13,11 @@ interface LogroItem {
     statLabel?: string
 }
 
+interface LogroImage {
+    src: string
+    alt: string
+}
+
 interface LogroSection {
     id: string
     title: string
@@ -20,6 +26,7 @@ interface LogroSection {
     intro?: string
     callout?: string
     items: LogroItem[]
+    images?: LogroImage[]
     stats?: { value: string; label: string }[]
 }
 
@@ -147,6 +154,32 @@ function LogroSectionComponent({ section, index, openItems, toggleItem }: {
                         )}
                     </div>
                 </div>
+
+                {/* Image gallery */}
+                {section.images && section.images.length > 0 && (
+                    <div className={`mb-8 grid gap-3 transform transition-all duration-700 delay-200 ${sectionRef.isInView ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'} ${
+                        section.images.length === 1 ? 'grid-cols-1 max-w-2xl' :
+                        section.images.length === 2 ? 'grid-cols-2 max-w-4xl' :
+                        'grid-cols-2 md:grid-cols-3 max-w-4xl'
+                    }`}>
+                        {section.images.map((img, i) => (
+                            <div
+                                key={i}
+                                className={`relative overflow-hidden rounded-2xl ${
+                                    section.images!.length === 3 && i === 0 ? 'col-span-2 md:col-span-1' : ''
+                                }`}
+                            >
+                                <Image
+                                    src={img.src}
+                                    alt={img.alt}
+                                    width={600}
+                                    height={400}
+                                    className="w-full h-48 md:h-56 object-cover"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                )}
 
                 {/* Collapsible items */}
                 <div className="grid gap-3 max-w-4xl">
