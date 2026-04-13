@@ -130,37 +130,50 @@ export default function Home() {
                         </h1>
                     </div>
 
-                    <div className={`mt-12 flex flex-wrap gap-4 transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
-                        <Link
-                            href="/propuestas"
-                            className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-secundary text-white font-semibold rounded-full hover:bg-secundary/90 transition-colors"
-                        >
-                            Nuestras Propuestas
-                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </Link>
-                        <Link
-                            href="/logros"
-                            className={`inline-flex items-center justify-center gap-3 px-8 py-4 font-semibold rounded-full border-2 transition-colors ${isDark
-                                ? 'border-white text-white hover:bg-white/10'
-                                : 'border-gray-900 text-gray-900 hover:bg-gray-900/10'
-                                }`}
-                        >
-                            Nuestros logros
-                        </Link>
-                        <a
-                            href="#Guías"
-                            className={`inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-full transition-colors ${isDark
-                                ? 'bg-white/10 text-white hover:bg-white/20'
-                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                }`}
-                        >
-                            Guías del Estudiante
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                            </svg>
-                        </a>
+                    <div className={`mt-12 flex flex-col gap-3 transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
+                        <div className="flex flex-wrap gap-3">
+                            <Link
+                                href="/propuestas"
+                                className="inline-flex items-center justify-center gap-3 px-7 py-3.5 bg-secundary text-white font-semibold rounded-full hover:bg-secundary/90 transition-colors"
+                            >
+                                Propuestas
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </Link>
+                            <Link
+                                href="/logros"
+                                className={`inline-flex items-center justify-center gap-3 px-7 py-3.5 font-semibold rounded-full border-2 transition-colors ${isDark
+                                    ? 'border-white text-white hover:bg-white/10'
+                                    : 'border-gray-900 text-gray-900 hover:bg-gray-900/10'
+                                    }`}
+                            >
+                                Logros
+                            </Link>
+                        </div>
+                        <div className="flex flex-wrap gap-3">
+                            <Link
+                                href="/padron2026"
+                                className={`inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-full transition-colors ${isDark
+                                    ? 'bg-white/10 text-white hover:bg-white/20'
+                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                    }`}
+                            >
+                                Padrón Electoral
+                            </Link>
+                            <a
+                                href="#Guías"
+                                className={`inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-full transition-colors ${isDark
+                                    ? 'bg-white/10 text-white hover:bg-white/20'
+                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                    }`}
+                            >
+                                Guías del Estudiante
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 

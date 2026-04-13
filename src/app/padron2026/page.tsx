@@ -6,8 +6,10 @@ import NavBar from '@/app/components/navbar'
 type Estudiante = {
   documento: string
   nombre: string
-  legajo: string
+  extra: string // Legajo for regulares, Carrera for CBC
 }
+
+type PadronType = 'regulares' | 'cbc'
 
 function useInView(threshold = 0.3) {
   const ref = useRef<HTMLDivElement>(null)
@@ -27,19 +29,50 @@ function useInView(threshold = 0.3) {
   return { ref, isInView }
 }
 
+function parseCSVLine(line: string): string[] {
+  const fields: string[] = []
+  let current = ''
+  let inQuotes = false
+
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i]
+    if (inQuotes) {
+      if (ch === '"') {
+        if (i + 1 < line.length && line[i + 1] === '"') {
+          current += '"'
+          i++
+        } else {
+          inQuotes = false
+        }
+      } else {
+        current += ch
+      }
+    } else {
+      if (ch === '"') {
+        inQuotes = true
+      } else if (ch === ',') {
+        fields.push(current.trim())
+        current = ''
+      } else {
+        current += ch
+      }
+    }
+  }
+  fields.push(current.trim())
+  return fields
+}
+
 function parseCSV(text: string): Estudiante[] {
   const lines = text.trim().split('\n')
-  // Skip BOM and header
-  const start = lines[0].charCodeAt(0) === 0xFEFF ? 1 : 1
   const results: Estudiante[] = []
 
-  for (let i = start; i < lines.length; i++) {
-    const cols = lines[i].split(';')
+  for (let i = 1; i < lines.length; i++) {
+    const cols = parseCSVLine(lines[i])
     if (cols.length >= 3) {
       results.push({
-        documento: cols[0].trim(),
-        nombre: cols[1].trim(),
-        legajo: cols[2].trim(),
+        documento: cols[0],
+        nombre: cols[1],
+        extra: cols[2],
       })
     }
   }
@@ -52,7 +85,9 @@ function normalize(str: string): string {
 
 export default function Padron2026() {
   const { isDark } = useTheme()
-  const [padron, setPadron] = useState<Estudiante[]>([])
+  const [padronType, setPadronType] = useState<PadronType>('regulares')
+  const [padronRegulares, setPadronRegulares] = useState<Estudiante[]>([])
+  const [padronCBC, setPadronCBC] = useState<Estudiante[]>([])
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<Estudiante[] | null>(null)
   const [loading, setLoading] = useState(true)
@@ -62,16 +97,29 @@ export default function Padron2026() {
   const heroSection = useInView()
   const searchSection = useInView()
 
-  // Load CSV on mount
+  const padron = padronType === 'regulares' ? padronRegulares : padronCBC
+
+  // Load both CSVs on mount
   useEffect(() => {
-    fetch('/padron_de_estudiantes.csv')
+    let loaded = 0
+    const checkDone = () => { if (++loaded >= 2) setLoading(false) }
+
+    fetch('/Padrones_Definitivos_FIUBA_2026.xlsx - Regulares Definitivo.csv')
       .then(res => res.text())
-      .then(text => {
-        setPadron(parseCSV(text))
-        setLoading(false)
-      })
-      .catch(() => setLoading(false))
+      .then(text => { setPadronRegulares(parseCSV(text)); checkDone() })
+      .catch(() => checkDone())
+
+    fetch('/Padrones_Definitivos_FIUBA_2026.xlsx - CBC Definitivo.csv')
+      .then(res => res.text())
+      .then(text => { setPadronCBC(parseCSV(text)); checkDone() })
+      .catch(() => checkDone())
   }, [])
+
+  // Clear results when switching padron type
+  useEffect(() => {
+    setResults(null)
+    setQuery('')
+  }, [padronType])
 
   // Auto-dismiss toast
   useEffect(() => {
@@ -104,7 +152,7 @@ export default function Padron2026() {
       return (
         normalize(e.documento).includes(normalizedQuery) ||
         normalize(e.nombre).includes(normalizedQuery) ||
-        normalize(e.legajo).includes(normalizedQuery)
+        normalize(e.extra).includes(normalizedQuery)
       )
     })
 
@@ -114,6 +162,8 @@ export default function Padron2026() {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') handleSearch()
   }
+
+  const extraLabel = padronType === 'regulares' ? 'Legajo' : 'Carrera'
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-primary text-white' : 'bg-white text-gray-900'}`}>
@@ -151,7 +201,35 @@ export default function Padron2026() {
       <section ref={searchSection.ref} className="pt-8 pb-16 px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className={`transform transition-all duration-700 delay-200 ${searchSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-  
+
+            {/* Padron type toggle */}
+            <div className="flex gap-2 mb-8">
+              <button
+                onClick={() => setPadronType('regulares')}
+                className={`px-6 py-3 rounded-full font-semibold transition-colors ${
+                  padronType === 'regulares'
+                    ? 'bg-secundary text-white'
+                    : isDark
+                      ? 'bg-white/10 text-white/70 hover:bg-white/20'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                Grado
+              </button>
+              <button
+                onClick={() => setPadronType('cbc')}
+                className={`px-6 py-3 rounded-full font-semibold transition-colors ${
+                  padronType === 'cbc'
+                    ? 'bg-secundary text-white'
+                    : isDark
+                      ? 'bg-white/10 text-white/70 hover:bg-white/20'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                CBC
+              </button>
+            </div>
+
             {/* Search bar */}
             <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mb-12">
               <input
@@ -159,7 +237,7 @@ export default function Padron2026() {
                 value={query}
                 onChange={e => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Nombre, DNI o legajo..."
+                placeholder={padronType === 'regulares' ? 'Nombre, DNI o legajo...' : 'Nombre, DNI o carrera...'}
                 disabled={loading}
                 className={`flex-1 px-6 py-4 rounded-full text-lg outline-none transition-colors ${
                   isDark
@@ -194,10 +272,10 @@ export default function Padron2026() {
                         >
                           <p className="font-bold text-lg mb-2">{e.nombre}</p>
                           <p className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
-                            {e.documento}
+                            DNI: {e.documento}
                           </p>
                           <p className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
-                            Legajo: {e.legajo}
+                            {extraLabel}: {e.extra}
                           </p>
                         </div>
                       ))}
