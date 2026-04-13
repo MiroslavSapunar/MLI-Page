@@ -134,7 +134,7 @@ export default function Home() {
                         <div className="grid-cols-2 overflow-visible">
                             <Link
                                 href="/propuestas"
-                                className="inline-flex items-center justify-center gap-3 px-7 py-3.5 mr-0.5 bg-secundary text-white font-semibold rounded-full hover:bg-secundary/90 transition-colors"
+                                className="inline-flex items-center justify-center gap-3 px-7 py-3.5 mr-0.75 mb-0.75 bg-secundary text-white font-semibold rounded-full hover:bg-secundary/90 transition-colors"
                             >
                                 Propuestas
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
