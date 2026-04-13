@@ -79,7 +79,7 @@ export default function HeroLanding() {
                                             : 'border-gray-900/30 text-gray-900 hover:border-gray-900 hover:bg-gray-900/10'
                                     }`}
                                 >
-                                    Ver nuestros logros
+                                    Nuestro trabajo
                                 </Link>
                             </div>
                         </div>

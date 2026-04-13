@@ -174,7 +174,7 @@ export default function PropuestasPage() {
                 title="Hechos, no promesas"
                 subtitle="Mirá todo lo que ya hicimos por FIUBA"
                 buttons={[
-                    { label: "Ver nuestros logros", href: "/logros", variant: "primary" },
+                    { label: "Nuestro trabajo", href: "/logros", variant: "primary" },
                     { label: "Seguinos en", href: "https://www.instagram.com/mli.fiuba", variant: "instagram" }
                 ]}
             />
