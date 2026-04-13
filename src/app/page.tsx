@@ -131,10 +131,10 @@ export default function Home() {
                     </div>
 
                     <div className={`mt-12 flex flex-col gap-3 transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
-                        <div className="grid-cols-2 overflow-visible">
+                        <div className="flex flex-wrap gap-3 overflow-visible">
                             <Link
                                 href="/propuestas"
-                                className="inline-flex items-center justify-center gap-3 px-7 py-3.5 mr-0.75 mb-0.75 bg-secundary text-white font-semibold rounded-full hover:bg-secundary/90 transition-colors"
+                                className="inline-flex items-center justify-center px-7 py-3.5 bg-secundary text-white font-semibold rounded-full hover:bg-secundary/90 transition-colors"
                             >
                                 Propuestas
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -143,7 +143,7 @@ export default function Home() {
                             </Link>
                             <Link
                                 href="/logros"
-                                className={`inline-flex items-center justify-center gap-3 px-7 py-3.5 font-semibold rounded-full border-2 transition-colors ${isDark
+                                className={`inline-flex items-center justify-center px-7 py-3.5 font-semibold rounded-full border-2 transition-colors ${isDark
                                     ? 'border-white text-white hover:bg-white/10'
                                     : 'border-gray-900 text-gray-900 hover:bg-gray-900/10'
                                     }`}
