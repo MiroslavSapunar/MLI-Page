@@ -1,6 +1,5 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
-import { useTheme } from "@/context/ThemeContext"
+import { useInView } from "@/hooks/useInView"
 import CTASection from './CTASection'
 
 interface Proposal {
@@ -47,57 +46,36 @@ const proposals: Proposal[] = [
     },
 ]
 
-function useInView(threshold = 0.2) {
-    const ref = useRef<HTMLDivElement>(null)
-    const [isInView, setIsInView] = useState(false)
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) setIsInView(true)
-            },
-            { threshold }
-        )
-        if (ref.current) observer.observe(ref.current)
-        return () => observer.disconnect()
-    }, [threshold])
-
-    return { ref, isInView }
-}
-
 export default function Proposals() {
-    const { isDark } = useTheme()
     const heroSection = useInView()
     const proposalsSection = useInView()
 
     return (
-        <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-primary' : 'bg-white'}`}>
-            {/* Hero Section */}
+        <div className="min-h-screen transition-colors duration-500 bg-page">
             <section
                 ref={heroSection.ref}
-                className={`pt-24 pb-16 px-8 lg:px-16 ${isDark ? 'bg-secundary/20' : 'bg-secundary/10'}`}
+                className="pt-24 pb-16 px-8 lg:px-16 bg-secundary/10 dark:bg-secundary/20"
             >
                 <div className="max-w-7xl mx-auto">
                     <div className={`transform transition-all duration-700 ${heroSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                        <span className={`text-sm uppercase tracking-[0.3em] text-secundary`}>
+                        <span className="text-sm uppercase tracking-[0.3em] text-secundary">
                             Elecciones 2026
                         </span>
-                        <h1 className={`mt-4 text-5xl md:text-7xl font-black leading-[0.95] ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                        <h1 className="mt-4 text-5xl md:text-7xl font-black leading-[0.95] text-body">
                             Nuestras
                             <br />
                             <span className="text-secundary">Propuestas</span>
                         </h1>
-                        <p className={`mt-6 text-xl max-w-2xl ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
+                        <p className="mt-6 text-xl max-w-2xl text-muted">
                             &quot;La voluntad de hacerlo nosotros&quot; — nuestro compromiso para seguir transformando FIUBA.
                         </p>
-                        <p className={`mt-4 text-lg ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
+                        <p className="mt-4 text-lg text-faint">
                             Argentina necesita más ingenieros. FIUBA debe liderar esa transformación.
                         </p>
                     </div>
                 </div>
             </section>
 
-            {/* Proposals Grid */}
             <section
                 ref={proposalsSection.ref}
                 className="py-20 px-8 lg:px-16"
@@ -107,18 +85,14 @@ export default function Proposals() {
                         {proposals.map((proposal, index) => (
                             <div
                                 key={index}
-                                className={`p-8 rounded-3xl border transition-all duration-500 hover:scale-[1.02] transform ${proposalsSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                                    } ${isDark
-                                        ? 'bg-white/5 border-white/10 hover:border-secundary'
-                                        : 'bg-white border-gray-200 hover:border-secundary shadow-lg'
-                                    }`}
+                                className={`p-8 rounded-3xl border border-ui bg-card transition-all duration-500 hover:scale-[1.02] hover:border-secundary transform ${proposalsSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
                                 style={{ transitionDelay: `${index * 100}ms` }}
                             >
                                 <span className="text-4xl">{proposal.icon}</span>
-                                <h3 className={`mt-4 text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                                <h3 className="mt-4 text-xl font-bold text-body">
                                     {proposal.title}
                                 </h3>
-                                <p className={`mt-3 leading-relaxed ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
+                                <p className="mt-3 leading-relaxed text-subtle">
                                     {proposal.text}
                                 </p>
                             </div>

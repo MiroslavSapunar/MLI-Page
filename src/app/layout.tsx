@@ -1,6 +1,21 @@
 import type { Metadata } from "next";
+import { Roboto, Montserrat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
+
+const roboto = Roboto({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  variable: '--font-roboto',
+  display: 'swap',
+})
+
+const montserrat = Montserrat({
+  weight: ['600', '700', '800', '900'],
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -22,14 +37,6 @@ export const metadata: Metadata = {
     siteName: "MLI FIUBA",
     title: "MLI - Movimiento Linealmente Independiente | FIUBA",
     description: "Agrupación estudiantil independiente de la Facultad de Ingeniería de la UBA. 20 años transformando FIUBA con resultados concretos.",
-    // images: [
-    //   {
-    //     url: "/og-image.png",
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "MLI - Movimiento Linealmente Independiente FIUBA",
-    //   },
-    // ],
   },
   twitter: {
     card: "summary_large_image",
@@ -49,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className={`${roboto.variable} ${montserrat.variable}`}>
       <body className="font-roboto">
         <ThemeProvider>
           {children}

@@ -9,28 +9,26 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-    const [isDark, setIsDark] = useState(true) // Default to dark
+    const [isDark, setIsDark] = useState(true)
     const [mounted, setMounted] = useState(false)
 
-    // Load theme from localStorage on mount
     useEffect(() => {
         const saved = localStorage.getItem('mli-theme')
-        if (saved) {
-            setIsDark(saved === 'dark')
-        }
+        const dark = saved !== 'light'
+        setIsDark(dark)
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light'
         setMounted(true)
     }, [])
 
-    // Save theme to localStorage
     useEffect(() => {
         if (mounted) {
             localStorage.setItem('mli-theme', isDark ? 'dark' : 'light')
+            document.documentElement.dataset.theme = isDark ? 'dark' : 'light'
         }
     }, [isDark, mounted])
 
     const toggleTheme = () => setIsDark(prev => !prev)
 
-    // Prevent flash of wrong theme
     if (!mounted) {
         return <div className="bg-primary min-h-screen" />
     }

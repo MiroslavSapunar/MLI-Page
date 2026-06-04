@@ -1,42 +1,13 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useTheme } from "@/context/ThemeContext"
+import { useInView } from "@/hooks/useInView"
+import { SectionNumber } from './components/SectionNumber'
+import NavBar from './components/navbar'
 import portada from '../../public/Portada.jpg'
 
-/**
- * Landing Page: Editorial/Magazine Style
- * - Asymmetric layouts
- * - Bold typography with mixed weights
- * - Split sections (text + visual)
- * - Scroll-reveal animations
- * - Strong visual hierarchy
- */
-
-function useInView(threshold = 0.3) {
-    const ref = useRef<HTMLDivElement>(null)
-    const [isInView, setIsInView] = useState(false)
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsInView(true)
-                }
-            },
-            { threshold }
-        )
-
-        if (ref.current) observer.observe(ref.current)
-        return () => observer.disconnect()
-    }, [threshold])
-
-    return { ref, isInView }
-}
-
 export default function Home() {
-    const { isDark, toggleTheme } = useTheme()
     const [isLoaded, setIsLoaded] = useState(false)
 
     const heroSection = useInView()
@@ -49,79 +20,40 @@ export default function Home() {
     }, [])
 
     return (
-        <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-primary' : 'bg-white'}`}>
+        <div className="min-h-screen transition-colors duration-500 bg-page">
+            <NavBar />
+
             {/* Sticky Side Navigation - Desktop */}
-            <nav className={`fixed left-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-4`}>
+            <nav className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-4">
                 {['Inicio', 'Nosotros', 'Valores', 'Guías'].map((item, i) => (
-                    <a
-                        href={`#${item}`}
-                        key={i}
-                        title={item}
-                    >
-                        <div
-                            className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${isDark ? 'bg-white/30 hover:bg-white' : 'bg-gray-300 hover:bg-gray-900'
-                                }`}
-                        />
+                    <a href={`#${item}`} key={i} title={item}>
+                        <div className="w-2 h-2 rounded-full transition-all duration-300 cursor-pointer bg-gray-300 hover:bg-gray-900 dark:bg-white/30 dark:hover:bg-white" />
                     </a>
                 ))}
             </nav>
 
             {/* Bottom Navigation - Mobile */}
-            <nav className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex gap-2 px-4 py-3 rounded-full backdrop-blur-xl ${isDark ? 'bg-white/10' : 'bg-gray-900/10'
-                }`}>
+            <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 lg:hidden flex gap-2 px-4 py-3 rounded-full backdrop-blur-xl bg-gray-900/10 dark:bg-white/10">
                 {['Inicio', 'Nosotros', 'Valores', 'Guías'].map((item, i) => (
                     <a
                         href={`#${item}`}
                         key={i}
-                        className={`px-3 py-1.5 text-xs font-medium rounded-full transition-colors ${isDark ? 'text-white/70 hover:bg-white/20 hover:text-white' : 'text-gray-700 hover:bg-gray-900/20 hover:text-gray-900'
-                            }`}
+                        className="px-3 py-1.5 text-xs font-medium rounded-full transition-colors text-gray-700 hover:bg-gray-900/20 hover:text-gray-900 dark:text-white/70 dark:hover:bg-white/20 dark:hover:text-white"
                     >
                         {item}
                     </a>
                 ))}
             </nav>
 
-            {/* Header Controls - Fixed */}
-            <div className="fixed top-6 right-6 z-50 flex items-center gap-2">
-                <a
-                    href="https://www.instagram.com/mli.fiuba"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-3 rounded-full transition-colors ${isDark ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-100 hover:bg-gray-200'}`}
-                >
-                    <Image
-                        className={isDark ? 'invert' : ''}
-                        src="/instagram.svg"
-                        height={20}
-                        width={20}
-                        alt="Instagram"
-                    />
-                </a>
-                <button
-                    onClick={toggleTheme}
-                    className={`p-3 rounded-full transition-colors ${isDark ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-100 hover:bg-gray-200'}`}
-                >
-                    {isDark ? (
-                        <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
-                        </svg>
-                    ) : (
-                        <svg className="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                        </svg>
-                    )}
-                </button>
-            </div>
-
             {/* Hero Section - Split Layout */}
             <section id="Inicio" ref={heroSection.ref} className="min-h-screen grid lg:grid-cols-3 overflow-visible">
                 {/* Left - Text */}
                 <div className="flex flex-col justify-center px-8 lg:px-16 py-20 lg:py-0 overflow-visible z-10">
                     <div className={`transform transition-all duration-1000 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
-                        <span className={`text-sm uppercase tracking-[0.3em] ${isDark ? 'text-secundary' : 'text-secundary'}`}>
+                        <span className="text-sm uppercase tracking-[0.3em] text-secundary">
                             Desde 2005
                         </span>
-                        <h1 className={`mt-6 text-4xl md:text-6xl lg:text-7xl font-black leading-[0.9] ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                        <h1 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-black leading-[0.9] text-body">
                             MOVIMIENTO
                             <br />
                             LINEALMENTE
@@ -134,7 +66,7 @@ export default function Home() {
                         <div className="flex flex-wrap gap-3 overflow-visible">
                             <Link
                                 href="/propuestas"
-                                className="inline-flex items-center justify-center px-7 py-3.5 bg-secundary text-white font-semibold rounded-full hover:bg-secundary/90 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-secundary text-white font-semibold rounded-full hover:bg-secundary/90 transition-colors"
                             >
                                 Propuestas
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -143,30 +75,15 @@ export default function Home() {
                             </Link>
                             <Link
                                 href="/logros"
-                                className={`inline-flex items-center justify-center px-7 py-3.5 font-semibold rounded-full border-2 transition-colors ${isDark
-                                    ? 'border-white text-white hover:bg-white/10'
-                                    : 'border-gray-900 text-gray-900 hover:bg-gray-900/10'
-                                    }`}
+                                className="inline-flex items-center justify-center px-7 py-3.5 font-semibold rounded-full border-2 transition-colors border-gray-900 text-gray-900 hover:bg-gray-900/10 dark:border-white dark:text-white dark:hover:bg-white/10"
                             >
                                 Nuestro trabajo
                             </Link>
                         </div>
                         <div className="flex flex-wrap gap-3">
-                            <Link
-                                href="/padron2026"
-                                className={`inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-full transition-colors ${isDark
-                                    ? 'bg-white/10 text-white hover:bg-white/20'
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                    }`}
-                            >
-                                Padrón Electoral
-                            </Link>
                             <a
                                 href="#Guías"
-                                className={`inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-full transition-colors ${isDark
-                                    ? 'bg-white/10 text-white hover:bg-white/20'
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                    }`}
+                                className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-full transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
                             >
                                 Guías del Estudiante
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -185,76 +102,62 @@ export default function Home() {
                         fill
                         className="object-cover"
                     />
-                    <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-l from-transparent to-primary' : 'bg-gradient-to-l from-transparent to-white'}`} />
+                    <div className="absolute inset-0 bg-gradient-to-l from-transparent to-white dark:to-primary" />
                 </div>
             </section>
 
-            {/* About Section - Offset Layout */}
-            <section id="Nosotros" ref={aboutSection.ref} className={`min-h-screen pt-20 pb-32 ${isDark ? 'bg-white/5' : 'bg-gray-50'}`}>
+            {/* About Section */}
+            <section id="Nosotros" ref={aboutSection.ref} className="min-h-screen pt-20 pb-32 bg-surface">
                 <div className="max-w-7xl mx-auto px-8 lg:px-16">
                     <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-                        {/* Number */}
                         <div className={`lg:col-span-2 transform transition-all duration-700 ${aboutSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                            <span className={`text-[6rem] md:text-[8rem] lg:text-[12rem] font-black leading-none ${isDark ? 'text-white/10' : 'text-gray-300'}`}>
-                                01
-                            </span>
+                            <SectionNumber num="01" />
                         </div>
 
-                        {/* Content */}
                         <div className={`lg:col-span-5 lg:pt-8 transform transition-all duration-700 delay-200 ${aboutSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                            <h2 className={`text-4xl md:text-5xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-body">
                                 La voz de los
                                 <span className="text-secundary"> estudiantes</span>
                             </h2>
-                            <p className={`text-xl leading-relaxed ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
+                            <p className="text-xl leading-relaxed text-muted">
                                 Somos una agrupación estudiantil independiente y horizontal, nacida en los pasillos de FIUBA.
                             </p>
-                            <p className={`text-xl leading-relaxed ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
+                            <p className="text-xl leading-relaxed text-muted">
                                 Nunca hemos esperado que las cosas las cambie otro.
                             </p>
                         </div>
 
-                        {/* Stats */}
                         <div className={`lg:col-span-5 lg:pt-8 transform transition-all duration-700 delay-400 ${aboutSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                             <div className="grid grid-cols-2 gap-8">
-                                <div className={`p-8 rounded-2xl ${isDark ? 'bg-white/5' : 'bg-white shadow-lg'}`}>
-                                    <div className="text-4xl font-bold text-secundary">20+</div>
-                                    <div className={`mt-2 ${isDark ? 'text-white/60' : 'text-gray-500'}`}>Años de historia</div>
-                                </div>
-                                <div className={`p-8 rounded-2xl ${isDark ? 'bg-white/5' : 'bg-white shadow-lg'}`}>
-                                    <div className="text-4xl font-bold text-secundary">35%</div>
-                                    <div className={`mt-2 ${isDark ? 'text-white/60' : 'text-gray-500'}`}>Votos 2024 — 1ra fuerza en Consejo</div>
-                                </div>
-                                <div className={`p-8 rounded-2xl ${isDark ? 'bg-white/5' : 'bg-white shadow-lg'}`}>
-                                    <div className="text-4xl font-bold text-secundary">50+</div>
-                                    <div className={`mt-2 ${isDark ? 'text-white/60' : 'text-gray-500'}`}>Somos estudiantes, graduados y docentes</div>
-                                </div>
-                                <div className={`p-8 rounded-2xl ${isDark ? 'bg-white/5' : 'bg-white shadow-lg'}`}>
-                                    <div className="text-4xl font-bold text-secundary">Lista 417</div>
-                                    <div className={`mt-2 ${isDark ? 'text-white/60' : 'text-gray-500'}`}>Tu voz en Consejo Directivo</div>
-                                </div>
+                                {[
+                                    { value: '20+', label: 'Años de historia' },
+                                    { value: '35%', label: 'Votos 2024 — 1ra fuerza en Consejo' },
+                                    { value: '50+', label: 'Somos estudiantes, graduados y docentes' },
+                                    { value: 'Lista 417', label: 'Tu voz en Consejo Directivo' },
+                                ].map(({ value, label }) => (
+                                    <div key={value} className="p-8 rounded-2xl bg-card">
+                                        <div className="text-4xl font-bold text-secundary">{value}</div>
+                                        <div className="mt-2 text-subtle">{label}</div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Values Section - Cards */}
+            {/* Values Section */}
             <section id="Valores" ref={valuesSection.ref} className="min-h-screen pt-20 pb-32">
                 <div className="max-w-7xl mx-auto px-8 lg:px-16">
-                    <div className={`grid lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-16`}>
-                        {/* Number */}
+                    <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-16">
                         <div className={`lg:col-span-2 transform transition-all duration-700 ${valuesSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                            <span className={`text-[6rem] md:text-[8rem] lg:text-[12rem] font-black leading-none ${isDark ? 'text-white/10' : 'text-gray-300'}`}>
-                                02
-                            </span>
+                            <SectionNumber num="02" />
                         </div>
-                        {/* Content */}
                         <div className={`lg:col-span-10 lg:pt-8 transform transition-all duration-700 delay-200 ${valuesSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                            <span className={`text-sm uppercase tracking-[0.3em] ${isDark ? 'text-secundary' : 'text-secundary'}`}>
+                            <span className="text-sm uppercase tracking-[0.3em] text-secundary">
                                 Nuestros pilares
                             </span>
-                            <h2 className={`mt-4 text-4xl md:text-5xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                            <h2 className="mt-4 text-4xl md:text-5xl font-bold text-body">
                                 ¿Qué nos define?
                             </h2>
                         </div>
@@ -280,37 +183,28 @@ export default function Home() {
                         ].map((value, index) => (
                             <div
                                 key={index}
-                                className={`p-10 rounded-3xl border transition-all duration-500 hover:scale-105 transform ${valuesSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                                    } ${isDark
-                                        ? 'bg-transparent border-white/10 hover:border-secundary'
-                                        : 'bg-white border-gray-200 hover:border-secundary shadow-lg'
-                                    }`}
+                                className={`p-10 rounded-3xl border border-ui transition-all duration-500 hover:scale-105 hover:border-secundary transform bg-page ${
+                                    valuesSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                                }`}
                                 style={{ transitionDelay: `${index * 150}ms` }}
                             >
                                 <span className="text-4xl text-secundary">{value.icon}</span>
-                                <h3 className={`mt-6 text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                                <h3 className="mt-6 text-2xl font-bold text-body">
                                     {value.title}
                                 </h3>
-                                <p className={`mt-4 leading-relaxed ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
+                                <p className="mt-4 leading-relaxed text-subtle">
                                     {value.description}
                                 </p>
                             </div>
                         ))}
                     </div>
 
-                    {/* Link to full history */}
                     <div className={`mt-12 text-center transform transition-all duration-700 delay-500 ${valuesSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         <Link
                             href="/quienes-somos"
-                            className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-colors ${isDark
-                                    ? 'bg-white/10 text-white hover:bg-white/20'
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                                }`}
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
                         >
                             Que veinte años no es nada...
-                            {/* <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg> */}
                         </Link>
                     </div>
                 </div>
@@ -318,59 +212,41 @@ export default function Home() {
 
             {/* Guías Section */}
             <section id="Guías" ref={ctaSection.ref} className="min-h-screen lg:min-h-0 pt-20 pb-32 relative overflow-hidden">
-                <div className={`absolute inset-0 ${isDark ? 'bg-secundary/20' : 'bg-secundary/10'}`} />
+                <div className="absolute inset-0 bg-secundary/10 dark:bg-secundary/20" />
                 <div className="max-w-7xl mx-auto px-8 lg:px-16 relative">
-                    <div className={`grid lg:grid-cols-12 gap-8 lg:gap-16 items-start`}>
-                        {/* Number */}
+                    <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
                         <div className={`lg:col-span-2 transform transition-all duration-700 ${ctaSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                            <span className={`text-[6rem] md:text-[8rem] lg:text-[12rem] font-black leading-none ${isDark ? 'text-white/10' : 'text-gray-300'}`}>
-                                03
-                            </span>
+                            <SectionNumber num="03" />
                         </div>
-                        {/* Content */}
                         <div className={`lg:col-span-10 lg:pt-8 transform transition-all duration-700 delay-200 ${ctaSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                            <p className={`text-xl leading-relaxed ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
+                            <p className="text-xl leading-relaxed text-muted">
                                 Todo lo que <span className="text-secundary">necesitás saber</span>
                             </p>
-                            <h2 className={`mt-2 text-5xl md:text-7xl font-black ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                            <h2 className="mt-2 text-5xl md:text-7xl font-black text-body">
                                 Guías del Estudiante
                             </h2>
 
                             <div className="mt-12 flex flex-col gap-6">
-                                <Link
-                                    href="/guia"
-                                    className="inline-flex items-center gap-4 group"
-                                >
+                                <Link href="/guia" className="inline-flex items-center gap-4 group">
                                     <span className="w-14 h-14 rounded-full bg-secundary flex items-center justify-center group-hover:scale-110 transition-transform">
                                         <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                         </svg>
                                     </span>
                                     <span className="flex flex-col">
-                                        <span className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                                            Guía del Estudiante Fiubense
-                                        </span>
-                                        <span className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
-                                            Tus derechos y trámites en FIUBA
-                                        </span>
+                                        <span className="text-lg font-medium text-body">Guía del Estudiante Fiubense</span>
+                                        <span className="text-sm text-subtle">Tus derechos y trámites en FIUBA</span>
                                     </span>
                                 </Link>
-                                <Link
-                                    href="/guia-cbc"
-                                    className="inline-flex items-center gap-4 group"
-                                >
-                                    <span className={`w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform ${isDark ? 'bg-white/10' : 'bg-gray-100'}`}>
-                                        <svg className={`w-5 h-5 ${isDark ? 'text-white' : 'text-gray-900'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <Link href="/guia-cbc" className="inline-flex items-center gap-4 group">
+                                    <span className="w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform bg-gray-100 dark:bg-white/10">
+                                        <svg className="w-5 h-5 text-gray-900 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                         </svg>
                                     </span>
                                     <span className="flex flex-col">
-                                        <span className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                                            Guía del Estudiante del CBC
-                                        </span>
-                                        <span className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
-                                            Tu primer año en la UBA
-                                        </span>
+                                        <span className="text-lg font-medium text-body">Guía del Estudiante del CBC</span>
+                                        <span className="text-sm text-subtle">Tu primer año en la UBA</span>
                                     </span>
                                 </Link>
                                 <a
@@ -379,9 +255,9 @@ export default function Home() {
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-4 group"
                                 >
-                                    <span className={`w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform ${isDark ? 'bg-white/10' : 'bg-gray-100'}`}>
+                                    <span className="w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform bg-gray-100 dark:bg-white/10">
                                         <Image
-                                            className={isDark ? 'invert' : ''}
+                                            className="theme-invert"
                                             src="/instagram.svg"
                                             height={20}
                                             width={20}
@@ -389,12 +265,8 @@ export default function Home() {
                                         />
                                     </span>
                                     <span className="flex flex-col">
-                                        <span className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                                            Escribinos
-                                        </span>
-                                        <span className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
-                                            @mli.fiuba en Instagram
-                                        </span>
+                                        <span className="text-lg font-medium text-body">Escribinos</span>
+                                        <span className="text-sm text-subtle">@mli.fiuba en Instagram</span>
                                     </span>
                                 </a>
                             </div>

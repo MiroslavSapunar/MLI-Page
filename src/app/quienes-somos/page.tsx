@@ -1,42 +1,14 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
-import { useTheme } from "@/context/ThemeContext"
+import { useState, useEffect } from 'react'
+import { useInView } from "@/hooks/useInView"
 import NavBar from '../components/navbar'
 import Link from 'next/link'
 
-/**
- * Quiénes Somos - MLI History & Story Page
- * - Vertical narrative flow
- * - Timeline with milestones
- * - Text-focused with accent visuals
- * - Scroll-triggered reveals
- * - Elegant typography
- */
-
-function useScrollReveal() {
-    const ref = useRef<HTMLDivElement>(null)
-    const [isVisible, setIsVisible] = useState(false)
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) setIsVisible(true)
-            },
-            { threshold: 0.2 }
-        )
-        if (ref.current) observer.observe(ref.current)
-        return () => observer.disconnect()
-    }, [])
-
-    return { ref, isVisible }
-}
-
 export default function QuienesSomos() {
-    const { isDark } = useTheme()
     const [scrollY, setScrollY] = useState(0)
 
-    const intro = useScrollReveal()
-    const timeline = useScrollReveal()
+    const intro = useInView(0.2)
+    const timeline = useInView(0.2)
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY)
@@ -52,33 +24,32 @@ export default function QuienesSomos() {
     ]
 
     return (
-        <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-primary' : 'bg-[#fafafa]'}`}>
-            {/* Floating Header */}
+        <div className="min-h-screen transition-colors duration-500 bg-page">
             <NavBar />
 
             {/* Hero - Large Text */}
             <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
                 {/* Parallax background text */}
                 <div
-                    className={`absolute inset-0 flex items-center justify-center pointer-events-none select-none ${isDark ? 'text-white/[0.03]' : 'text-gray-900/[0.03]'}`}
+                    className="absolute inset-0 flex items-center justify-center pointer-events-none select-none text-gray-900/[0.03] dark:text-white/[0.03]"
                     style={{ transform: `translateY(${scrollY * 0.3}px)` }}
                 >
                     <span className="text-[20vw] font-black">MLI</span>
                 </div>
 
                 <div className="relative text-center max-w-4xl">
-                    <h1 className={`text-5xl md:text-7xl lg:text-8xl font-serif font-light leading-[1.1] ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light leading-[1.1] text-body">
                         Una historia de
                         <br />
                         <em className="text-secundary font-normal">independencia</em>
                         <br />
                         estudiantil
                     </h1>
-                    <p className={`mt-8 text-xl md:text-2xl font-light ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
+                    <p className="mt-8 text-xl md:text-2xl font-light text-faint">
                         20 años transformando FIUBA
                     </p>
 
-                    <div className={`mt-16 animate-bounce ${isDark ? 'text-white/30' : 'text-gray-400'}`}>
+                    <div className="mt-16 animate-bounce text-gray-400 dark:text-white/30">
                         <svg className="w-6 h-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                         </svg>
@@ -89,13 +60,13 @@ export default function QuienesSomos() {
             {/* Intro Section */}
             <section
                 ref={intro.ref}
-                className={`py-32 px-6 transform transition-all duration-1000 ${intro.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}
+                className={`py-32 px-6 transform transition-all duration-1000 ${intro.isInView ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}
             >
                 <div className="max-w-3xl mx-auto">
-                    <p className={`text-2xl md:text-3xl font-light leading-relaxed ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
+                    <p className="text-2xl md:text-3xl font-light leading-relaxed text-gray-700 dark:text-white/80">
                         <span className="text-secundary font-normal">MLI</span> nació en 2005 como una agrupación
                         de estudiantes que no quiso esperar que las cosas las cambie otro.
-                        <span className={`block mt-6 ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
+                        <span className="block mt-6 text-subtle">
                             Somos independientes porque no respondemos a partidos políticos ni intereses externos.
                             Somos horizontales porque todos decidimos por igual.
                         </span>
@@ -106,22 +77,21 @@ export default function QuienesSomos() {
             {/* Timeline Section */}
             <section
                 ref={timeline.ref}
-                className={`py-32 px-6 ${isDark ? 'bg-white/5' : 'bg-white'}`}
+                className="py-32 px-6 bg-surface dark:bg-white/5"
             >
                 <div className="max-w-4xl mx-auto">
-                    <h2 className={`text-3xl md:text-4xl font-serif font-light text-center mb-20 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    <h2 className="text-3xl md:text-4xl font-serif font-light text-center mb-20 text-body">
                         Nuestra <em className="text-secundary">trayectoria</em>
                     </h2>
 
                     <div className="relative">
-                        {/* Timeline line */}
-                        <div className={`absolute left-8 md:left-1/2 top-0 bottom-0 w-px ${isDark ? 'bg-white/20' : 'bg-gray-200'}`} />
+                        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px border-ui bg-gray-200 dark:bg-white/20" />
 
                         {milestones.map((milestone, index) => (
                             <div
                                 key={index}
                                 className={`relative flex items-center mb-16 last:mb-0 transform transition-all duration-700 ${
-                                    timeline.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                                    timeline.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                                 }`}
                                 style={{ transitionDelay: `${index * 200}ms` }}
                             >
@@ -129,15 +99,17 @@ export default function QuienesSomos() {
                                 <div className={`hidden md:flex w-full items-center ${index % 2 === 0 ? '' : 'flex-row-reverse'}`}>
                                     <div className={`w-1/2 ${index % 2 === 0 ? 'pr-12 text-right' : 'pl-12 text-left'}`}>
                                         <span className="text-5xl font-bold text-secundary">{milestone.year}</span>
-                                        <h3 className={`mt-2 text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                                        <h3 className="mt-2 text-xl font-semibold text-body">
                                             {milestone.title}
                                         </h3>
-                                        <p className={`mt-1 ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
+                                        <p className="mt-1 text-subtle">
                                             {milestone.desc}
                                         </p>
                                     </div>
-                                    {/* Center dot */}
-                                    <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-secundary border-4 border-primary" style={{ borderColor: isDark ? '#101820' : '#fafafa' }} />
+                                    <div
+                                        className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-secundary border-4"
+                                        style={{ borderColor: 'var(--timeline-dot-border)' }}
+                                    />
                                     <div className="w-1/2" />
                                 </div>
 
@@ -146,10 +118,10 @@ export default function QuienesSomos() {
                                     <div className="absolute left-8 -translate-x-1/2 w-4 h-4 rounded-full bg-secundary" />
                                     <div>
                                         <span className="text-3xl font-bold text-secundary">{milestone.year}</span>
-                                        <h3 className={`mt-1 text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                                        <h3 className="mt-1 text-lg font-semibold text-body">
                                             {milestone.title}
                                         </h3>
-                                        <p className={`mt-1 text-sm ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
+                                        <p className="mt-1 text-sm text-subtle">
                                             {milestone.desc}
                                         </p>
                                     </div>
@@ -160,15 +132,15 @@ export default function QuienesSomos() {
                 </div>
             </section>
 
-            {/* CTA Section - Styled to match page narrative */}
-            <section className={`py-32 px-6 ${isDark ? 'bg-secundary/10' : 'bg-secundary/5'}`}>
+            {/* CTA Section */}
+            <section className="py-32 px-6 bg-secundary/5 dark:bg-secundary/10">
                 <div className="max-w-3xl mx-auto text-center">
-                    <h2 className={`text-4xl md:text-5xl font-serif font-light ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    <h2 className="text-4xl md:text-5xl font-serif font-light text-body">
                         La historia continúa
                         <br />
                         <em className="text-secundary">con vos</em>
                     </h2>
-                    <p className={`mt-6 text-xl ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
+                    <p className="mt-6 text-xl text-subtle">
                         Sumate a transformar FIUBA
                     </p>
 
@@ -186,18 +158,13 @@ export default function QuienesSomos() {
                             href="https://www.instagram.com/mli.fiuba"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`inline-flex items-center justify-center gap-2 px-8 py-4 font-medium rounded-full border-2 transition-colors ${
-                                isDark
-                                    ? 'border-white/30 text-white hover:bg-white/10'
-                                    : 'border-gray-300 text-gray-700 hover:bg-gray-100'
-                            }`}
+                            className="inline-flex items-center justify-center gap-2 px-8 py-4 font-medium rounded-full border-2 transition-colors border-gray-300 text-gray-700 hover:bg-gray-100 dark:border-white/30 dark:text-white dark:hover:bg-white/10"
                         >
                             @mli.fiuba
                         </a>
                     </div>
                 </div>
             </section>
-            
         </div>
     )
 }

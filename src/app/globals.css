@@ -1,63 +1,120 @@
 @import "tailwindcss";
 
+/* Dark mode driven by data-theme="dark" on <html> (set by ThemeContext) */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @theme {
   --color-primary: #101820;
   --color-secundary: #f9423a;
   --color-white: #ffffff;
   --color-black: #000000;
-  
+
   --color-gray-light: #d1d5db;
   --color-gray-dark: #1f2937;
-  
+
   --color-election-mli: #f9423a;
   --color-election-libres: #FFD700;
   --color-election-estudiantil: #FF8C00;
   --color-election-gradiente: #22C55E;
   --color-election-proyecto: #87CEEB;
-  
-  --font-family-sans: Graphik, sans-serif;
+
+  /* Font families — CSS vars injected by next/font/google in layout.tsx */
+  --font-family-sans: var(--font-roboto), Roboto, sans-serif;
+  --font-family-roboto: var(--font-roboto), Roboto, sans-serif;
+  --font-family-montserrat: var(--font-montserrat), Montserrat, sans-serif;
   --font-family-serif: Merriweather, serif;
-  --font-family-roboto: Roboto, sans-serif;
 }
 
+/* ── Theme tokens ──────────────────────────────────────────────────────────
+   Change colors here — not in components.
+   ─────────────────────────────────────────────────────────────────────── */
+:root {
+  --theme-bg:            #ffffff;
+  --theme-surface:       #f9fafb;
+  --theme-card-bg:       #ffffff;
+  --theme-card-shadow:   0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --theme-text:          #111827;
+  --theme-text-muted:    #4b5563;
+  --theme-text-subtle:   #6b7280;
+  --theme-text-faint:    #9ca3af;
+  --theme-text-num:      #d1d5db;
+  --theme-border:        #e5e7eb;
+  --timeline-dot-border: #fafafa;
+}
+
+[data-theme="dark"] {
+  --theme-bg:            #101820;
+  --theme-surface:       rgba(255, 255, 255, 0.05);
+  --theme-card-bg:       rgba(255, 255, 255, 0.05);
+  --theme-card-shadow:   none;
+  --theme-text:          #ffffff;
+  --theme-text-muted:    rgba(255, 255, 255, 0.7);
+  --theme-text-subtle:   rgba(255, 255, 255, 0.6);
+  --theme-text-faint:    rgba(255, 255, 255, 0.4);
+  --theme-text-num:      rgba(255, 255, 255, 0.1);
+  --theme-border:        rgba(255, 255, 255, 0.1);
+  --timeline-dot-border: #101820;
+}
+
+/* ── Semantic utility classes ──────────────────────────────────────────────
+   Use these instead of ${isDark ? 'dark-class' : 'light-class'} patterns.
+   ─────────────────────────────────────────────────────────────────────── */
+.bg-page    { background-color: var(--theme-bg); }
+.bg-surface { background-color: var(--theme-surface); }
+.bg-card    { background-color: var(--theme-card-bg); box-shadow: var(--theme-card-shadow); }
+
+.text-body   { color: var(--theme-text); }
+.text-muted  { color: var(--theme-text-muted); }
+.text-subtle { color: var(--theme-text-subtle); }
+.text-faint  { color: var(--theme-text-faint); }
+.text-num    { color: var(--theme-text-num); }
+
+.border-ui   { border-color: var(--theme-border); }
+
+/* Invert images/icons for dark mode (e.g. dark SVG logos) */
+.theme-invert        { filter: none; }
+[data-theme="dark"] .theme-invert { filter: invert(1); }
+
+/* ── Global heading font ─────────────────────────────────────────────────
+   Montserrat for headings; Roboto for body.
+   Override with font-serif on pages that use the editorial/narrative style.
+   ─────────────────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+}
+
+/* ── Misc utilities ────────────────────────────────────────────────────── */
 .clearNav {
-    backdrop-filter: saturate(180%) blur(5px) !important;
-    background-color: rgba(0, 0, 0, 0.7) !important;
-  }
+  backdrop-filter: saturate(180%) blur(5px) !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
 
-  .tr04 {
-    transition: 0.4s;
-  }
+.tr04 { transition: 0.4s; }
 
-  /* Animation delay utilities for staggered animations */
-  .animation-delay-100 { animation-delay: 100ms; }
-  .animation-delay-200 { animation-delay: 200ms; }
-  .animation-delay-300 { animation-delay: 300ms; }
-  .animation-delay-400 { animation-delay: 400ms; }
-  .animation-delay-500 { animation-delay: 500ms; }
-  .animation-delay-600 { animation-delay: 600ms; }
-  .animation-delay-700 { animation-delay: 700ms; }
-  .animation-delay-800 { animation-delay: 800ms; }
-  .animation-delay-900 { animation-delay: 900ms; }
-  .animation-delay-1000 { animation-delay: 1000ms; }
+.animation-delay-100  { animation-delay: 100ms; }
+.animation-delay-200  { animation-delay: 200ms; }
+.animation-delay-300  { animation-delay: 300ms; }
+.animation-delay-400  { animation-delay: 400ms; }
+.animation-delay-500  { animation-delay: 500ms; }
+.animation-delay-600  { animation-delay: 600ms; }
+.animation-delay-700  { animation-delay: 700ms; }
+.animation-delay-800  { animation-delay: 800ms; }
+.animation-delay-900  { animation-delay: 900ms; }
+.animation-delay-1000 { animation-delay: 1000ms; }
 
-  /* Transition delay utilities for staggered transitions */
-  .transition-delay-100 { transition-delay: 100ms; }
-  .transition-delay-200 { transition-delay: 200ms; }
-  .transition-delay-300 { transition-delay: 300ms; }
-  .transition-delay-400 { transition-delay: 400ms; }
-  .transition-delay-500 { transition-delay: 500ms; }
-  .transition-delay-600 { transition-delay: 600ms; }
-  .transition-delay-700 { transition-delay: 700ms; }
-  .transition-delay-800 { transition-delay: 800ms; }
-  .transition-delay-900 { transition-delay: 900ms; }
-  .transition-delay-1000 { transition-delay: 1000ms; }
+.transition-delay-100  { transition-delay: 100ms; }
+.transition-delay-200  { transition-delay: 200ms; }
+.transition-delay-300  { transition-delay: 300ms; }
+.transition-delay-400  { transition-delay: 400ms; }
+.transition-delay-500  { transition-delay: 500ms; }
+.transition-delay-600  { transition-delay: 600ms; }
+.transition-delay-700  { transition-delay: 700ms; }
+.transition-delay-800  { transition-delay: 800ms; }
+.transition-delay-900  { transition-delay: 900ms; }
+.transition-delay-1000 { transition-delay: 1000ms; }
 
-  /* Hide scrollbar but keep functionality */
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar { display: none; }

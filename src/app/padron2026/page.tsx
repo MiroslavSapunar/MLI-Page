@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useTheme } from '@/context/ThemeContext'
+import { useInView } from '@/hooks/useInView'
 import NavBar from '@/app/components/navbar'
 
 type Estudiante = {
@@ -10,24 +11,6 @@ type Estudiante = {
 }
 
 type PadronType = 'regulares' | 'cbc'
-
-function useInView(threshold = 0.3) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [isInView, setIsInView] = useState(false)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsInView(true)
-      },
-      { threshold }
-    )
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [threshold])
-
-  return { ref, isInView }
-}
 
 function parseCSVLine(line: string): string[] {
   const fields: string[] = []
