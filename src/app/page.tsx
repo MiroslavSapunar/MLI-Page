@@ -42,10 +42,10 @@ export default function Home() {
             {/* ══ Hero — Swiss Grid 3-col ══ */}
             <section id="Inicio" className="pt-11 min-h-screen flex flex-col">
 
-                {/* Three-column grid */}
+                {/* Three-column grid — block on mobile, 3-col grid on desktop */}
                 <div
-                    className="flex-1"
-                    style={{ display: 'grid', gridTemplateColumns: '3rem 1fr 38%', minHeight: 'calc(100vh - 2.75rem - 3rem)' }}
+                    className="flex-1 block lg:grid"
+                    style={{ gridTemplateColumns: '3rem 1fr 38%', minHeight: 'calc(100vh - 2.75rem - 3rem)' }}
                 >
                     {/* Sidebar – vertical labels */}
                     <div className="border-r border-ui hidden lg:flex flex-col justify-between items-center py-14">
