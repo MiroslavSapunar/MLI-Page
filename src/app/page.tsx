@@ -59,7 +59,7 @@ export default function Home() {
                             style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', letterSpacing: '0.35em' }}
                             className="text-[10px] uppercase font-medium text-faint"
                         >
-                            FIUBA · UBA
+                            Facultad de Ingeniería · UBA
                         </span>
                     </div>
 
@@ -72,8 +72,8 @@ export default function Home() {
                             </div>
 
                             <h1
-                                className="font-black uppercase leading-[0.84] tracking-[-0.02em] text-body"
-                                style={{ fontSize: 'clamp(2.6rem, 6.5vw, 6.5rem)' }}
+                                className="font-black uppercase leading-[0.80] tracking-[-0.02em] text-body"
+                                style={{ fontSize: 'clamp(2.6rem, 6vw, 6rem)' }}
                             >
                                 MOVIMIENTO<br />
                                 LINEALMENTE<br />
