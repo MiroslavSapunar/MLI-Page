@@ -153,14 +153,14 @@ export default function Home() {
 
             {/* ══ About Section ══ */}
             <section id="Nosotros" ref={aboutSection.ref} className="border-t-4 border-body">
-                <div className={`flex items-end gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${aboutSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    <span className="text-[8rem] font-black leading-none select-none text-num">01</span>
-                    <div className="pb-2">
+                <div className={`flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${aboutSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                    <span className="text-[5rem] lg:text-[8rem] font-black leading-none select-none text-num">01</span>
+                    <div className="lg:pb-2">
                         <div className="flex items-center gap-3 mb-2">
                             <div className="w-6 h-[2px] bg-secundary" />
                             <span className="text-[11px] font-bold tracking-[0.45em] uppercase text-secundary">Nosotros</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight text-body">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-tight text-body">
                             La voz de los<br /><span className="text-secundary">estudiantes</span>
                         </h2>
                     </div>
@@ -217,14 +217,14 @@ export default function Home() {
 
             {/* ══ Values Section ══ */}
             <section id="Valores" ref={valuesSection.ref} className="border-t-4 border-body">
-                <div className={`flex items-end gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${valuesSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    <span className="text-[8rem] font-black leading-none select-none text-num">02</span>
-                    <div className="pb-2">
+                <div className={`flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${valuesSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                    <span className="text-[5rem] lg:text-[8rem] font-black leading-none select-none text-num">02</span>
+                    <div className="lg:pb-2">
                         <div className="flex items-center gap-3 mb-2">
                             <div className="w-6 h-[2px] bg-secundary" />
                             <span className="text-[11px] font-bold tracking-[0.45em] uppercase text-secundary">Nuestros pilares</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight text-body">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-tight text-body">
                             ¿Qué nos define?
                         </h2>
                     </div>
@@ -265,14 +265,14 @@ export default function Home() {
             <section id="Guías" ref={ctaSection.ref} className="border-t-4 border-body relative overflow-hidden">
                 <div className="absolute inset-0 bg-secundary/5 dark:bg-secundary/10 pointer-events-none" />
                 <div className="relative">
-                    <div className={`flex items-end gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${ctaSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                        <span className="text-[8rem] font-black leading-none select-none text-num">03</span>
-                        <div className="pb-2">
+                    <div className={`flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${ctaSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                        <span className="text-[5rem] lg:text-[8rem] font-black leading-none select-none text-num">03</span>
+                        <div className="lg:pb-2">
                             <div className="flex items-center gap-3 mb-2">
                                 <div className="w-6 h-[2px] bg-secundary" />
                                 <span className="text-[11px] font-bold tracking-[0.45em] uppercase text-secundary">Recursos</span>
                             </div>
-                            <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight text-body">
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-tight text-body">
                                 Guías del Estudiante
                             </h2>
                         </div>
