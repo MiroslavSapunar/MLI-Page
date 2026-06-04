@@ -343,7 +343,7 @@ export default function GuiaPage() {
             {/* Sticky Navigation */}
             <div
                 ref={navRef}
-                className={`sticky top-[57px] z-40 transition-all duration-300 ${isDark
+                className={`sticky top-[55px] z-40 transition-all duration-300 ${isDark
                     ? isNavSticky ? 'bg-primary/95 backdrop-blur-md shadow-lg' : 'bg-primary'
                     : isNavSticky ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-white'
                     } ${isNavSticky ? 'border-b' : ''} ${isDark ? 'border-white/10' : 'border-gray-200'}`}

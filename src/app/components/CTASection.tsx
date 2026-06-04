@@ -59,7 +59,7 @@ export default function CTASection({ title, subtitle, buttons }: CTASectionProps
                                     {button.label}
                                     {button.variant === 'instagram' && (
                                         <Image
-                                            className="theme-invert"
+                                            className="theme-invert w-5 h-5"
                                             src="/instagram.svg"
                                             height={20}
                                             width={20}

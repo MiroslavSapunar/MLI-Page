@@ -26,10 +26,11 @@ export default function NavBar() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                     <Image
-                        className="theme-invert"
+                        className="theme-invert w-8 h-8"
                         src={mli}
                         height={32}
                         width={32}
+                        priority
                         alt="MLI - Volver al inicio"
                     />
                 </Link>
@@ -42,10 +43,11 @@ export default function NavBar() {
                         className="p-2 rounded-full transition-colors hover:bg-gray-100 dark:hover:bg-white/10"
                     >
                         <Image
-                            className="theme-invert"
+                            className="theme-invert w-5 h-5"
                             src="/instagram.svg"
                             height={20}
                             width={20}
+                            priority
                             alt="Instagram"
                         />
                     </a>

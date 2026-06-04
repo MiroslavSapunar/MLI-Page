@@ -291,7 +291,7 @@ export default function LogrosPage() {
             {/* Sticky Navigation */}
             <div
                 ref={navRef}
-                className={`sticky top-[57px] z-40 transition-all duration-300 bg-page ${
+                className={`sticky top-[55px] z-40 transition-all duration-300 bg-page ${
                     isNavSticky ? 'backdrop-blur-md shadow-md border-b border-ui' : ''
                 }`}
             >

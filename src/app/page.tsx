@@ -100,6 +100,7 @@ export default function Home() {
                         src={portada}
                         alt="FIUBA"
                         fill
+                        priority
                         className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-l from-transparent to-white dark:to-primary" />
@@ -257,7 +258,7 @@ export default function Home() {
                                 >
                                     <span className="w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform bg-gray-100 dark:bg-white/10">
                                         <Image
-                                            className="theme-invert"
+                                            className="theme-invert w-5 h-5"
                                             src="/instagram.svg"
                                             height={20}
                                             width={20}

@@ -72,7 +72,7 @@ function ProposalCard({ proposal, index, isInView }: { proposal: Proposal; index
                     alt=""
                     width={32}
                     height={32}
-                    className={`transition-all duration-300 ${(!isDark && !isHovered) || (isDark && isHovered) ? 'invert' : ''}`}
+                    className={`w-8 h-8 transition-all duration-300 ${(!isDark && !isHovered) || (isDark && isHovered) ? 'invert' : ''}`}
                 />
             </div>
 
