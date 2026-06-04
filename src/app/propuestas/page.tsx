@@ -66,18 +66,20 @@ function ProposalCard({ proposal, index, isInView }: { proposal: Proposal; index
 
             {/* Number + Icon row */}
             <div className="flex items-start justify-between mb-6">
-                <div className={`w-14 h-14 flex items-center justify-center transition-colors duration-300 ${
-                    isHovered ? 'bg-secundary' : 'bg-gray-100 dark:bg-white/10'
+                <div className={`w-14 h-14 flex items-center justify-center border-2 transition-colors duration-300 ${
+                    isHovered ? 'border-secundary' : 'border-ui'
                 }`}>
                     <Image
                         src={proposal.icon}
                         alt=""
-                        width={32}
-                        height={32}
-                        className={`w-8 h-8 transition-all duration-300 ${(!isDark && !isHovered) || (isDark && isHovered) ? 'invert' : ''}`}
+                        width={36}
+                        height={36}
+                        className={`w-9 h-9 transition-all duration-300 ${isDark ? 'invert' : ''}`}
                     />
                 </div>
-                <span className="text-[11px] font-bold tracking-[0.4em] text-faint tabular-nums">
+                <span className={`text-[11px] font-bold tracking-[0.4em] tabular-nums transition-colors duration-300 ${
+                    isHovered ? 'text-secundary' : 'text-faint'
+                }`}>
                     {String(index + 1).padStart(2, '0')}
                 </span>
             </div>

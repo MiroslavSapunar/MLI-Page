@@ -192,8 +192,8 @@ export default function Home() {
                     <div className="lg:col-span-7 divide-y divide-ui">
                         {[
                             { title: 'Nuevos planes de estudio 2020',       stat: '8 carreras',  desc: 'Actualizamos todas las carreras de FIUBA, algunas con 35 años de antigüedad.' },
-                            { title: 'Comedor del CEI',                     stat: 'Diario',      desc: 'Un servicio de almuerzo económico y de calidad, funcionando cuatrimestre a cuatrimestre.' },
-                            { title: 'Materias promocionables',             stat: '56% aprobados', desc: 'Impulsamos la cursada piloto de Álgebra II sin final: aprobación directa por parciales.' },
+                            { title: 'Comedor del CEI',                     stat: 'Lu-Vi 9:00 a 21:30',      desc: 'Un servicio de completo, económico y de calidad, funcionando cuatrimestre a cuatrimestre.' },
+                            { title: 'Materias promocionables',             stat: '56% aprobados', desc: 'Impulsamos la cursada piloto de Álgebra II sin final: Mismos temas, misma exigencia con aprobación directa en parciales.' },
                             { title: 'Modernización de trámites y plazos',  stat: '72hs → 48hs', desc: 'Redujimos plazos, simplificamos certificados y automatizamos equivalencias.' },
                         ].map(({ title, stat, desc }, i) => (
                             <div
