@@ -85,9 +85,10 @@ export default function Proposals() {
                         {proposals.map((proposal, index) => (
                             <div
                                 key={index}
-                                className={`p-8 rounded-3xl border border-ui bg-card transition-all duration-500 hover:scale-[1.02] hover:border-secundary transform ${proposalsSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                                className={`p-8 border border-ui bg-card transition-all duration-500 transform group cursor-default ${proposalsSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
                                 style={{ transitionDelay: `${index * 100}ms` }}
                             >
+                                <div className="w-10 h-[3px] bg-secundary mb-6 transition-all duration-300 group-hover:w-full" />
                                 <span className="text-4xl">{proposal.icon}</span>
                                 <h3 className="mt-4 text-xl font-bold text-body">
                                     {proposal.title}

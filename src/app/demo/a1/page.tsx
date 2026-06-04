@@ -1,9 +1,11 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTheme } from '@/context/ThemeContext'
+import portada from '../../../../public/Portada.jpg'
 
-export default function DemoA() {
+export default function DemoA1() {
     const { isDark, toggleTheme } = useTheme()
     const [loaded, setLoaded] = useState(false)
     useEffect(() => { setLoaded(true) }, [])
@@ -23,10 +25,11 @@ export default function DemoA() {
                         ← Inicio
                     </Link>
                     <span className={`text-[10px] tracking-[0.4em] uppercase ${d ? 'text-white/15' : 'text-gray-200'}`}>
-                        Demo A — Swiss Grid
+                        Demo A-1 — Swiss Grid + Foto
                     </span>
                 </div>
                 <div className="flex items-center gap-4">
+                    <a href="/demo/a" className={`text-[11px] tracking-[0.25em] uppercase transition-colors ${d ? 'text-white/30 hover:text-white' : 'text-gray-400 hover:text-gray-900'}`}>← A</a>
                     <a href="/demo/b" className={`text-[11px] tracking-[0.25em] uppercase transition-colors ${d ? 'text-white/30 hover:text-white' : 'text-gray-400 hover:text-gray-900'}`}>B →</a>
                     <a href="/demo/c" className={`text-[11px] tracking-[0.25em] uppercase transition-colors ${d ? 'text-white/30 hover:text-white' : 'text-gray-400 hover:text-gray-900'}`}>C →</a>
                     <button onClick={toggleTheme} className={`text-[11px] tracking-[0.25em] uppercase transition-colors ${d ? 'text-white/40 hover:text-white' : 'text-gray-400 hover:text-gray-900'}`}>
@@ -38,10 +41,14 @@ export default function DemoA() {
             {/* ── Hero ── */}
             <section className="pt-11 min-h-screen flex flex-col">
 
-                {/* Three-column grid */}
+                {/* Three-column grid — same as A but right panel is image + stats */}
                 <div
                     className="flex-1"
-                    style={{ display: 'grid', gridTemplateColumns: '3rem 1fr 38%', minHeight: 'calc(100vh - 2.75rem - 3rem)' }}
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: '3rem 1fr 38%',
+                        minHeight: 'calc(100vh - 2.75rem - 3rem)',
+                    }}
                 >
                     {/* Sidebar – vertical labels */}
                     <div className={`border-r ${d ? 'border-white/10' : 'border-gray-200'} flex flex-col justify-between items-center py-14`}>
@@ -111,38 +118,64 @@ export default function DemoA() {
                         </div>
                     </div>
 
-                    {/* Stats panel – 2×2 grid */}
-                    <div
-                        className={`border-l overflow-hidden min-w-0 ${d ? 'border-white/10' : 'border-gray-200'}`}
-                        style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr' }}
-                    >
-                        {[
-                            { v: '20+',   l: 'Años de historia',    red: false },
-                            { v: '35%',   l: 'Votos 2024',          red: false },
-                            { v: '50+',   l: 'Miembros activos',    red: false },
-                            { v: '1ra',   l: 'Fuerza en Consejo',   red: true  },
-                        ].map(({ v, l, red }, i) => (
+                    {/* Right panel: image (top) + stats 2×2 (bottom) — desktop only */}
+                    <div className={`border-l overflow-hidden min-w-0 hidden lg:flex flex-col ${d ? 'border-white/10' : 'border-gray-200'}`}>
+
+                        {/* Portada image — top 55% */}
+                        <div className="relative overflow-hidden" style={{ flex: '0 0 55%' }}>
+                            <Image
+                                src={portada}
+                                alt="FIUBA"
+                                fill
+                                priority
+                                className="object-cover object-center"
+                            />
+                            {/* Gradient fade into panel background at bottom */}
                             <div
-                                key={i}
-                                className={`flex flex-col justify-end p-7 transition-all duration-500 ${
-                                    red
-                                        ? 'bg-secundary'
-                                        : d ? 'bg-transparent' : 'bg-transparent'
-                                } ${
-                                    i === 1 || i === 3 ? (d ? 'border-l border-white/10' : 'border-l border-gray-200') : ''
-                                } ${
-                                    i === 2 || i === 3 ? (d ? 'border-t border-white/10' : 'border-t border-gray-200') : ''
-                                }`}
+                                className="absolute inset-0"
                                 style={{
-                                    transitionDelay: `${200 + i * 80}ms`,
-                                    opacity: loaded ? 1 : 0,
-                                    transform: loaded ? 'none' : 'translateY(8px)',
+                                    background: d
+                                        ? 'linear-gradient(to bottom, rgba(16,24,32,0) 40%, rgba(16,24,32,0.7) 100%)'
+                                        : 'linear-gradient(to bottom, rgba(255,255,255,0) 40%, rgba(255,255,255,0.8) 100%)',
                                 }}
-                            >
-                                <span className={`text-5xl lg:text-6xl font-black leading-none ${red ? 'text-white' : 'text-secundary'}`}>{v}</span>
-                                <span className={`mt-2 text-[11px] font-medium uppercase tracking-[0.28em] ${red ? 'text-white/70' : d ? 'text-white/35' : 'text-gray-400'}`}>{l}</span>
-                            </div>
-                        ))}
+                            />
+                            {/* Thin red rule at the bottom edge */}
+                            <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-secundary" />
+                        </div>
+
+                        {/* Stats 2×2 grid — bottom 45% */}
+                        <div
+                            className="min-w-0"
+                            style={{
+                                flex: '0 0 45%',
+                                display: 'grid',
+                                gridTemplateColumns: '1fr 1fr',
+                                gridTemplateRows: '1fr 1fr',
+                            }}
+                        >
+                            {[
+                                { v: '20+', l: 'Años de historia',  red: false },
+                                { v: '35%', l: 'Votos 2024',        red: false },
+                                { v: '50+', l: 'Miembros activos',  red: false },
+                                { v: '1ra', l: '1ra fuerza',        red: true  },
+                            ].map(({ v, l, red }, i) => (
+                                <div
+                                    key={i}
+                                    className={`flex flex-col justify-end p-5 min-w-0 overflow-hidden transition-all duration-500 ${
+                                        red ? 'bg-secundary' : ''
+                                    } ${i === 1 || i === 3 ? (d ? 'border-l border-white/10' : 'border-l border-gray-200') : ''
+                                    } ${i === 2 || i === 3 ? (d ? 'border-t border-white/10' : 'border-t border-gray-200') : ''}`}
+                                    style={{
+                                        transitionDelay: `${200 + i * 80}ms`,
+                                        opacity: loaded ? 1 : 0,
+                                        transform: loaded ? 'none' : 'translateY(8px)',
+                                    }}
+                                >
+                                    <span className={`text-3xl lg:text-4xl font-black leading-none ${red ? 'text-white' : 'text-secundary'}`}>{v}</span>
+                                    <span className={`mt-1.5 text-[10px] font-medium uppercase tracking-[0.22em] truncate ${red ? 'text-white/70' : d ? 'text-white/35' : 'text-gray-400'}`}>{l}</span>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
@@ -161,7 +194,6 @@ export default function DemoA() {
 
             {/* ── Values section ── */}
             <section className={`border-t-4 ${d ? 'border-white' : 'border-gray-900'}`}>
-                {/* Section header */}
                 <div className={`flex items-end gap-6 px-14 pt-10 pb-8 border-b ${d ? 'border-white/10' : 'border-gray-200'}`}>
                     <span className={`text-[8rem] font-black leading-none select-none ${d ? 'text-white/[0.06]' : 'text-gray-100'}`}>02</span>
                     <div className="pb-2">
@@ -175,7 +207,6 @@ export default function DemoA() {
                     </div>
                 </div>
 
-                {/* 3-column grid */}
                 <div className={`grid md:grid-cols-3 border-b ${d ? 'border-white/10' : 'border-gray-200'}`}>
                     {[
                         { title: 'Independencia',        desc: 'Sin partidos políticos, sin intereses económicos. Solo el compromiso con los estudiantes de FIUBA.' },
@@ -184,25 +215,15 @@ export default function DemoA() {
                     ].map((v, i) => (
                         <div key={i} className={`p-10 group cursor-default ${i < 2 ? (d ? 'border-r border-white/10' : 'border-r border-gray-200') : ''}`}>
                             <div className="w-10 h-[3px] bg-secundary mb-7 transition-all duration-300 group-hover:w-full" />
-                            <h3 className={`text-xl font-black uppercase tracking-tight mb-3 ${d ? 'text-white' : 'text-gray-900'}`}>
-                                {v.title}
-                            </h3>
-                            <p className={`text-sm leading-relaxed ${d ? 'text-white/45' : 'text-gray-500'}`}>
-                                {v.desc}
-                            </p>
+                            <h3 className={`text-xl font-black uppercase tracking-tight mb-3 ${d ? 'text-white' : 'text-gray-900'}`}>{v.title}</h3>
+                            <p className={`text-sm leading-relaxed ${d ? 'text-white/45' : 'text-gray-500'}`}>{v.desc}</p>
                         </div>
                     ))}
                 </div>
 
-                {/* CTA strip */}
-                <div className={`flex items-center justify-between px-14 py-8 ${d ? 'border-b border-white/10' : 'border-b border-gray-200'}`}>
-                    <p className={`text-sm uppercase tracking-[0.3em] ${d ? 'text-white/40' : 'text-gray-400'}`}>
-                        Conocé la historia completa
-                    </p>
-                    <Link
-                        href="/quienes-somos"
-                        className={`inline-flex items-center gap-3 text-sm font-bold tracking-[0.15em] uppercase transition-colors ${d ? 'text-white hover:text-secundary' : 'text-gray-900 hover:text-secundary'}`}
-                    >
+                <div className={`flex items-center justify-between px-14 py-8 border-b ${d ? 'border-white/10' : 'border-gray-200'}`}>
+                    <p className={`text-sm uppercase tracking-[0.3em] ${d ? 'text-white/40' : 'text-gray-400'}`}>Conocé la historia completa</p>
+                    <Link href="/quienes-somos" className={`inline-flex items-center gap-3 text-sm font-bold tracking-[0.15em] uppercase transition-colors ${d ? 'text-white hover:text-secundary' : 'text-gray-900 hover:text-secundary'}`}>
                         Quiénes somos
                         <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="square">
                             <path d="M5 12h14M12 5l7 7-7 7" />

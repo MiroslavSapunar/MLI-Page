@@ -53,7 +53,7 @@ function ProposalCard({ proposal, index, isInView }: { proposal: Proposal; index
         <div
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className={`group relative p-8 md:p-10 rounded-3xl transition-all duration-700 transform bg-card ${
+            className={`group relative p-8 md:p-10 transition-all duration-700 transform bg-card ${
                 isInView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
             }`}
             style={{ transitionDelay: `${index * 120}ms` }}
@@ -64,7 +64,7 @@ function ProposalCard({ proposal, index, isInView }: { proposal: Proposal; index
             }`} />
 
             {/* Icon */}
-            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors duration-300 ${
+            <div className={`w-14 h-14 flex items-center justify-center transition-colors duration-300 ${
                 isHovered ? 'bg-secundary' : 'bg-gray-100 dark:bg-white/10'
             }`}>
                 <Image
@@ -100,7 +100,7 @@ export default function PropuestasPage() {
                         <span className="text-sm uppercase tracking-[0.3em] text-secundary">
                             Elecciones 2026
                         </span>
-                        <h1 className="mt-4 text-5xl md:text-7xl lg:text-8xl font-black leading-[0.95] text-body">
+                        <h1 className="mt-4 text-5xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.95] text-body">
                             Algunas
                             <br />
                             <span className="text-secundary">Propuestas</span>

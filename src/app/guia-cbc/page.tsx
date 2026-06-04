@@ -32,7 +32,7 @@ function GuiaItemCard({ item, isOpen, onToggle, isDark }: {
     isDark: boolean
 }) {
     return (
-        <div className={`rounded-xl overflow-hidden transition-all duration-300 ${isDark
+        <div className={`overflow-hidden transition-all duration-300 ${isDark
             ? 'bg-white/5 hover:bg-white/10 border border-white/10'
             : 'bg-white hover:bg-gray-50 border border-gray-200 shadow-sm'
             }`}>
@@ -67,7 +67,7 @@ function GuiaItemCard({ item, isOpen, onToggle, isDark }: {
                                         href={link.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-secundary text-white text-sm font-medium rounded-lg hover:bg-secundary/80 transition-colors"
+                                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-secundary text-white text-sm font-medium hover:bg-secundary/80 transition-colors"
                                     >
                                         {link.text}
                                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -264,7 +264,7 @@ export default function GuiaCbcPage() {
                             placeholder="Buscar... (ej: inscripción, parcial, beca)"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className={`w-full px-5 py-4 pl-12 rounded-xl text-lg transition-all duration-200 ${isDark
+                            className={`w-full px-5 py-4 pl-12 text-lg transition-all duration-200 ${isDark
                                 ? 'bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-secundary focus:bg-white/15'
                                 : 'bg-gray-100 text-gray-900 placeholder-gray-400 border border-gray-200 focus:border-secundary focus:bg-white'
                                 } outline-none`}
@@ -280,7 +280,7 @@ export default function GuiaCbcPage() {
                         {searchQuery && (
                             <button
                                 onClick={() => setSearchQuery('')}
-                                className={`absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-full ${isDark ? 'text-white/50 hover:text-white hover:bg-white/10' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-200'}`}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-body transition-colors"
                             >
                                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -322,7 +322,7 @@ export default function GuiaCbcPage() {
                                     }}
                                     onClick={() => scrollToSection(section.id)}
                                     disabled={!hasResults}
-                                    className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 ${isActive
+                                    className={`flex items-center gap-1.5 px-4 py-2 text-sm font-bold uppercase tracking-[0.1em] whitespace-nowrap transition-all duration-200 ${isActive
                                         ? 'bg-secundary text-white'
                                         : hasResults
                                             ? isDark
@@ -362,7 +362,7 @@ export default function GuiaCbcPage() {
                         </p>
                         <button
                             onClick={() => setSearchQuery('')}
-                            className="mt-4 px-6 py-2 bg-secundary text-white rounded-lg hover:bg-secundary/80 transition-colors"
+                            className="mt-4 px-6 py-2 bg-secundary text-white text-sm font-bold uppercase tracking-[0.1em] hover:bg-secundary/80 transition-colors"
                         >
                             Limpiar búsqueda
                         </button>
@@ -383,7 +383,7 @@ export default function GuiaCbcPage() {
                         href="https://www.instagram.com/mli.fiuba"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-secundary text-white font-semibold rounded-lg hover:bg-secundary/80 transition-colors"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-secundary text-white text-sm font-bold uppercase tracking-[0.12em] hover:bg-secundary/80 transition-colors"
                     >
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
@@ -400,7 +400,7 @@ export default function GuiaCbcPage() {
             {/* Scroll to Top Button */}
             <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className={`fixed bottom-6 right-6 p-3 rounded-full shadow-lg transition-all duration-300 ${isNavSticky ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+                className={`fixed bottom-6 right-6 p-3 shadow-lg transition-all duration-300 ${isNavSticky ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
                     } bg-secundary text-white hover:bg-secundary/80`}
                 aria-label="Scroll to top"
             >

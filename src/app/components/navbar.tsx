@@ -19,7 +19,7 @@ export default function NavBar() {
     }, []);
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 dark:bg-primary/90 backdrop-blur-md border-b border-gray-200 dark:border-white/10">
+        <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 dark:bg-primary/90 backdrop-blur-md border-b-2 border-secundary">
             <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
                 <Link href={homeHref} className="flex items-center gap-2 group">
                     <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1 text-gray-900 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -40,7 +40,7 @@ export default function NavBar() {
                         href="https://www.instagram.com/mli.fiuba"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 rounded-full transition-colors hover:bg-gray-100 dark:hover:bg-white/10"
+                        className="p-2 transition-colors hover:bg-gray-100 dark:hover:bg-white/10"
                     >
                         <Image
                             className="theme-invert w-5 h-5"

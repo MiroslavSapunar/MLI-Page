@@ -40,7 +40,7 @@ function SectionNum({ num }: { num: string }) {
 
 function StatBadge({ stat, label }: { stat: string; label: string }) {
     return (
-        <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-secundary/10 dark:bg-secundary/20">
+        <div className="inline-flex items-center gap-3 px-5 py-3 bg-secundary/10 dark:bg-secundary/20">
             <span className="text-2xl md:text-3xl font-black text-secundary">{stat}</span>
             <span className="text-sm text-subtle">{label}</span>
         </div>
@@ -53,7 +53,7 @@ function CollapsibleItem({ item, isOpen, onToggle }: {
     onToggle: () => void
 }) {
     return (
-        <div className="rounded-2xl overflow-hidden transition-colors bg-card hover:bg-gray-50 dark:hover:bg-white/[0.08]">
+        <div className="overflow-hidden transition-colors bg-card hover:bg-gray-50 dark:hover:bg-white/[0.08]">
             <button
                 onClick={onToggle}
                 className="w-full px-6 py-5 flex items-center justify-between text-left gap-4"
@@ -137,7 +137,7 @@ function LogroSectionComponent({ section, index, openItems, toggleItem }: {
                         {section.images.map((img, i) => (
                             <div
                                 key={i}
-                                className={`relative overflow-hidden rounded-2xl ${
+                                className={`relative overflow-hidden ${
                                     section.images!.length === 3 && i === 0 ? 'col-span-2 md:col-span-1' : ''
                                 }`}
                             >
@@ -168,7 +168,7 @@ function LogroSectionComponent({ section, index, openItems, toggleItem }: {
                 </div>
 
                 {section.callout && (
-                    <div className={`mt-8 p-6 md:p-8 rounded-2xl border-l-4 border-secundary max-w-4xl transform transition-all duration-700 delay-300 bg-secundary/5 dark:bg-secundary/10 ${
+                    <div className={`mt-8 p-6 md:p-8 border-l-4 border-secundary max-w-4xl transform transition-all duration-700 delay-300 bg-secundary/5 dark:bg-secundary/10 ${
                         sectionRef.isInView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                     }`}>
                         <p className="text-lg font-semibold leading-relaxed text-body">
@@ -180,7 +180,7 @@ function LogroSectionComponent({ section, index, openItems, toggleItem }: {
                 {section.stats && (
                     <div className={`mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 transform transition-all duration-700 delay-300 ${sectionRef.isInView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
                         {section.stats.map((s, i) => (
-                            <div key={i} className="p-6 rounded-2xl text-center bg-card">
+                            <div key={i} className="p-6 text-center bg-card border border-ui">
                                 <p className="text-3xl md:text-4xl font-black text-secundary">{s.value}</p>
                                 <p className="mt-2 text-sm text-faint">{s.label}</p>
                             </div>
@@ -306,7 +306,7 @@ export default function LogrosPage() {
                                         if (el) buttonRefs.current.set(section.id, el)
                                     }}
                                     onClick={() => scrollToSection(section.id)}
-                                    className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 ${
+                                    className={`px-4 py-2 text-sm font-medium uppercase tracking-[0.1em] whitespace-nowrap transition-all duration-200 ${
                                         isActive
                                             ? 'bg-secundary text-white'
                                             : 'bg-surface text-subtle hover:bg-gray-200 hover:text-body dark:hover:bg-white/10 dark:hover:text-white'

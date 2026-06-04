@@ -30,7 +30,7 @@ export default function CTASection({ title, subtitle, buttons }: CTASectionProps
                                 <a
                                     key={index}
                                     href={button.href}
-                                    className="inline-flex items-center gap-3 px-8 py-4 bg-secundary text-white font-semibold rounded-full hover:bg-secundary/90 transition-colors"
+                                    className="inline-flex items-center gap-3 px-8 py-4 bg-secundary text-white text-sm font-bold uppercase tracking-[0.12em] hover:opacity-90 transition-opacity"
                                 >
                                     {button.variant === 'guia' && (
                                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -54,7 +54,7 @@ export default function CTASection({ title, subtitle, buttons }: CTASectionProps
                                     href={button.href}
                                     target={button.variant === 'instagram' ? '_blank' : undefined}
                                     rel={button.variant === 'instagram' ? 'noopener noreferrer' : undefined}
-                                    className="inline-flex items-center gap-3 px-8 py-4 font-semibold rounded-full border-2 transition-colors border-gray-900 text-gray-900 hover:bg-gray-900/10 dark:border-white dark:text-white dark:hover:bg-white/10"
+                                    className="inline-flex items-center gap-3 px-8 py-4 border-2 text-sm font-bold uppercase tracking-[0.12em] transition-colors border-gray-900 text-gray-900 hover:bg-gray-900/10 dark:border-white dark:text-white dark:hover:bg-white/10"
                                 >
                                     {button.label}
                                     {button.variant === 'instagram' && (
