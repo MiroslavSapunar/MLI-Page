@@ -251,7 +251,7 @@ export default function Home() {
                 </div>
 
                 <div className={`flex items-center justify-between px-8 lg:px-14 py-8 border-b border-ui transition-all duration-700 delay-500 ${valuesSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    <p className="text-sm uppercase tracking-[0.3em] text-faint">Conocé la historia completa</p>
+                    <p className="text-sm uppercase tracking-[0.3em] text-faint">Que veinte años no es nada...</p>
                     <Link href="/quienes-somos" className="inline-flex items-center gap-3 text-sm font-bold tracking-[0.15em] uppercase transition-colors text-body hover:text-secundary">
                         Quiénes somos
                         <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="square">

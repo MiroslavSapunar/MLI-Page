@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 import { useTheme } from "@/context/ThemeContext"
 import { useInView } from "@/hooks/useInView"
@@ -59,24 +60,29 @@ function ProposalCard({ proposal, index, isInView }: { proposal: Proposal; index
             style={{ transitionDelay: `${index * 120}ms` }}
         >
             {/* Accent line */}
-            <div className={`absolute top-0 left-8 right-8 h-1 rounded-b-full transition-all duration-500 ${
+            <div className={`absolute top-0 left-0 right-0 h-[3px] transition-all duration-500 ${
                 isHovered ? 'bg-secundary' : 'bg-gray-200 dark:bg-white/10'
             }`} />
 
-            {/* Icon */}
-            <div className={`w-14 h-14 flex items-center justify-center transition-colors duration-300 ${
-                isHovered ? 'bg-secundary' : 'bg-gray-100 dark:bg-white/10'
-            }`}>
-                <Image
-                    src={proposal.icon}
-                    alt=""
-                    width={32}
-                    height={32}
-                    className={`w-8 h-8 transition-all duration-300 ${(!isDark && !isHovered) || (isDark && isHovered) ? 'invert' : ''}`}
-                />
+            {/* Number + Icon row */}
+            <div className="flex items-start justify-between mb-6">
+                <div className={`w-14 h-14 flex items-center justify-center transition-colors duration-300 ${
+                    isHovered ? 'bg-secundary' : 'bg-gray-100 dark:bg-white/10'
+                }`}>
+                    <Image
+                        src={proposal.icon}
+                        alt=""
+                        width={32}
+                        height={32}
+                        className={`w-8 h-8 transition-all duration-300 ${(!isDark && !isHovered) || (isDark && isHovered) ? 'invert' : ''}`}
+                    />
+                </div>
+                <span className="text-[11px] font-bold tracking-[0.4em] text-faint tabular-nums">
+                    {String(index + 1).padStart(2, '0')}
+                </span>
             </div>
 
-            <h3 className="mt-6 text-xl md:text-2xl font-bold leading-tight text-body">
+            <h3 className="text-xl md:text-2xl font-bold leading-tight text-body">
                 {proposal.title}
             </h3>
             <p className="mt-4 leading-relaxed text-subtle">
@@ -97,10 +103,13 @@ export default function PropuestasPage() {
             <section ref={heroRef.ref} className="pt-24 pb-16 px-8 lg:px-16">
                 <div className="max-w-7xl mx-auto">
                     <div className={`transform transition-all duration-700 ${heroRef.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                        <span className="text-sm uppercase tracking-[0.3em] text-secundary">
-                            Elecciones 2026
-                        </span>
-                        <h1 className="mt-4 text-5xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.95] text-body">
+                        <div className="flex items-center gap-4 mb-6">
+                            <div className="w-8 h-[2px] bg-secundary" />
+                            <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-secundary">
+                                {proposals.length} propuestas · Elecciones 2026
+                            </span>
+                        </div>
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.95] text-body">
                             Algunas
                             <br />
                             <span className="text-secundary">Propuestas</span>
@@ -127,14 +136,29 @@ export default function PropuestasPage() {
                 </div>
             </section>
 
-            <section className="px-8 lg:px-16 pb-20">
-                <div className="max-w-7xl mx-auto text-center">
-                    <p className="text-3xl md:text-5xl font-black text-body">
-                        Lista <span className="text-secundary">417</span>
-                    </p>
-                    <p className="mt-4 text-xl md:text-2xl font-bold italic text-faint">
-                        La voluntad de hacerlo nosotros
-                    </p>
+            <section className="border-t-4 border-body">
+                <div className="max-w-7xl mx-auto px-8 lg:px-16 py-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                    <div>
+                        <div className="flex items-center gap-4 mb-4">
+                            <div className="w-8 h-[2px] bg-secundary" />
+                            <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-secundary">Elecciones 2026</span>
+                        </div>
+                        <p className="text-5xl md:text-7xl font-black uppercase leading-[0.9] text-body">
+                            Lista <span className="text-secundary">417</span>
+                        </p>
+                        <p className="mt-4 text-lg text-muted max-w-sm">
+                            La voluntad de hacerlo nosotros
+                        </p>
+                    </div>
+                    <Link
+                        href="/logros"
+                        className="inline-flex items-center gap-3 px-7 py-3 border-2 border-body text-body text-sm font-bold uppercase tracking-[0.12em] hover:bg-body hover:text-page transition-colors self-start md:self-end"
+                    >
+                        Ver nuestro trabajo
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="square">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </Link>
                 </div>
             </section>
 

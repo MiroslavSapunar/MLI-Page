@@ -59,7 +59,7 @@ function CollapsibleItem({ item, isOpen, onToggle }: {
                 className="w-full px-6 py-5 flex items-center justify-between text-left gap-4"
             >
                 <div className="flex items-center gap-4 min-w-0">
-                    <div className="w-1 h-8 rounded-full flex-shrink-0 bg-secundary/30 dark:bg-secundary/40" />
+                    <div className="w-[3px] h-8 flex-shrink-0 bg-secundary/40 dark:bg-secundary/60" />
                     <h3 className="text-lg md:text-xl font-bold text-body">
                         {item.title}
                     </h3>
@@ -114,7 +114,7 @@ function LogroSectionComponent({ section, index, openItems, toggleItem }: {
                                 {section.subtitle}
                             </p>
                         )}
-                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] text-body">
+                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase leading-[1.05] text-body">
                             {section.title}
                             <br />
                             <span className="text-secundary">{section.titleAccent}</span>
@@ -284,6 +284,20 @@ export default function LogrosPage() {
                         <p className="mt-6 text-xl max-w-2xl text-muted">
                             Dos años de gestión con resultados concretos. Desde el comedor hasta el Consejo Directivo, representando a todos los fiubenses.
                         </p>
+
+                        {/* Stats strip */}
+                        {/* <div className="mt-10 grid grid-cols-3 border-t border-ui max-w-2xl">
+                            {[
+                                { v: '32.12%', l: 'Votos 2026' },
+                                { v: '1ra',    l: 'Fuerza en Consejo' },
+                                { v: '20+',    l: 'Años de gestión' },
+                            ].map(({ v, l }, i) => (
+                                <div key={i} className={`pt-6 ${i > 0 ? 'pl-8 border-l border-ui' : ''}`}>
+                                    <div className="text-3xl font-black text-secundary">{v}</div>
+                                    <div className="mt-1 text-xs uppercase tracking-[0.2em] text-faint">{l}</div>
+                                </div>
+                            ))}
+                        </div> */}
                     </div>
                 </div>
             </section>
