@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MLI — Movimiento Linealmente Independiente
 
-## Getting Started
+Website for MLI, a student organization at FIUBA (Facultad de Ingeniería, Universidad de Buenos Aires). Landing page, a searchable student guide, an organization history page, and an archive of the 2024 election.
 
-First, run the development server:
+All user-facing content is in Rioplatense Spanish.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · Yarn
+
+## Layout
+
+```
+src/app/
+├── components/          Reusable components (navbar, shared UI)
+├── context/
+│   └── ThemeContext.tsx Dark/light state, persisted to localStorage
+├── guia/                Student guide — search + FAQ
+├── quienes-somos/       History and timeline
+├── elecciones-2024/     Election archive
+├── globals.css          Tailwind theme (@theme syntax)
+├── layout.tsx           Root layout
+└── page.tsx             Landing
+src/data/
+├── achievements.json    Achievements, externalized from the components
+└── guia.json            Student guide content, 12 sections
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Notable bits
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Accent-insensitive search** in `/guia` — queries are NFD-normalized before matching, so `ingenieria` finds `Ingeniería`.
+- **Content lives in JSON, not JSX.** The guide and achievements are data files, so they can be edited without touching components.
+- **Dark mode is the default**, driven by a context hook rather than Tailwind's `dark:` variant, because the palette inverts rather than shifts.
+- Scroll-reveal animations via an `useInView` hook.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Running it
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+yarn install
+yarn dev      # http://localhost:3000
+yarn build    # production build
+yarn lint
+```
