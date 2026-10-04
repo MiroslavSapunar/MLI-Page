@@ -4,3 +4,4 @@ node_modules/
 
 # Local agent instructions
 CLAUDE.md
+*.tsbuildinfo

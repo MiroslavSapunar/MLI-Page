@@ -12,12 +12,6 @@
   --color-gray-light: #d1d5db;
   --color-gray-dark: #1f2937;
 
-  --color-election-mli: #f9423a;
-  --color-election-libres: #FFD700;
-  --color-election-estudiantil: #FF8C00;
-  --color-election-gradiente: #22C55E;
-  --color-election-proyecto: #87CEEB;
-
   /* Font families — CSS vars injected by next/font/google in layout.tsx */
   --font-family-sans: var(--font-roboto), Roboto, sans-serif;
   --font-family-roboto: var(--font-roboto), Roboto, sans-serif;
