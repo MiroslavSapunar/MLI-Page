@@ -28,7 +28,7 @@ src/data/                     Guide and achievements content (JSON)
 
 - **Accent-insensitive search** in `/guia` — queries are NFD-normalized before matching, so `ingenieria` finds `Ingeniería`.
 - **Content lives in JSON, not JSX.** The guides and achievements are data files, so they can be edited without touching components.
-- **Dark mode is the default**, set as `data-theme` on `<html>`; style with the semantic classes in `globals.css` (`bg-page`, `text-muted`…) or `dark:`.
+- **Light mode is the default**, set as `data-theme` on `<html>`; style with the semantic classes in `globals.css` (`bg-page`, `text-muted`…) or `dark:`.
 - Scroll-reveal animations via an `useInView` hook.
 
 ## Running it

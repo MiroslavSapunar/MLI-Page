@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Dark mode driven by data-theme="dark" on <html> (set by ThemeContext) */
+/* Dark mode driven by data-theme="dark" on <html> (set by themeScript / ThemeContext) */
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
@@ -13,10 +13,9 @@
   --color-gray-dark: #1f2937;
 
   /* Font families — CSS vars injected by next/font/google in layout.tsx */
-  --font-family-sans: var(--font-roboto), Roboto, sans-serif;
-  --font-family-roboto: var(--font-roboto), Roboto, sans-serif;
-  --font-family-montserrat: var(--font-montserrat), Montserrat, sans-serif;
-  --font-family-serif: Merriweather, serif;
+  --font-sans: var(--font-roboto), Roboto, sans-serif;
+  --font-heading: var(--font-montserrat), Montserrat, sans-serif;
+  --font-mono: var(--font-roboto-mono), ui-monospace, monospace;
 }
 
 /* ── Theme tokens ──────────────────────────────────────────────────────────
@@ -33,6 +32,7 @@
   --theme-text-faint:    #9ca3af;
   --theme-text-num:      #d1d5db;
   --theme-border:        #e5e7eb;
+  --theme-grid:          rgba(16, 24, 32, 0.07);
   --timeline-dot-border: #fafafa;
 }
 
@@ -47,6 +47,7 @@
   --theme-text-faint:    rgba(255, 255, 255, 0.4);
   --theme-text-num:      rgba(255, 255, 255, 0.1);
   --theme-border:        rgba(255, 255, 255, 0.1);
+  --theme-grid:          rgba(255, 255, 255, 0.055);
   --timeline-dot-border: #101820;
 }
 
@@ -68,6 +69,73 @@
 /* Invert images/icons for dark mode (e.g. dark SVG logos) */
 .theme-invert        { filter: none; }
 [data-theme="dark"] .theme-invert { filter: invert(1); }
+
+/* ── Landing motifs ─────────────────────────────────────────────────────
+   Graph paper, "+" registration marks, matrix brackets, self-drawing
+   vectors (paths need pathLength="1"), duotone photos.
+   ─────────────────────────────────────────────────────────────────────── */
+.graph-paper {
+  background-image:
+    linear-gradient(var(--theme-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--theme-grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: -1px -1px;
+}
+
+.crosshair {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  margin: -5px 0 0 -5px;
+  pointer-events: none;
+}
+.crosshair::before,
+.crosshair::after {
+  content: '';
+  position: absolute;
+  background: var(--theme-text-faint);
+}
+.crosshair::before { left: 5px; top: 0; width: 1px; height: 11px; }
+.crosshair::after  { top: 5px; left: 0; height: 1px; width: 11px; }
+
+.matrix {
+  position: relative;
+  padding-inline: 0.75em;
+}
+.matrix::before,
+.matrix::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0.4em;
+  border: 2px solid currentColor;
+}
+.matrix::before { left: 0; border-right: none; }
+.matrix::after  { right: 0; border-left: none; }
+
+@keyframes draw { from { stroke-dashoffset: 1; } }
+.draw {
+  stroke-dasharray: 1;
+  animation: draw 900ms cubic-bezier(.6, 0, .2, 1) both;
+}
+
+/* Grayscale photo with shadows lifted to primary; overlay content needs z-10 */
+.duotone {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #101820;
+}
+.duotone img { filter: grayscale(1) contrast(1.15); }
+.duotone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #101820;
+  mix-blend-mode: lighten;
+  pointer-events: none;
+}
 
 /* ── Global heading font ─────────────────────────────────────────────────
    Montserrat for headings; Roboto for body.
@@ -113,7 +181,7 @@ h1, h2, h3, h4, h5, h6 {
 .enter-left { animation: enter-left 700ms ease-out both; }
 .enter-up   { animation: enter-up 500ms ease-out both; }
 @media (prefers-reduced-motion: reduce) {
-  .enter-left, .enter-up { animation: none; }
+  .enter-left, .enter-up, .draw { animation: none; }
 }
 
 .scrollbar-hide {

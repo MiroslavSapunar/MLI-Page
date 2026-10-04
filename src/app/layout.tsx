@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Roboto, Montserrat } from "next/font/google";
+import { Roboto, Montserrat, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { themeInitScript } from "@/context/themeScript";
@@ -15,6 +15,13 @@ const montserrat = Montserrat({
   weight: ['600', '700', '800', '900'],
   subsets: ['latin'],
   variable: '--font-montserrat',
+  display: 'swap',
+})
+
+const robotoMono = Roboto_Mono({
+  weight: ['400', '500'],
+  subsets: ['latin'],
+  variable: '--font-roboto-mono',
   display: 'swap',
 })
 
@@ -56,11 +63,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" data-theme="dark" className={`${roboto.variable} ${montserrat.variable}`} suppressHydrationWarning>
+    <html lang="es" data-theme="light" className={`${roboto.variable} ${montserrat.variable} ${robotoMono.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="font-roboto bg-page">
+      <body className="bg-page">
         <ThemeProvider>
           {children}
         </ThemeProvider>

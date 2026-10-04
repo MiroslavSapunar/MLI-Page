@@ -12,8 +12,8 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 // The source of truth is data-theme on <html>; React only mirrors it
 const listeners = new Set<() => void>()
 const subscribe = (cb: () => void) => { listeners.add(cb); return () => { listeners.delete(cb) } }
-const getSnapshot = () => document.documentElement.dataset.theme !== 'light'
-const getServerSnapshot = () => true
+const getSnapshot = () => document.documentElement.dataset.theme === 'dark'
+const getServerSnapshot = () => false
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
     const isDark = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)

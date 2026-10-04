@@ -1,10 +1,10 @@
 'use client'
-import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useInView } from "@/hooks/useInView"
 import NavBar from "../components/navbar"
 import CTASection from '../components/CTASection'
+import { PageHero, Corners, ColumnVector, Arrow, frame, gutter, kicker, reveal, btnSecondary } from '../components/base'
 
 interface Proposal {
     title: string
@@ -45,120 +45,55 @@ const proposals: Proposal[] = [
     },
 ]
 
-function ProposalCard({ proposal, index, isInView }: { proposal: Proposal; index: number; isInView: boolean }) {
-    const [isHovered, setIsHovered] = useState(false)
-
-    return (
-        <div
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className={`group relative p-8 md:p-10 transition-all duration-700 transform bg-card ${
-                isInView ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-            }`}
-            style={{ transitionDelay: `${index * 120}ms` }}
-        >
-            {/* Accent line */}
-            <div className={`absolute top-0 left-0 right-0 h-[3px] transition-all duration-500 ${
-                isHovered ? 'bg-secundary' : 'bg-gray-200 dark:bg-white/10'
-            }`} />
-
-            {/* Number + Icon row */}
-            <div className="flex items-start justify-between mb-6">
-                <div className={`w-14 h-14 flex items-center justify-center border-2 transition-colors duration-300 ${
-                    isHovered ? 'border-secundary' : 'border-ui'
-                }`}>
-                    <Image
-                        src={proposal.icon}
-                        alt=""
-                        width={36}
-                        height={36}
-                        className="w-9 h-9 transition-all duration-300 theme-invert"
-                    />
-                </div>
-                <span className={`text-[11px] font-bold tracking-[0.4em] tabular-nums transition-colors duration-300 ${
-                    isHovered ? 'text-secundary' : 'text-faint'
-                }`}>
-                    {String(index + 1).padStart(2, '0')}
-                </span>
-            </div>
-
-            <h3 className="text-xl md:text-2xl font-bold leading-tight text-body">
-                {proposal.title}
-            </h3>
-            <p className="mt-4 leading-relaxed text-subtle">
-                {proposal.text}
-            </p>
-        </div>
-    )
-}
-
 export default function PropuestasPage() {
-    const { observe: heroViewObserve, isInView: heroViewInView } = useInView()
-    const { observe: gridViewObserve, isInView: gridViewInView } = useInView(0.1)
+    const { observe, isInView } = useInView(0.1)
 
     return (
-        <div className="min-h-screen transition-colors duration-500 bg-page">
+        <div className="min-h-screen bg-page">
             <NavBar />
 
-            <section ref={heroViewObserve} className="pt-24 pb-16 px-8 lg:px-16">
-                <div className="max-w-7xl mx-auto">
-                    <div className={`transform transition-all duration-700 ${heroViewInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="w-8 h-[2px] bg-secundary" />
-                            <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-secundary">
-                                {proposals.length} propuestas · Elecciones 2026
-                            </span>
-                        </div>
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.95] text-body">
-                            Algunas
-                            <br />
-                            <span className="text-secundary">Propuestas</span>
-                        </h1>
-                        <p className="mt-6 text-xl max-w-2xl text-muted">
-                            La voluntad de hacerlo nosotros.
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <PageHero
+                label={`${proposals.length} propuestas · Elecciones 2026`}
+                title={['Algunas', 'propuestas']}
+                lead="La voluntad de hacerlo nosotros."
+            />
 
-            <section ref={gridViewObserve} className="pb-20 px-8 lg:px-16">
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <section ref={observe} className="border-b border-ui">
+                <div className={frame}>
+                    <Corners />
+                    <ol className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--theme-border)] border-b border-ui">
                         {proposals.map((proposal, index) => (
-                            <ProposalCard
-                                key={proposal.title}
-                                proposal={proposal}
-                                index={index}
-                                isInView={gridViewInView}
-                            />
+                            <li key={proposal.title} className={`group bg-page ${gutter} md:px-8 lg:px-10 py-10`}>
+                                <div className={reveal(isInView)} style={{ transitionDelay: `${index * 100}ms` }}>
+                                <div className="flex items-start justify-between">
+                                    <span className="w-14 h-14 flex items-center justify-center border border-ui group-hover:border-secundary transition-colors">
+                                        <Image src={proposal.icon} alt="" width={36} height={36} className="w-9 h-9 theme-invert" />
+                                    </span>
+                                    <span className="font-mono text-xs text-faint group-hover:text-secundary transition-colors">
+                                        {String(index + 1).padStart(2, '0')}
+                                    </span>
+                                </div>
+                                <h3 className="mt-6 text-xl font-black uppercase leading-tight tracking-tight text-body">{proposal.title}</h3>
+                                <p className="mt-3 leading-relaxed text-subtle">{proposal.text}</p>
+                                <div className="mt-6 h-[2px] w-8 bg-secundary transition-all duration-500 group-hover:w-full" />
+                                </div>
+                            </li>
                         ))}
-                    </div>
-                </div>
-            </section>
+                    </ol>
 
-            <section className="border-t-4 border-body">
-                <div className="max-w-7xl mx-auto px-8 lg:px-16 py-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-                    <div>
-                        <div className="flex items-center gap-4 mb-4">
-                            <div className="w-8 h-[2px] bg-secundary" />
-                            <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-secundary">Elecciones 2026</span>
+                    <div className={`${gutter} py-12 lg:py-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8`}>
+                        <div className="flex items-center gap-6">
+                            <ColumnVector digits="MLI" className="text-body text-2xl sm:text-3xl" />
+                            <div>
+                                <p className={`${kicker} text-secundary`}>Elecciones 2026</p>
+                                <p className="mt-2 text-4xl sm:text-6xl font-black uppercase leading-[0.9] tracking-[-0.02em] text-body">Lista 417</p>
+                                <p className="mt-3 text-lg text-muted">La voluntad de hacerlo nosotros</p>
+                            </div>
                         </div>
-                        <p className="text-5xl md:text-7xl font-black uppercase leading-[0.9] text-body">
-                            Lista <span className="text-secundary">417</span>
-                        </p>
-                        <p className="mt-4 text-lg text-muted max-w-sm">
-                            La voluntad de hacerlo nosotros
-                        </p>
+                        <Link href="/logros" className={`${btnSecondary} self-start md:self-end`}>
+                            Ver nuestro trabajo <Arrow />
+                        </Link>
                     </div>
-                    <Link
-                        href="/logros"
-                        className="inline-flex items-center gap-3 px-7 py-3 border-2 border-body text-body text-sm font-bold uppercase tracking-[0.12em] hover:bg-body hover:text-page transition-colors self-start md:self-end"
-                    >
-                        Ver nuestro trabajo
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="square">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </Link>
                 </div>
             </section>
 

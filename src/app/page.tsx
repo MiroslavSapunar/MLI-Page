@@ -1,303 +1,276 @@
 'use client'
+// "Base canónica": graph paper, basis vectors, matrices; red only on vectors / active state.
+// One duotone photo band carries the movement side.
 import Link from 'next/link'
+import Image from 'next/image'
 import { useInView } from "@/hooks/useInView"
 import NavBar from './components/navbar'
+import { frame, gutter, kicker, reveal, btnPrimary, btnSecondary, textLink, Arrow, Corners, ColumnVector, SectionHead } from './components/base'
+import clasePublica from '../../public/Clase publica calle1.jpeg'
+
+const sections = [
+    { id: 'inicio', label: 'Inicio' },
+    { id: 'nosotros', label: 'Nosotros' },
+    { id: 'valores', label: 'Valores' },
+    { id: 'guias', label: 'Guías' },
+]
+
+const stats = [
+    { value: '20+', label: 'Años de historia' },
+    { value: '32.12%', label: 'Votos 2026' },
+    { value: '100%', label: 'Fiubenses' },
+    { value: '1ra fuerza', label: 'Mayoría estudiantil' },
+]
+
+const trabajos = [
+    { title: 'Nuevos planes de estudio 2020', stat: '8 carreras', desc: 'Actualizamos todas las carreras de FIUBA, algunas con 35 años de antigüedad.' },
+    { title: 'Comedor del CEI', stat: 'Lu-Vi 9:00 a 21:30', desc: 'Un servicio completo, económico y de calidad, funcionando cuatrimestre a cuatrimestre.' },
+    { title: 'Materias promocionables', stat: '56% aprobados', desc: 'Impulsamos la cursada piloto de Álgebra II sin final: mismos temas, misma exigencia con aprobación directa en parciales.' },
+    { title: 'Modernización de trámites y plazos', stat: '72hs → 48hs', desc: 'Redujimos plazos, simplificamos certificados y automatizamos equivalencias.' },
+]
+
+const valores = [
+    { title: 'Independencia', desc: 'No respondemos a partidos políticos, intereses económicos ni funcionarios. Nuestro compromiso es lograr una mejor FIUBA cada día.' },
+    { title: 'Estudiantes como vos', desc: 'Somos fiubenses, conocemos los (a veces infinitos) baches de la facu, por eso nos organizamos para lograr los cambios que necesitamos.' },
+    { title: 'Resultados concretos', desc: '20 años transformando la facultad: más cursos en materias colapsadas, mejoras edilicias y los planes de estudio 2020. Y seguimos sumando.' },
+]
+
+const guias = [
+    { href: '/guia', label: 'Guía del Estudiante Fiubense', sub: 'Tus derechos y trámites en FIUBA' },
+    { href: '/guia-cbc', label: 'Guía del Estudiante del CBC', sub: 'Tu primer año en la UBA' },
+    { href: 'https://www.instagram.com/mli.fiuba', label: 'Escribinos al Instagram', sub: '@mli.fiuba', external: true },
+]
+
+// Two collinear vectors and one that leaves their span — the name, drawn
+function Figure() {
+    return (
+        <figure className="enter-up" style={{ animationDelay: '250ms' }}>
+            <svg viewBox="0 0 320 240" className="w-full h-auto" role="img" aria-label="Tres vectores: v₁ y v₂ alineados, v₃ fuera de su recta">
+                <defs>
+                    <marker id="tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" className="text-faint">
+                        <path d="M0 0L10 5L0 10z" fill="currentColor" />
+                    </marker>
+                    <marker id="tip-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" className="text-secundary">
+                        <path d="M0 0L10 5L0 10z" fill="currentColor" />
+                    </marker>
+                </defs>
+                <g className="text-faint" stroke="currentColor" strokeWidth="1">
+                    <line x1="20" y1="192" x2="306" y2="192" />
+                    <line x1="48" y1="228" x2="48" y2="14" />
+                </g>
+                <line x1="16" y1="200" x2="312" y2="126" className="text-faint" stroke="currentColor" strokeWidth="1" strokeDasharray="3 4" />
+                <g className="text-muted" stroke="currentColor" strokeWidth="2.5" fill="none">
+                    <path d="M48 192L232 146" pathLength={1} className="draw" style={{ animationDelay: '500ms' }} markerEnd="url(#tip)" />
+                    <path d="M48 192L136 170" pathLength={1} className="draw" style={{ animationDelay: '350ms' }} markerEnd="url(#tip)" />
+                </g>
+                <path d="M48 192L150 42" pathLength={1} className="draw text-secundary" stroke="currentColor" strokeWidth="3.5" fill="none" style={{ animationDelay: '800ms' }} markerEnd="url(#tip-red)" />
+                <g className="font-mono text-[12px]" fill="currentColor">
+                    <text x="128" y="190" className="text-muted">v₁</text>
+                    <text x="226" y="166" className="text-muted">v₂</text>
+                    <text x="158" y="44" className="text-secundary font-medium">v₃</text>
+                </g>
+            </svg>
+            <figcaption className="mt-3 font-mono text-[11px] uppercase tracking-[0.15em] text-faint">
+                Fig. 1 — v₃ ∉ gen{'{'}v₁, v₂{'}'}
+            </figcaption>
+        </figure>
+    )
+}
 
 export default function Home() {
-    const { observe: aboutSectionObserve, isInView: aboutSectionInView } = useInView()
-    const { observe: valuesSectionObserve, isInView: valuesSectionInView } = useInView()
-    const { observe: ctaSectionObserve, isInView: ctaSectionInView } = useInView()
+    const { observe: aboutObserve, isInView: aboutInView } = useInView(0.15)
+    const { observe: valuesObserve, isInView: valuesInView } = useInView(0.15)
+    const { observe: guiasObserve, isInView: guiasInView } = useInView(0.15)
 
     return (
-        <div className="min-h-screen transition-colors duration-500 bg-page">
+        <div className="min-h-screen bg-page">
             <NavBar />
 
-            {/* ── Side dots – Desktop ── */}
+            {/* ── Side index – Desktop ── */}
             <nav className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-4">
-                {['Inicio', 'Nosotros', 'Valores', 'Guías'].map((item, i) => (
-                    <a href={`#${item}`} key={i} title={item}>
-                        <div className="w-2 h-2 rounded-full transition-all duration-300 cursor-pointer bg-gray-300 hover:bg-gray-900 dark:bg-white/30 dark:hover:bg-white" />
+                {sections.map(({ id, label }) => (
+                    <a href={`#${id}`} key={id} title={label} className="group flex items-center">
+                        <span className="w-2 h-2 transition-colors bg-gray-300 group-hover:bg-secundary dark:bg-white/30" />
                     </a>
                 ))}
             </nav>
 
-            {/* ── Bottom nav – Mobile ── */}
-            <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 lg:hidden flex gap-1 px-4 py-2 backdrop-blur-xl bg-gray-900/10 dark:bg-white/10">
-                {['Inicio', 'Nosotros', 'Valores', 'Guías'].map((item, i) => (
+            {/* ── Bottom index – Mobile ── */}
+            <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 lg:hidden flex border border-ui bg-page/80 backdrop-blur-xl">
+                {sections.map(({ id, label }) => (
                     <a
-                        href={`#${item}`}
-                        key={i}
-                        className="px-3 py-1.5 text-xs font-medium uppercase tracking-[0.1em] transition-colors text-gray-700 hover:bg-gray-900/20 hover:text-gray-900 dark:text-white/70 dark:hover:bg-white/20 dark:hover:text-white"
+                        href={`#${id}`}
+                        key={id}
+                        className="px-3 py-2 font-mono text-[11px] uppercase tracking-[0.1em] text-muted hover:text-body hover:bg-surface transition-colors"
                     >
-                        {item}
+                        {label}
                     </a>
                 ))}
             </nav>
 
-            {/* ══ Hero — Swiss Grid 3-col ══ */}
-            <section id="Inicio" className="pt-11 min-h-screen flex flex-col">
-
-                {/* Three-column grid — block on mobile, 3-col grid on desktop */}
-                <div
-                    className="flex-1 block lg:grid"
-                    style={{ gridTemplateColumns: '3rem 1fr 38%', minHeight: 'calc(100vh - 2.75rem - 3rem)' }}
-                >
-                    {/* Sidebar – vertical labels */}
-                    <div className="border-r border-ui hidden lg:flex flex-col justify-between items-center py-14">
-                        <span
-                            style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', letterSpacing: '0.35em' }}
-                            className="text-[10px] uppercase font-medium text-faint"
-                        >
-                            Desde 2005
-                        </span>
-                        <span
-                            style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', letterSpacing: '0.35em' }}
-                            className="text-[10px] uppercase font-medium text-faint"
-                        >
-                            Facultad de Ingeniería · UBA
-                        </span>
-                    </div>
-
-                    {/* Main content */}
-                    <div className="flex flex-col justify-center px-8 lg:px-14 py-20 min-w-0 overflow-hidden">
-                        <div className="enter-left">
-                            <div className="flex items-center gap-4 mb-7">
-                                <div className="w-8 h-[2px] bg-secundary" />
-                                <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-secundary">Lista 417</span>
+            {/* ══ Hero ══ */}
+            <section id="inicio" className="pt-11 graph-paper border-b border-ui">
+                <div className={frame}>
+                    <Corners />
+                    <div className={`${gutter} pt-10 pb-12 lg:py-20 grid gap-12 lg:grid-cols-12 lg:items-center`}>
+                        <div className="lg:col-span-7 enter-left">
+                            <div className={`flex items-center gap-4 ${kicker} text-subtle`}>
+                                <ColumnVector digits="MLI" className="text-body text-sm" />
+                                <span className="flex flex-col gap-1">
+                                    <span className="text-body">Lista 417</span>
+                                    <span>Facultad de Ingeniería · UBA</span>
+                                    <span>Desde 2005</span>
+                                </span>
                             </div>
 
-                            <h1
-                                className="font-black uppercase leading-[0.80] tracking-[-0.02em] text-body"
-                                style={{ fontSize: 'clamp(2.6rem, 6vw, 6rem)' }}
-                            >
-                                MOVIMIENTO<br />
-                                LINEALMENTE<br />
-                                <span className="text-secundary">INDEPENDIENTE</span>
+                            <h1 className="mt-8 font-black uppercase leading-[0.88] tracking-[-0.03em] text-body text-[clamp(2rem,8.6vw,4.5rem)] lg:text-[min(4.3vw,4.5rem)]">
+                                <span className="block">Movimiento</span>
+                                <span className="block">Linealmente</span>
+                                <span className="block">Independiente</span>
                             </h1>
 
-                            <div className="mt-9 pt-7 border-t border-ui">
-                                <p className="text-lg max-w-md leading-relaxed text-muted">
-                                    Agrupación estudiantil independiente de FIUBA.<br />
+                            <p className="mt-8 max-w-md text-lg leading-relaxed text-muted">
+                                Agrupación estudiantil independiente de FIUBA.
+                                <span className="block mt-1 font-heading text-xl sm:text-2xl font-black uppercase leading-tight tracking-tight text-body">
                                     20 años transformando la facultad.
-                                </p>
-                            </div>
+                                </span>
+                            </p>
 
-                            <div className="mt-9 flex flex-wrap gap-3">
-                                <Link
-                                    href="/propuestas"
-                                    className="inline-flex items-center gap-3 px-7 py-3 bg-secundary text-white text-sm font-bold uppercase tracking-[0.12em] hover:opacity-90 transition-opacity"
-                                >
-                                    Propuestas
-                                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="square">
-                                        <path d="M5 12h14M12 5l7 7-7 7" />
-                                    </svg>
+                            <div className="mt-8 flex flex-wrap gap-3">
+                                <Link href="/propuestas" className={btnPrimary}>
+                                    Propuestas <Arrow />
                                 </Link>
-                                <Link
-                                    href="/logros"
-                                    className="inline-flex items-center gap-3 px-7 py-3 border-2 border-body text-body text-sm font-bold uppercase tracking-[0.12em] hover:bg-body hover:text-page transition-colors"
-                                >
-                                    Nuestro Trabajo
+                                <Link href="/logros" className={btnSecondary}>
+                                    Nuestro trabajo
                                 </Link>
-                                <a
-                                    href="#Guías"
-                                    className="inline-flex items-center gap-3 px-7 py-3 border border-ui text-muted text-sm font-medium uppercase tracking-[0.1em] hover:border-body hover:text-body transition-colors"
-                                >
-                                    Guías
-                                </a>
                             </div>
+                        </div>
+
+                        <div className="lg:col-span-5">
+                            <Figure />
                         </div>
                     </div>
 
-                    {/* Stats panel — 2×2 hard grid */}
-                    <div
-                        className="border-l overflow-hidden min-w-0 border-ui hidden lg:grid"
-                        style={{ gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr' }}
-                    >
-                        {[
-                            { v: '20+',    l: 'Años de historia',   red: false },
-                            { v: '32.12%',    l: 'Votos 2026',         red: false },
-                            { v: '100%',    l: 'FIUBENSES',   red: false },
-                            { v: '1ra Fuerza',    l: 'Mayoría Estudiantil',         red: true  },
-                        ].map(({ v, l, red }, i) => (
-                            <div
-                                key={i}
-                                className={`flex flex-col justify-end p-7 min-w-0 overflow-hidden enter-up ${red ? 'bg-secundary' : ''
-                                    } ${i === 1 || i === 3 ? 'border-l border-ui' : ''
-                                    } ${i === 2 || i === 3 ? 'border-t border-ui' : ''}`}
-                                style={{ animationDelay: `${200 + i * 80}ms` }}
-                            >
-                                <span className={`text-5xl font-black leading-none ${red ? 'text-white' : 'text-secundary'}`}>{v}</span>
-                                <span className={`mt-2 text-[11px] font-medium uppercase tracking-[0.25em] truncate ${red ? 'text-white/70' : 'text-faint'}`}>{l}</span>
-                            </div>
-                        ))}
+                    {/* Stats as a matrix */}
+                    <div className={`${gutter} pb-12 lg:pb-16`}>
+                        <div className="matrix text-faint enter-up" style={{ animationDelay: '400ms' }}>
+                            <dl className="grid grid-cols-2 lg:grid-cols-4 gap-6 py-4">
+                                {stats.map(s => (
+                                    <div key={s.label} className="min-w-0 flex flex-col">
+                                        <dt className="order-2 mt-2 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-subtle truncate">{s.label}</dt>
+                                        <dd className="order-1 font-heading text-3xl sm:text-4xl lg:text-5xl font-black leading-none text-body tabular-nums">{s.value}</dd>
+                                    </div>
+                                ))}
+                            </dl>
+                        </div>
                     </div>
-                </div>
-
-                {/* Bottom nav strip */}
-                <div className="h-12 flex items-center justify-between px-6 border-t border-ui">
-                    <div className="flex gap-8">
-                        {['Inicio', 'Nosotros', 'Valores', 'Logros', 'Guías'].map(item => (
-                            <a key={item} href={`#${item}`} className="text-[11px] uppercase tracking-[0.28em] transition-colors text-faint hover:text-body hidden sm:block">
-                                {item}
-                            </a>
-                        ))}
-                    </div>
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-faint hidden sm:block">Buenos Aires</span>
                 </div>
             </section>
 
-            {/* ══ About Section ══ */}
-            <section id="Nosotros" ref={aboutSectionObserve} className="border-t-4 border-body">
-                <div className={`flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${aboutSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    <span className="text-[5rem] lg:text-[8rem] font-black leading-none select-none text-num">01</span>
-                    <div className="lg:pb-2">
-                        <div className="flex items-center gap-3 mb-2">
-                            <div className="w-6 h-[2px] bg-secundary" />
-                            <span className="text-[11px] font-bold tracking-[0.45em] uppercase text-secundary">Nosotros</span>
-                        </div>
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-tight text-body">
-                            La voz de los<br /><span className="text-secundary">estudiantes</span>
-                        </h2>
-                    </div>
-                </div>
-
-                <div className={`grid lg:grid-cols-12 border-b border-ui transition-all duration-700 delay-200 ${aboutSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    {/* Left — identity text */}
-                    <div className="lg:col-span-5 px-8 lg:px-14 py-10 border-b lg:border-b-0 lg:border-r border-ui flex flex-col justify-between">
-                        <div>
-                            <p className="text-xl leading-relaxed text-muted">
+            {/* ══ Nosotros ══ */}
+            <section id="nosotros" ref={aboutObserve} className="scroll-mt-11 border-b border-ui">
+                <div className={frame}>
+                    <Corners />
+                    <SectionHead n={1} label="Nosotros" isInView={aboutInView}>La voz de los estudiantes</SectionHead>
+                    <div className={`grid lg:grid-cols-12 ${reveal(aboutInView)} delay-150`}>
+                        <div className={`lg:col-span-5 ${gutter} lg:pr-10 py-10 lg:border-r border-ui flex flex-col justify-between gap-8`}>
+                            <p className="text-lg leading-relaxed text-muted">
                                 Somos una agrupación estudiantil independiente y horizontal, nacida en los pasillos de FIUBA.
                             </p>
-                            <p className="mt-4 text-xl leading-relaxed text-muted">
-                                Con la mente siempre en lo que necesitamos los estudiantes de FIUBA, nunca hemos esperado que las cosas las cambie otro.
-                            </p>
+                            <Link href="/logros" className={`${textLink} self-start`}>
+                                Ver todo nuestro trabajo <Arrow />
+                            </Link>
                         </div>
-                        <Link
-                            href="/logros"
-                            className="mt-8 inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.15em] text-body hover:text-secundary transition-colors self-start"
-                        >
-                            Ver todo nuestro trabajo
-                            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="square">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
+                        <ol className="lg:col-span-7 divide-y divide-ui border-t lg:border-t-0 border-ui">
+                            {trabajos.map((t, i) => (
+                                <li key={t.title} className={`grid grid-cols-[2rem_1fr] gap-x-3 ${gutter} lg:pl-10 py-6 hover:bg-surface transition-colors`}>
+                                    <span className="font-mono text-xs text-faint pt-1">{String(i + 1).padStart(2, '0')}</span>
+                                    <div className="min-w-0">
+                                        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4">
+                                            <h3 className="font-bold uppercase tracking-[0.04em] text-body">{t.title}</h3>
+                                            <span className="font-mono text-xs text-body whitespace-nowrap">
+                                                <span className="text-secundary">→ </span>{t.stat}
+                                            </span>
+                                        </div>
+                                        <p className="mt-2 text-sm leading-relaxed text-subtle">{t.desc}</p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            {/* ══ Photo band ══ */}
+            <section aria-label="Clase pública" className="duotone h-[70svh] min-h-[420px] max-h-[760px] border-b border-ui">
+                <Image
+                    src={clasePublica}
+                    alt="Estudiantes cursando una clase pública en la calle, frente a la facultad"
+                    fill
+                    sizes="100vw"
+                    className="object-cover object-[30%_50%]"
+                />
+                <div className="absolute inset-0 z-10 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent">
+                    <div className={`h-full max-w-7xl mx-auto ${gutter} flex flex-col justify-end pb-10 lg:pb-14`}>
+                        <p className="max-w-3xl font-black uppercase text-white leading-[1.05] tracking-[-0.02em] text-[clamp(1.75rem,6vw,4rem)]">
+                            <span className="bg-secundary px-2 box-decoration-clone">No esperamos que las cosas las cambie otro.</span>
+                        </p>
+                        <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.15em] text-white/70">
+                            Fig. 2 — Clase pública en la calle
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* ══ Valores ══ */}
+            <section id="valores" ref={valuesObserve} className="scroll-mt-11 border-b border-ui">
+                <div className={frame}>
+                    <Corners />
+                    <SectionHead n={2} label="Nuestros pilares" isInView={valuesInView}>¿Qué nos define?</SectionHead>
+                    <div className={`grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-ui ${reveal(valuesInView)} delay-150`}>
+                        {valores.map((v, i) => (
+                            <div key={v.title} className={`group ${gutter} md:px-8 lg:px-10 py-10`}>
+                                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-faint">Axioma {i + 1}</p>
+                                <h3 className="mt-4 text-xl font-black uppercase tracking-tight text-body">{v.title}</h3>
+                                <p className="mt-3 leading-relaxed text-subtle">{v.desc}</p>
+                                <div className="mt-6 h-[2px] w-8 bg-secundary transition-all duration-500 group-hover:w-full" />
+                            </div>
+                        ))}
+                    </div>
+                    <div className={`${gutter} py-6 border-t border-ui flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ${reveal(valuesInView)} delay-300`}>
+                        <p className="font-mono text-xs uppercase tracking-[0.15em] text-faint">Que veinte años no es nada...</p>
+                        <Link href="/quienes-somos" className={textLink}>
+                            Quiénes somos <Arrow />
                         </Link>
                     </div>
-
-                    {/* Right — work showcase */}
-                    <div className="lg:col-span-7 divide-y divide-ui">
-                        {[
-                            { title: 'Nuevos planes de estudio 2020',       stat: '8 carreras',  desc: 'Actualizamos todas las carreras de FIUBA, algunas con 35 años de antigüedad.' },
-                            { title: 'Comedor del CEI',                     stat: 'Lu-Vi 9:00 a 21:30',      desc: 'Un servicio de completo, económico y de calidad, funcionando cuatrimestre a cuatrimestre.' },
-                            { title: 'Materias promocionables',             stat: '56% aprobados', desc: 'Impulsamos la cursada piloto de Álgebra II sin final: Mismos temas, misma exigencia con aprobación directa en parciales.' },
-                            { title: 'Modernización de trámites y plazos',  stat: '72hs → 48hs', desc: 'Redujimos plazos, simplificamos certificados y automatizamos equivalencias.' },
-                        ].map(({ title, stat, desc }, i) => (
-                            <div
-                                key={i}
-                                className="flex items-start gap-5 px-8 py-6 group cursor-default hover:bg-secundary/5 dark:hover:bg-secundary/10 transition-colors"
-                                style={{ opacity: aboutSectionInView ? 1 : 0, transform: aboutSectionInView ? 'none' : 'translateX(8px)', transition: `opacity 0.5s ${0.3 + i * 0.08}s, transform 0.5s ${0.3 + i * 0.08}s` }}
-                            >
-                                <div className="w-[3px] self-stretch bg-ui group-hover:bg-secundary transition-colors flex-shrink-0 mt-1" />
-                                <div className="flex-1 min-w-0">
-                                    <div className="flex items-baseline justify-between gap-4">
-                                        <h3 className="text-sm font-bold uppercase tracking-[0.08em] text-body">{title}</h3>
-                                        <span className="text-xs font-bold text-secundary whitespace-nowrap flex-shrink-0" style={{ fontVariantNumeric: 'tabular-nums' }}>{stat}</span>
-                                    </div>
-                                    <p className="mt-1 text-sm leading-relaxed text-subtle">{desc}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
                 </div>
             </section>
 
-            {/* ══ Values Section ══ */}
-            <section id="Valores" ref={valuesSectionObserve} className="border-t-4 border-body">
-                <div className={`flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${valuesSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    <span className="text-[5rem] lg:text-[8rem] font-black leading-none select-none text-num">02</span>
-                    <div className="lg:pb-2">
-                        <div className="flex items-center gap-3 mb-2">
-                            <div className="w-6 h-[2px] bg-secundary" />
-                            <span className="text-[11px] font-bold tracking-[0.45em] uppercase text-secundary">Nuestros pilares</span>
-                        </div>
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-tight text-body">
-                            ¿Qué nos define?
-                        </h2>
-                    </div>
-                </div>
-
-                <div className={`grid md:grid-cols-3 border-b border-ui transition-all duration-700 delay-200 ${valuesSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    {[
-                        { title: 'Independencia',        desc: 'No respondemos a partidos políticos, intereses económicos ni funcionarios. Nuestro compromiso es lograr una mejor FIUBA cada día.' },
-                        { title: 'Estudiantes como vos', desc: 'Somos fiubenses, conocemos los (a veces infinitos) baches de la facu, por eso nos organizamos para lograr los cambios que necesitamos.' },
-                        { title: 'Resultados concretos', desc: '20 años transformando la facultad: más cursos en materias colapsadas, mejoras edilicias y los planes de estudio 2020. Y seguimos sumando.' },
-                    ].map((value, index) => (
-                        <div
-                            key={index}
-                            className={`p-10 cursor-default group ${index < 2 ? 'border-r border-ui' : ''}`}
-                            style={{ transitionDelay: `${index * 150}ms` }}
-                        >
-                            <div className="w-10 h-[3px] bg-secundary mb-7 transition-all duration-300 group-hover:w-full" />
-                            <h3 className="text-xl font-black uppercase tracking-tight mb-3 text-body">
-                                {value.title}
-                            </h3>
-                            <p className="leading-relaxed text-subtle">{value.desc}</p>
-                        </div>
-                    ))}
-                </div>
-
-                <div className={`flex items-center justify-between px-8 lg:px-14 py-8 border-b border-ui transition-all duration-700 delay-500 ${valuesSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    <p className="text-sm uppercase tracking-[0.3em] text-faint">Que veinte años no es nada...</p>
-                    <Link href="/quienes-somos" className="inline-flex items-center gap-3 text-sm font-bold tracking-[0.15em] uppercase transition-colors text-body hover:text-secundary">
-                        Quiénes somos
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="square">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </Link>
-                </div>
-            </section>
-
-            {/* ══ Guías Section ══ */}
-            <section id="Guías" ref={ctaSectionObserve} className="border-t-4 border-body relative overflow-hidden">
-                <div className="absolute inset-0 bg-secundary/5 dark:bg-secundary/10 pointer-events-none" />
-                <div className="relative">
-                    <div className={`flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${ctaSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                        <span className="text-[5rem] lg:text-[8rem] font-black leading-none select-none text-num">03</span>
-                        <div className="lg:pb-2">
-                            <div className="flex items-center gap-3 mb-2">
-                                <div className="w-6 h-[2px] bg-secundary" />
-                                <span className="text-[11px] font-bold tracking-[0.45em] uppercase text-secundary">Recursos</span>
-                            </div>
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-tight text-body">
-                                Guías del Estudiante
-                            </h2>
-                        </div>
-                    </div>
-
-                    <div className={`grid md:grid-cols-3 border-b border-ui transition-all duration-700 delay-200 ${ctaSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                        {[
-                            { href: '/guia',     label: 'Guía del Estudiante Fiubense', sub: 'Tus derechos y trámites en FIUBA',  primary: true },
-                            { href: '/guia-cbc', label: 'Guía del Estudiante del CBC',  sub: 'Tu primer año en la UBA',           primary: false },
-                            { href: 'https://www.instagram.com/mli.fiuba', label: 'Escribinos al Instagram', sub: '@mli.fiuba', primary: false, external: true },
-                        ].map(({ href, label, sub, primary, external }, i) => (
-                            <a
-                                key={i}
-                                href={href}
-                                target={external ? '_blank' : undefined}
-                                rel={external ? 'noopener noreferrer' : undefined}
-                                className={`group flex items-center gap-6 px-10 py-10 transition-colors ${i < 2 ? 'border-b md:border-b-0 md:border-r border-ui' : ''} hover:bg-secundary/5 dark:hover:bg-secundary/10`}
-                            >
-                                <span className={`w-10 h-10 flex-shrink-0 flex items-center justify-center transition-colors ${primary ? 'bg-secundary text-white' : 'border-2 border-ui text-body group-hover:border-secundary group-hover:text-secundary'}`}>
-                                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="square">
-                                        <path d="M5 12h14M12 5l7 7-7 7" />
-                                    </svg>
-                                </span>
-                                <span className="flex flex-col">
-                                    <span className="text-sm font-bold uppercase tracking-[0.1em] text-body">{label}</span>
-                                    <span className="text-xs mt-0.5 text-subtle">{sub}</span>
-                                </span>
-                            </a>
+            {/* ══ Guías ══ */}
+            <section id="guias" ref={guiasObserve} className="scroll-mt-11 graph-paper pb-24">
+                <div className={frame}>
+                    <Corners />
+                    <SectionHead n={3} label="Recursos" isInView={guiasInView}>Guías del Estudiante</SectionHead>
+                    <ul className={`divide-y divide-ui border-b border-ui ${reveal(guiasInView)} delay-150`}>
+                        {guias.map((g, i) => (
+                            <li key={g.href}>
+                                <a
+                                    href={g.href}
+                                    target={g.external ? '_blank' : undefined}
+                                    rel={g.external ? 'noopener noreferrer' : undefined}
+                                    className={`group flex items-center justify-between gap-6 ${gutter} py-7 bg-page hover:bg-surface transition-colors`}
+                                >
+                                    <span className="min-w-0">
+                                        <span className="block font-heading text-lg sm:text-xl font-black uppercase tracking-tight text-body">{g.label}</span>
+                                        <span className="block mt-1 font-mono text-xs text-subtle">{g.sub}</span>
+                                    </span>
+                                    <span className={`flex-shrink-0 w-11 h-11 flex items-center justify-center transition-colors ${i === 0 ? 'bg-secundary text-white' : 'border border-ui text-body group-hover:border-secundary group-hover:text-secundary'}`}>
+                                        <Arrow />
+                                    </span>
+                                </a>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 </div>
             </section>
         </div>

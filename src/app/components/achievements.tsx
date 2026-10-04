@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { useInView } from "@/hooks/useInView"
 import CTASection from './CTASection'
+import { PageHero, Corners, Arrow, frame, gutter, textLink, reveal } from './base'
 
 interface Achievement {
     title: string
@@ -82,108 +83,48 @@ const achievements: Achievement[] = [
     }
 ]
 
-function AchievementCard({
-    achievement,
-    index,
-    isInView,
-}: {
-    achievement: Achievement
-    index: number
-    isInView: boolean
-}) {
+function AchievementCard({ achievement, index }: { achievement: Achievement; index: number }) {
     const [expanded, setExpanded] = useState(false)
 
     return (
-        <div
-            className={`p-8 border border-ui bg-card transition-all duration-500 transform group cursor-default ${
-                isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-            }`}
-            style={{ transitionDelay: `${index * 100}ms` }}
-        >
-            <div className="w-10 h-[3px] bg-secundary mb-6 transition-all duration-300 group-hover:w-full" />
-            <div className="w-12 h-12 flex items-center justify-center bg-secundary/10 dark:bg-secundary/20">
-                <svg className="w-6 h-6 text-secundary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                </svg>
+        <li className={`group bg-page ${gutter} md:px-8 lg:px-10 py-10`}>
+            <span className="font-mono text-xs text-faint group-hover:text-secundary transition-colors">{String(index + 1).padStart(2, '0')}</span>
+            <h3 className="mt-4 text-xl font-black uppercase leading-tight tracking-tight text-body">{achievement.title}</h3>
+            <div className="mt-3 leading-relaxed text-subtle space-y-2">
+                {expanded
+                    ? achievement.long.split("\n").map((p, idx) => <p key={idx}>{p}</p>)
+                    : <p>{achievement.short}</p>}
             </div>
-
-            <h3 className="mt-4 text-xl font-bold text-body">
-                {achievement.title}
-            </h3>
-
-            <div className="mt-3 leading-relaxed text-subtle">
-                {expanded ? (
-                    achievement.long.split("\n").map((p, idx) => (
-                        <p key={idx} className="mb-2 last:mb-0">{p}</p>
-                    ))
-                ) : (
-                    <p>{achievement.short}</p>
-                )}
-            </div>
-
-            <button
-                onClick={() => setExpanded(!expanded)}
-                className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-secundary hover:text-body transition-colors"
-            >
+            <button onClick={() => setExpanded(!expanded)} aria-expanded={expanded} className={`mt-5 ${textLink}`}>
                 {expanded ? 'Ver menos' : 'Leer más'}
-                <svg
-                    className={`w-4 h-4 transition-transform ${expanded ? 'rotate-180' : ''}`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
+                <Arrow className={`w-4 h-4 transition-transform ${expanded ? '-rotate-90' : 'rotate-90'}`} />
             </button>
-        </div>
+        </li>
     )
 }
 
 export default function Achievements() {
-    const { observe: heroSectionObserve, isInView: heroSectionInView } = useInView()
-    const { observe: achievementsSectionObserve, isInView: achievementsSectionInView } = useInView(0.1)
+    const { observe, isInView } = useInView(0.05)
 
     return (
-        <div className="min-h-screen transition-colors duration-500 bg-page">
-            <section
-                ref={heroSectionObserve}
-                className="pt-24 pb-16 px-8 lg:px-16 bg-secundary/10 dark:bg-secundary/20"
-            >
-                <div className="max-w-7xl mx-auto">
-                    <div className={`transform transition-all duration-700 ${heroSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                        <span className="text-sm uppercase tracking-[0.3em] text-secundary">
-                            Gestión 2022-2024
-                        </span>
-                        <h1 className="mt-4 text-5xl md:text-7xl font-black leading-[0.95] text-body">
-                            Nuestros
-                            <br />
-                            <span className="text-secundary">Logros</span>
-                        </h1>
-                        <p className="mt-6 text-xl max-w-2xl text-muted">
-                            <span className="text-secundary font-semibold">15+ cambios concretos</span> que transformaron tu experiencia en FIUBA.
-                        </p>
-                        <p className="mt-4 text-lg text-faint">
-                            Desde nuevos planes de estudio hasta becas de ayuda económica. Resultados reales, no promesas.
-                        </p>
-                    </div>
-                </div>
-            </section>
+        <div className="min-h-screen bg-page">
+            <PageHero
+                label="Archivo · Gestión 2022-2024"
+                title={['Nuestros', 'logros']}
+                lead={<>
+                    <p>15+ cambios concretos que transformaron tu experiencia en FIUBA.</p>
+                    <p className="mt-3 text-lg text-subtle">Desde nuevos planes de estudio hasta becas de ayuda económica. Resultados reales, no promesas.</p>
+                </>}
+            />
 
-            <section
-                ref={achievementsSectionObserve}
-                className="py-20 px-8 lg:px-16"
-            >
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <section ref={observe} className="border-b border-ui">
+                <div className={frame}>
+                    <Corners />
+                    <ol className={`grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--theme-border)] ${reveal(isInView)}`}>
                         {achievements.map((achievement, index) => (
-                            <AchievementCard
-                                key={achievement.title}
-                                achievement={achievement}
-                                index={index}
-                                isInView={achievementsSectionInView}
-                            />
+                            <AchievementCard key={achievement.title} achievement={achievement} index={index} />
                         ))}
-                    </div>
+                    </ol>
                 </div>
             </section>
 

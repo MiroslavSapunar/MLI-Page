@@ -1,10 +1,10 @@
-'use client'
 import Image from 'next/image'
+import { frame, gutter, btnPrimary, btnSecondary, Arrow, Corners } from './base'
 
 interface CTAButton {
     label: string
     href: string
-    variant: 'primary' | 'secondary' | 'instagram' | 'guia'
+    variant: 'primary' | 'instagram'
 }
 
 interface CTASectionProps {
@@ -15,63 +15,26 @@ interface CTASectionProps {
 
 export default function CTASection({ title, subtitle, buttons }: CTASectionProps) {
     return (
-        <section className="py-20 px-8 lg:px-16 bg-surface">
-            <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-body">
-                    {title}
-                </h2>
-                <p className="mt-4 text-lg text-subtle">
-                    {subtitle}
-                </p>
-                <div className="mt-8 flex flex-wrap justify-center gap-4">
-                    {buttons.map((button, index) => {
-                        if (button.variant === 'primary' || button.variant === 'guia') {
-                            return (
-                                <a
-                                    key={index}
-                                    href={button.href}
-                                    className="inline-flex items-center gap-3 px-8 py-4 bg-secundary text-white text-sm font-bold uppercase tracking-[0.12em] hover:opacity-90 transition-opacity"
-                                >
-                                    {button.variant === 'guia' && (
-                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                        </svg>
-                                    )}
-                                    {button.label}
-                                    {button.variant === 'primary' && (
-                                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                        </svg>
-                                    )}
-                                </a>
-                            )
-                        }
-
-                        if (button.variant === 'secondary' || button.variant === 'instagram') {
-                            return (
-                                <a
-                                    key={index}
-                                    href={button.href}
-                                    target={button.variant === 'instagram' ? '_blank' : undefined}
-                                    rel={button.variant === 'instagram' ? 'noopener noreferrer' : undefined}
-                                    className="inline-flex items-center gap-3 px-8 py-4 border-2 text-sm font-bold uppercase tracking-[0.12em] transition-colors border-gray-900 text-gray-900 hover:bg-gray-900/10 dark:border-white dark:text-white dark:hover:bg-white/10"
-                                >
-                                    {button.label}
-                                    {button.variant === 'instagram' && (
-                                        <Image
-                                            className="theme-invert w-5 h-5"
-                                            src="/instagram.svg"
-                                            height={20}
-                                            width={20}
-                                            alt="Instagram"
-                                        />
-                                    )}
-                                </a>
-                            )
-                        }
-
-                        return null
-                    })}
+        <section className="graph-paper border-t border-ui pb-20">
+            <div className={frame}>
+                <Corners />
+                <div className={`${gutter} py-14 lg:py-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8`}>
+                    <div>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase leading-[0.95] tracking-[-0.02em] text-body">{title}</h2>
+                        <p className="mt-4 text-lg text-muted">{subtitle}</p>
+                    </div>
+                    <div className="flex flex-wrap gap-3">
+                        {buttons.map(button => button.variant === 'instagram' ? (
+                            <a key={button.href} href={button.href} target="_blank" rel="noopener noreferrer" className={btnSecondary}>
+                                {button.label}
+                                <Image className="theme-invert w-4 h-4" src="/instagram.svg" height={16} width={16} alt="Instagram" />
+                            </a>
+                        ) : (
+                            <a key={button.href} href={button.href} className={btnPrimary}>
+                                {button.label} <Arrow />
+                            </a>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
