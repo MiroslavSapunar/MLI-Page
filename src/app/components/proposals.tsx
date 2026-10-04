@@ -47,17 +47,17 @@ const proposals: Proposal[] = [
 ]
 
 export default function Proposals() {
-    const heroSection = useInView()
-    const proposalsSection = useInView()
+    const { observe: heroSectionObserve, isInView: heroSectionInView } = useInView()
+    const { observe: proposalsSectionObserve, isInView: proposalsSectionInView } = useInView()
 
     return (
         <div className="min-h-screen transition-colors duration-500 bg-page">
             <section
-                ref={heroSection.ref}
+                ref={heroSectionObserve}
                 className="pt-24 pb-16 px-8 lg:px-16 bg-secundary/10 dark:bg-secundary/20"
             >
                 <div className="max-w-7xl mx-auto">
-                    <div className={`transform transition-all duration-700 ${heroSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                    <div className={`transform transition-all duration-700 ${heroSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         <span className="text-sm uppercase tracking-[0.3em] text-secundary">
                             Elecciones 2026
                         </span>
@@ -77,7 +77,7 @@ export default function Proposals() {
             </section>
 
             <section
-                ref={proposalsSection.ref}
+                ref={proposalsSectionObserve}
                 className="py-20 px-8 lg:px-16"
             >
                 <div className="max-w-7xl mx-auto">
@@ -85,7 +85,7 @@ export default function Proposals() {
                         {proposals.map((proposal, index) => (
                             <div
                                 key={index}
-                                className={`p-8 border border-ui bg-card transition-all duration-500 transform group cursor-default ${proposalsSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                                className={`p-8 border border-ui bg-card transition-all duration-500 transform group cursor-default ${proposalsSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
                                 style={{ transitionDelay: `${index * 100}ms` }}
                             >
                                 <div className="w-10 h-[3px] bg-secundary mb-6 transition-all duration-300 group-hover:w-full" />

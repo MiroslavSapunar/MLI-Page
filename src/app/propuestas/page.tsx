@@ -95,16 +95,16 @@ function ProposalCard({ proposal, index, isInView }: { proposal: Proposal; index
 }
 
 export default function PropuestasPage() {
-    const heroRef = useInView()
-    const gridRef = useInView(0.1)
+    const { observe: heroViewObserve, isInView: heroViewInView } = useInView()
+    const { observe: gridViewObserve, isInView: gridViewInView } = useInView(0.1)
 
     return (
         <div className="min-h-screen transition-colors duration-500 bg-page">
             <NavBar />
 
-            <section ref={heroRef.ref} className="pt-24 pb-16 px-8 lg:px-16">
+            <section ref={heroViewObserve} className="pt-24 pb-16 px-8 lg:px-16">
                 <div className="max-w-7xl mx-auto">
-                    <div className={`transform transition-all duration-700 ${heroRef.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                    <div className={`transform transition-all duration-700 ${heroViewInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-8 h-[2px] bg-secundary" />
                             <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-secundary">
@@ -123,7 +123,7 @@ export default function PropuestasPage() {
                 </div>
             </section>
 
-            <section ref={gridRef.ref} className="pb-20 px-8 lg:px-16">
+            <section ref={gridViewObserve} className="pb-20 px-8 lg:px-16">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {proposals.map((proposal, index) => (
@@ -131,7 +131,7 @@ export default function PropuestasPage() {
                                 key={proposal.title}
                                 proposal={proposal}
                                 index={index}
-                                isInView={gridRef.isInView}
+                                isInView={gridViewInView}
                             />
                         ))}
                     </div>

@@ -140,17 +140,17 @@ function AchievementCard({
 }
 
 export default function Achievements() {
-    const heroSection = useInView()
-    const achievementsSection = useInView(0.1)
+    const { observe: heroSectionObserve, isInView: heroSectionInView } = useInView()
+    const { observe: achievementsSectionObserve, isInView: achievementsSectionInView } = useInView(0.1)
 
     return (
         <div className="min-h-screen transition-colors duration-500 bg-page">
             <section
-                ref={heroSection.ref}
+                ref={heroSectionObserve}
                 className="pt-24 pb-16 px-8 lg:px-16 bg-secundary/10 dark:bg-secundary/20"
             >
                 <div className="max-w-7xl mx-auto">
-                    <div className={`transform transition-all duration-700 ${heroSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                    <div className={`transform transition-all duration-700 ${heroSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         <span className="text-sm uppercase tracking-[0.3em] text-secundary">
                             Gestión 2022-2024
                         </span>
@@ -170,7 +170,7 @@ export default function Achievements() {
             </section>
 
             <section
-                ref={achievementsSection.ref}
+                ref={achievementsSectionObserve}
                 className="py-20 px-8 lg:px-16"
             >
                 <div className="max-w-7xl mx-auto">
@@ -180,7 +180,7 @@ export default function Achievements() {
                                 key={achievement.title}
                                 achievement={achievement}
                                 index={index}
-                                isInView={achievementsSection.isInView}
+                                isInView={achievementsSectionInView}
                             />
                         ))}
                     </div>

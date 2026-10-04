@@ -137,7 +137,7 @@ function GuiaSection({ section, isDark, searchQuery, openItems, toggleItem }: {
 }
 
 export default function GuiaPage() {
-    const { isDark, toggleTheme } = useTheme()
+    const { isDark } = useTheme()
     const [searchQuery, setSearchQuery] = useState('')
     const [activeSection, setActiveSection] = useState('')
     const [openItems, setOpenItems] = useState<Set<string>>(new Set())

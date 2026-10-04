@@ -7,9 +7,9 @@ import NavBar from './components/navbar'
 export default function Home() {
     const [isLoaded, setIsLoaded] = useState(false)
 
-    const aboutSection = useInView()
-    const valuesSection = useInView()
-    const ctaSection = useInView()
+    const { observe: aboutSectionObserve, isInView: aboutSectionInView } = useInView()
+    const { observe: valuesSectionObserve, isInView: valuesSectionInView } = useInView()
+    const { observe: ctaSectionObserve, isInView: ctaSectionInView } = useInView()
 
     useEffect(() => { setIsLoaded(true) }, [])
 
@@ -152,8 +152,8 @@ export default function Home() {
             </section>
 
             {/* ══ About Section ══ */}
-            <section id="Nosotros" ref={aboutSection.ref} className="border-t-4 border-body">
-                <div className={`flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${aboutSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <section id="Nosotros" ref={aboutSectionObserve} className="border-t-4 border-body">
+                <div className={`flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${aboutSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                     <span className="text-[5rem] lg:text-[8rem] font-black leading-none select-none text-num">01</span>
                     <div className="lg:pb-2">
                         <div className="flex items-center gap-3 mb-2">
@@ -166,7 +166,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className={`grid lg:grid-cols-12 border-b border-ui transition-all duration-700 delay-200 ${aboutSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                <div className={`grid lg:grid-cols-12 border-b border-ui transition-all duration-700 delay-200 ${aboutSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                     {/* Left — identity text */}
                     <div className="lg:col-span-5 px-8 lg:px-14 py-10 border-b lg:border-b-0 lg:border-r border-ui flex flex-col justify-between">
                         <div>
@@ -199,7 +199,7 @@ export default function Home() {
                             <div
                                 key={i}
                                 className="flex items-start gap-5 px-8 py-6 group cursor-default hover:bg-secundary/5 dark:hover:bg-secundary/10 transition-colors"
-                                style={{ opacity: aboutSection.isInView ? 1 : 0, transform: aboutSection.isInView ? 'none' : 'translateX(8px)', transition: `opacity 0.5s ${0.3 + i * 0.08}s, transform 0.5s ${0.3 + i * 0.08}s` }}
+                                style={{ opacity: aboutSectionInView ? 1 : 0, transform: aboutSectionInView ? 'none' : 'translateX(8px)', transition: `opacity 0.5s ${0.3 + i * 0.08}s, transform 0.5s ${0.3 + i * 0.08}s` }}
                             >
                                 <div className="w-[3px] self-stretch bg-ui group-hover:bg-secundary transition-colors flex-shrink-0 mt-1" />
                                 <div className="flex-1 min-w-0">
@@ -216,8 +216,8 @@ export default function Home() {
             </section>
 
             {/* ══ Values Section ══ */}
-            <section id="Valores" ref={valuesSection.ref} className="border-t-4 border-body">
-                <div className={`flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${valuesSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <section id="Valores" ref={valuesSectionObserve} className="border-t-4 border-body">
+                <div className={`flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${valuesSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                     <span className="text-[5rem] lg:text-[8rem] font-black leading-none select-none text-num">02</span>
                     <div className="lg:pb-2">
                         <div className="flex items-center gap-3 mb-2">
@@ -230,7 +230,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className={`grid md:grid-cols-3 border-b border-ui transition-all duration-700 delay-200 ${valuesSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                <div className={`grid md:grid-cols-3 border-b border-ui transition-all duration-700 delay-200 ${valuesSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                     {[
                         { title: 'Independencia',        desc: 'No respondemos a partidos políticos, intereses económicos ni funcionarios. Nuestro compromiso es lograr una mejor FIUBA cada día.' },
                         { title: 'Estudiantes como vos', desc: 'Somos fiubenses, conocemos los (a veces infinitos) baches de la facu, por eso nos organizamos para lograr los cambios que necesitamos.' },
@@ -250,7 +250,7 @@ export default function Home() {
                     ))}
                 </div>
 
-                <div className={`flex items-center justify-between px-8 lg:px-14 py-8 border-b border-ui transition-all duration-700 delay-500 ${valuesSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                <div className={`flex items-center justify-between px-8 lg:px-14 py-8 border-b border-ui transition-all duration-700 delay-500 ${valuesSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                     <p className="text-sm uppercase tracking-[0.3em] text-faint">Que veinte años no es nada...</p>
                     <Link href="/quienes-somos" className="inline-flex items-center gap-3 text-sm font-bold tracking-[0.15em] uppercase transition-colors text-body hover:text-secundary">
                         Quiénes somos
@@ -262,10 +262,10 @@ export default function Home() {
             </section>
 
             {/* ══ Guías Section ══ */}
-            <section id="Guías" ref={ctaSection.ref} className="border-t-4 border-body relative overflow-hidden">
+            <section id="Guías" ref={ctaSectionObserve} className="border-t-4 border-body relative overflow-hidden">
                 <div className="absolute inset-0 bg-secundary/5 dark:bg-secundary/10 pointer-events-none" />
                 <div className="relative">
-                    <div className={`flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${ctaSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                    <div className={`flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-6 px-8 lg:px-14 pt-10 pb-8 border-b border-ui transition-all duration-700 ${ctaSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         <span className="text-[5rem] lg:text-[8rem] font-black leading-none select-none text-num">03</span>
                         <div className="lg:pb-2">
                             <div className="flex items-center gap-3 mb-2">
@@ -278,7 +278,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className={`grid md:grid-cols-3 border-b border-ui transition-all duration-700 delay-200 ${ctaSection.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                    <div className={`grid md:grid-cols-3 border-b border-ui transition-all duration-700 delay-200 ${ctaSectionInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         {[
                             { href: '/guia',     label: 'Guía del Estudiante Fiubense', sub: 'Tus derechos y trámites en FIUBA',  primary: true },
                             { href: '/guia-cbc', label: 'Guía del Estudiante del CBC',  sub: 'Tu primer año en la UBA',           primary: false },

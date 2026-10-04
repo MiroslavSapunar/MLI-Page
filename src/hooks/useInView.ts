@@ -1,20 +1,22 @@
 'use client'
-import { useRef, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
+// Callback ref named `observe`: react-hooks/refs treats any `.ref` property as a ref and rejects reading isInView next to it
 export function useInView(threshold = 0.3) {
-    const ref = useRef<HTMLDivElement>(null)
+    const [node, setNode] = useState<HTMLElement | null>(null)
     const [isInView, setIsInView] = useState(false)
 
     useEffect(() => {
+        if (!node) return
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) setIsInView(true)
             },
             { threshold }
         )
-        if (ref.current) observer.observe(ref.current)
+        observer.observe(node)
         return () => observer.disconnect()
-    }, [threshold])
+    }, [node, threshold])
 
-    return { ref, isInView }
+    return { observe: setNode, isInView }
 }

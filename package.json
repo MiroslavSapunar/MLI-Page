@@ -9,7 +9,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "autoprefixer": "^10.4.21",
     "next": "^16.2.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -22,13 +21,12 @@
     "last 2 Edge versions"
   ],
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
-    "@next/eslint-plugin-next": "^16.2.7",
     "@tailwindcss/postcss": "^4.1.8",
-    "eslint": "^9.28.0",
     "@types/node": "^20",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.6",
+    "eslint": "^9.28.0",
+    "eslint-config-next": "^16.2.7",
     "postcss": "^8.5.4",
     "tailwindcss": "^4.1.8",
     "typescript": "^5"

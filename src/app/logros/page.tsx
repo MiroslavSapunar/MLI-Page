@@ -95,17 +95,17 @@ function LogroSectionComponent({ section, index, openItems, toggleItem }: {
     openItems: Set<string>
     toggleItem: (id: string) => void
 }) {
-    const sectionRef = useInView(0.15)
+    const { observe: sectionViewObserve, isInView: sectionViewInView } = useInView(0.15)
     const num = String(index + 1).padStart(2, '0')
     const isAlternate = index % 2 === 1
 
     return (
         <section
-            ref={sectionRef.ref}
+            ref={sectionViewObserve}
             className={`py-16 md:py-24 px-8 lg:px-16 ${isAlternate ? 'bg-gray-50/50 dark:bg-white/[0.02]' : ''}`}
         >
             <div className="max-w-7xl mx-auto">
-                <div className={`relative mb-10 md:mb-14 transform transition-all duration-700 ${sectionRef.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                <div className={`relative mb-10 md:mb-14 transform transition-all duration-700 ${sectionViewInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                     <SectionNum num={num} />
 
                     <div className="relative z-10 pt-8 md:pt-12">
@@ -129,7 +129,7 @@ function LogroSectionComponent({ section, index, openItems, toggleItem }: {
                 </div>
 
                 {section.images && section.images.length > 0 && (
-                    <div className={`mb-8 grid gap-3 transform transition-all duration-700 delay-200 ${sectionRef.isInView ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'} ${
+                    <div className={`mb-8 grid gap-3 transform transition-all duration-700 delay-200 ${sectionViewInView ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'} ${
                         section.images.length === 1 ? 'grid-cols-1 max-w-2xl' :
                         section.images.length === 2 ? 'grid-cols-2 max-w-4xl' :
                         'grid-cols-2 md:grid-cols-3 max-w-4xl'
@@ -169,7 +169,7 @@ function LogroSectionComponent({ section, index, openItems, toggleItem }: {
 
                 {section.callout && (
                     <div className={`mt-8 p-6 md:p-8 border-l-4 border-secundary max-w-4xl transform transition-all duration-700 delay-300 bg-secundary/5 dark:bg-secundary/10 ${
-                        sectionRef.isInView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                        sectionViewInView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                     }`}>
                         <p className="text-lg font-semibold leading-relaxed text-body">
                             {section.callout}
@@ -178,7 +178,7 @@ function LogroSectionComponent({ section, index, openItems, toggleItem }: {
                 )}
 
                 {section.stats && (
-                    <div className={`mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 transform transition-all duration-700 delay-300 ${sectionRef.isInView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+                    <div className={`mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 transform transition-all duration-700 delay-300 ${sectionViewInView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
                         {section.stats.map((s, i) => (
                             <div key={i} className="p-6 text-center bg-card border border-ui">
                                 <p className="text-3xl md:text-4xl font-black text-secundary">{s.value}</p>
@@ -193,7 +193,7 @@ function LogroSectionComponent({ section, index, openItems, toggleItem }: {
 }
 
 export default function LogrosPage() {
-    const heroRef = useInView(0.15)
+    const { observe: heroViewObserve, isInView: heroViewInView } = useInView(0.15)
     const sections = logrosData as LogroSection[]
 
     const [activeSection, setActiveSection] = useState('')
@@ -268,11 +268,11 @@ export default function LogrosPage() {
 
             {/* Hero */}
             <section
-                ref={heroRef.ref}
+                ref={heroViewObserve}
                 className="pt-24 pb-8 px-8 lg:px-16 overflow-hidden bg-page"
             >
                 <div className="max-w-7xl mx-auto">
-                    <div className={`transform transition-all duration-700 ${heroRef.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                    <div className={`transform transition-all duration-700 ${heroViewInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                         <span className="text-sm uppercase tracking-[0.3em] text-secundary">
                             Gestión 2024-2026
                         </span>

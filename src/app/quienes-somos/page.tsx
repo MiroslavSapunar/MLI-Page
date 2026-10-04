@@ -7,8 +7,8 @@ import Link from 'next/link'
 export default function QuienesSomos() {
     const [scrollY, setScrollY] = useState(0)
 
-    const intro = useInView(0.2)
-    const timeline = useInView(0.2)
+    const { observe: introObserve, isInView: introInView } = useInView(0.2)
+    const { observe: timelineObserve, isInView: timelineInView } = useInView(0.2)
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY)
@@ -59,8 +59,8 @@ export default function QuienesSomos() {
 
             {/* Intro Section */}
             <section
-                ref={intro.ref}
-                className={`py-32 px-6 transform transition-all duration-1000 ${intro.isInView ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}
+                ref={introObserve}
+                className={`py-32 px-6 transform transition-all duration-1000 ${introInView ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}
             >
                 <div className="max-w-3xl mx-auto">
                     <p className="text-2xl md:text-3xl font-light leading-relaxed text-gray-700 dark:text-white/80">
@@ -76,7 +76,7 @@ export default function QuienesSomos() {
 
             {/* Timeline Section */}
             <section
-                ref={timeline.ref}
+                ref={timelineObserve}
                 className="py-32 px-6 bg-surface dark:bg-white/5"
             >
                 <div className="max-w-4xl mx-auto">
@@ -91,7 +91,7 @@ export default function QuienesSomos() {
                             <div
                                 key={index}
                                 className={`relative flex items-center mb-16 last:mb-0 transform transition-all duration-700 ${
-                                    timeline.isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                                    timelineInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                                 }`}
                                 style={{ transitionDelay: `${index * 200}ms` }}
                             >
