@@ -2,7 +2,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useTheme } from "@/context/ThemeContext"
 import { useInView } from "@/hooks/useInView"
 import NavBar from "../components/navbar"
 import CTASection from '../components/CTASection'
@@ -47,7 +46,6 @@ const proposals: Proposal[] = [
 ]
 
 function ProposalCard({ proposal, index, isInView }: { proposal: Proposal; index: number; isInView: boolean }) {
-    const { isDark } = useTheme()
     const [isHovered, setIsHovered] = useState(false)
 
     return (
@@ -74,7 +72,7 @@ function ProposalCard({ proposal, index, isInView }: { proposal: Proposal; index
                         alt=""
                         width={36}
                         height={36}
-                        className={`w-9 h-9 transition-all duration-300 ${isDark ? 'invert' : ''}`}
+                        className="w-9 h-9 transition-all duration-300 theme-invert"
                     />
                 </div>
                 <span className={`text-[11px] font-bold tracking-[0.4em] tabular-nums transition-colors duration-300 ${

@@ -107,6 +107,15 @@ h1, h2, h3, h4, h5, h6 {
 .transition-delay-900  { transition-delay: 900ms; }
 .transition-delay-1000 { transition-delay: 1000ms; }
 
+/* Entry animations — pure CSS so prerendered content never waits for hydration to appear */
+@keyframes enter-left { from { opacity: 0; transform: translateX(-1.5rem); } }
+@keyframes enter-up   { from { opacity: 0; transform: translateY(8px); } }
+.enter-left { animation: enter-left 700ms ease-out both; }
+.enter-up   { animation: enter-up 500ms ease-out both; }
+@media (prefers-reduced-motion: reduce) {
+  .enter-left, .enter-up { animation: none; }
+}
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;

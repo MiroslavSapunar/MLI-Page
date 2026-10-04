@@ -1,17 +1,12 @@
 'use client'
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useInView } from "@/hooks/useInView"
 import NavBar from './components/navbar'
 
 export default function Home() {
-    const [isLoaded, setIsLoaded] = useState(false)
-
     const { observe: aboutSectionObserve, isInView: aboutSectionInView } = useInView()
     const { observe: valuesSectionObserve, isInView: valuesSectionInView } = useInView()
     const { observe: ctaSectionObserve, isInView: ctaSectionInView } = useInView()
-
-    useEffect(() => { setIsLoaded(true) }, [])
 
     return (
         <div className="min-h-screen transition-colors duration-500 bg-page">
@@ -65,7 +60,7 @@ export default function Home() {
 
                     {/* Main content */}
                     <div className="flex flex-col justify-center px-8 lg:px-14 py-20 min-w-0 overflow-hidden">
-                        <div className={`transition-all duration-700 ${isLoaded ? 'translate-x-0 opacity-100' : '-translate-x-6 opacity-0'}`}>
+                        <div className="enter-left">
                             <div className="flex items-center gap-4 mb-7">
                                 <div className="w-8 h-[2px] bg-secundary" />
                                 <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-secundary">Lista 417</span>
@@ -122,14 +117,14 @@ export default function Home() {
                             { v: '20+',    l: 'Años de historia',   red: false },
                             { v: '32.12%',    l: 'Votos 2026',         red: false },
                             { v: '100%',    l: 'FIUBENSES',   red: false },
-                            { v: '1ra',    l: '1ra fuerza',         red: true  },
+                            { v: '1ra Fuerza',    l: 'Mayoría Estudiantil',         red: true  },
                         ].map(({ v, l, red }, i) => (
                             <div
                                 key={i}
-                                className={`flex flex-col justify-end p-7 min-w-0 overflow-hidden transition-all duration-500 ${red ? 'bg-secundary' : ''
+                                className={`flex flex-col justify-end p-7 min-w-0 overflow-hidden enter-up ${red ? 'bg-secundary' : ''
                                     } ${i === 1 || i === 3 ? 'border-l border-ui' : ''
                                     } ${i === 2 || i === 3 ? 'border-t border-ui' : ''}`}
-                                style={{ opacity: isLoaded ? 1 : 0, transform: isLoaded ? 'none' : 'translateY(8px)', transitionDelay: `${200 + i * 80}ms` }}
+                                style={{ animationDelay: `${200 + i * 80}ms` }}
                             >
                                 <span className={`text-5xl font-black leading-none ${red ? 'text-white' : 'text-secundary'}`}>{v}</span>
                                 <span className={`mt-2 text-[11px] font-medium uppercase tracking-[0.25em] truncate ${red ? 'text-white/70' : 'text-faint'}`}>{l}</span>

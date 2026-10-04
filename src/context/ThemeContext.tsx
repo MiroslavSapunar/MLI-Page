@@ -1,5 +1,6 @@
 'use client'
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import { createContext, useContext, useSyncExternalStore, ReactNode } from 'react'
+import { THEME_STORAGE_KEY } from './themeScript'
 
 type ThemeContextType = {
     isDark: boolean
@@ -8,29 +9,20 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
+// The source of truth is data-theme on <html>; React only mirrors it
+const listeners = new Set<() => void>()
+const subscribe = (cb: () => void) => { listeners.add(cb); return () => { listeners.delete(cb) } }
+const getSnapshot = () => document.documentElement.dataset.theme !== 'light'
+const getServerSnapshot = () => true
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
-    const [isDark, setIsDark] = useState(true)
-    const [mounted, setMounted] = useState(false)
+    const isDark = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 
-    useEffect(() => {
-        const saved = localStorage.getItem('mli-theme')
-        const dark = saved !== 'light'
-        setIsDark(dark)
-        document.documentElement.dataset.theme = dark ? 'dark' : 'light'
-        setMounted(true)
-    }, [])
-
-    useEffect(() => {
-        if (mounted) {
-            localStorage.setItem('mli-theme', isDark ? 'dark' : 'light')
-            document.documentElement.dataset.theme = isDark ? 'dark' : 'light'
-        }
-    }, [isDark, mounted])
-
-    const toggleTheme = () => setIsDark(prev => !prev)
-
-    if (!mounted) {
-        return <div className="bg-primary min-h-screen" />
+    const toggleTheme = () => {
+        const next = isDark ? 'light' : 'dark'
+        document.documentElement.dataset.theme = next
+        try { localStorage.setItem(THEME_STORAGE_KEY, next) } catch {}
+        listeners.forEach(cb => cb())
     }
 
     return (

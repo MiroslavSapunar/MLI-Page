@@ -2,7 +2,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import Link from 'next/link'
 import guiaData from '../../data/guia.json'
-import { useTheme } from "@/context/ThemeContext"
 import NavBar from '../components/navbar'
 
 // Normalize text: remove accents and lowercase
@@ -25,25 +24,21 @@ type GuiaSection = {
 }
 
 // Collapsible FAQ Item
-function GuiaItemCard({ item, isOpen, onToggle, isDark }: {
+function GuiaItemCard({ item, isOpen, onToggle }: {
     item: GuiaItem
     isOpen: boolean
     onToggle: () => void
-    isDark: boolean
 }) {
     return (
-        <div className={`overflow-hidden transition-all duration-300 ${isDark
-            ? 'bg-white/5 hover:bg-white/10 border border-white/10'
-            : 'bg-white hover:bg-gray-50 border border-gray-200 shadow-sm'
-            }`}>
+        <div className={`overflow-hidden transition-all duration-300 border bg-white hover:bg-gray-50 border-gray-200 shadow-sm dark:bg-white/5 dark:hover:bg-white/10 dark:border-white/10`}>
             <button
                 onClick={onToggle}
                 className="w-full px-5 py-4 flex items-center justify-between text-left"
             >
-                <h3 className={`font-medium text-lg pr-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                <h3 className={`font-medium text-lg pr-4 text-gray-900 dark:text-white`}>
                     {item.title}
                 </h3>
-                <span className={`flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-45' : ''} ${isDark ? 'text-secundary' : 'text-secundary'}`}>
+                <span className={`flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-45' : ''} text-secundary`}>
                     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v12m6-6H6" />
                     </svg>
@@ -52,7 +47,7 @@ function GuiaItemCard({ item, isOpen, onToggle, isDark }: {
 
             <div className={`grid transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
                 <div className="overflow-hidden">
-                    <div className={`px-5 pb-5 space-y-4 ${isDark ? 'text-white/80' : 'text-gray-600'}`}>
+                    <div className={`px-5 pb-5 space-y-4 text-gray-600 dark:text-white/80`}>
                         {item.content.split('\n\n').map((paragraph, idx) => (
                             <p key={idx} className="leading-relaxed whitespace-pre-line">
                                 {paragraph}
@@ -85,9 +80,8 @@ function GuiaItemCard({ item, isOpen, onToggle, isDark }: {
 }
 
 // Section Component
-function GuiaSection({ section, isDark, searchQuery, openItems, toggleItem }: {
+function GuiaSection({ section, searchQuery, openItems, toggleItem }: {
     section: GuiaSection
-    isDark: boolean
     searchQuery: string
     openItems: Set<string>
     toggleItem: (id: string) => void
@@ -109,10 +103,10 @@ function GuiaSection({ section, isDark, searchQuery, openItems, toggleItem }: {
             <div className="flex items-center gap-3 mb-6">
                 <span className="text-3xl">{section.icon}</span>
                 <div>
-                    <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    <h2 className={`text-2xl font-bold text-gray-900 dark:text-white`}>
                         {section.title}
                     </h2>
-                    <p className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
+                    <p className={`text-sm text-gray-500 dark:text-white/60`}>
                         {section.description}
                     </p>
                 </div>
@@ -127,7 +121,6 @@ function GuiaSection({ section, isDark, searchQuery, openItems, toggleItem }: {
                             item={item}
                             isOpen={openItems.has(itemId)}
                             onToggle={() => toggleItem(itemId)}
-                            isDark={isDark}
                         />
                     )
                 })}
@@ -137,7 +130,6 @@ function GuiaSection({ section, isDark, searchQuery, openItems, toggleItem }: {
 }
 
 export default function GuiaPage() {
-    const { isDark } = useTheme()
     const [searchQuery, setSearchQuery] = useState('')
     const [activeSection, setActiveSection] = useState('')
     const [openItems, setOpenItems] = useState<Set<string>>(new Set())
@@ -240,50 +232,17 @@ export default function GuiaPage() {
     }, [sections, searchQuery])
 
     return (
-        <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-primary' : 'bg-gray-50'}`}>
-            {/* Header */}
-            {/* <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isDark
-                ? 'bg-primary/90 backdrop-blur-md border-b border-white/10'
-                : 'bg-white/90 backdrop-blur-md border-b border-gray-200'
-                }`}>
-                <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-                    <Link href="/" className="flex items-center gap-2 group">
-                        <svg className={`w-5 h-5 transition-transform group-hover:-translate-x-1 ${isDark ? 'text-white' : 'text-gray-900'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                        </svg>
-                        <span className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>MLI</span>
-                    </Link>
-
-                    <button
-                        onClick={toggleTheme}
-                        className={`p-2 rounded-full transition-colors ${isDark
-                            ? 'bg-white/10 hover:bg-white/20 text-yellow-400'
-                            : 'bg-gray-100 hover:bg-gray-200 text-gray-600'
-                            }`}
-                        aria-label="Toggle theme"
-                    >
-                        {isDark ? (
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
-                            </svg>
-                        ) : (
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                            </svg>
-                        )}
-                    </button>
-                </div>
-            </header> */}
+        <div className={`min-h-screen transition-colors duration-300 bg-gray-50 dark:bg-primary`}>
             <NavBar />
 
             {/* Hero */}
-            <div className={`pt-20 pb-6 ${isDark ? 'bg-primary' : 'bg-white'}`}>
+            <div className={`pt-20 pb-6 bg-white dark:bg-primary`}>
                 <div className="max-w-4xl mx-auto px-4 pt-8">
-                    <h1 className={`text-4xl md:text-5xl font-bold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    <h1 className={`text-4xl md:text-5xl font-bold mb-3 text-gray-900 dark:text-white`}>
                         Guía del Estudiante
                         <span className="text-secundary"> Fiubense</span>
                     </h1>
-                    <p className={`text-lg mb-4 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
+                    <p className={`text-lg mb-4 text-gray-600 dark:text-white/70`}>
                         Todo lo que necesitás saber sobre tus derechos, trámites y oportunidades en FIUBA
                     </p>
                     <Link
@@ -303,13 +262,10 @@ export default function GuiaPage() {
                             placeholder="Buscar... (ej: recuperatorio, beca, inscripción)"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className={`w-full px-5 py-4 pl-12 text-lg transition-all duration-200 ${isDark
-                                ? 'bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-secundary focus:bg-white/15'
-                                : 'bg-gray-100 text-gray-900 placeholder-gray-400 border border-gray-200 focus:border-secundary focus:bg-white'
-                                } outline-none`}
+                            className={`w-full px-5 py-4 pl-12 text-lg transition-all duration-200 border focus:border-secundary bg-gray-100 text-gray-900 placeholder-gray-400 border-gray-200 focus:bg-white dark:bg-white/10 dark:text-white dark:placeholder-white/50 dark:border-white/20 dark:focus:bg-white/15 outline-none`}
                         />
                         <svg
-                            className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 ${isDark ? 'text-white/50' : 'text-gray-400'}`}
+                            className={`absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-white/50`}
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -330,7 +286,7 @@ export default function GuiaPage() {
 
                     {/* Search Results Count */}
                     {searchQuery && (
-                        <p className={`mt-3 text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
+                        <p className={`mt-3 text-sm text-gray-500 dark:text-white/60`}>
                             {resultCount === 0
                                 ? 'No se encontraron resultados'
                                 : `${resultCount} resultado${resultCount !== 1 ? 's' : ''} encontrado${resultCount !== 1 ? 's' : ''}`
@@ -343,10 +299,7 @@ export default function GuiaPage() {
             {/* Sticky Navigation */}
             <div
                 ref={navRef}
-                className={`sticky top-[55px] z-40 transition-all duration-300 ${isDark
-                    ? isNavSticky ? 'bg-primary/95 backdrop-blur-md shadow-lg' : 'bg-primary'
-                    : isNavSticky ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-white'
-                    } ${isNavSticky ? 'border-b' : ''} ${isDark ? 'border-white/10' : 'border-gray-200'}`}
+                className={`sticky top-[55px] z-40 transition-all duration-300 ${isNavSticky ? 'bg-white/95 dark:bg-primary/95 backdrop-blur-md shadow-md dark:shadow-lg' : 'bg-white dark:bg-primary'} ${isNavSticky ? 'border-b' : ''} border-gray-200 dark:border-white/10`}
             >
                 <div className="max-w-4xl mx-auto px-4">
                     <nav ref={navScrollRef} className="flex gap-2 py-3 overflow-x-auto scrollbar-hide">
@@ -365,12 +318,8 @@ export default function GuiaPage() {
                                     className={`flex items-center gap-1.5 px-4 py-2 text-sm font-bold uppercase tracking-[0.1em] whitespace-nowrap transition-all duration-200 ${isActive
                                         ? 'bg-secundary text-white'
                                         : hasResults
-                                            ? isDark
-                                                ? 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white'
-                                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900'
-                                            : isDark
-                                                ? 'bg-white/5 text-white/30 cursor-not-allowed'
-                                                : 'bg-gray-50 text-gray-300 cursor-not-allowed'
+                                            ? 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900 dark:bg-white/10 dark:text-white/80 dark:hover:bg-white/20 dark:hover:text-white'
+                                            : 'bg-gray-50 text-gray-300 cursor-not-allowed dark:bg-white/5 dark:text-white/30'
                                         }`}
                                 >
                                     <span>{section.icon}</span>
@@ -388,7 +337,6 @@ export default function GuiaPage() {
                     <GuiaSection
                         key={section.id}
                         section={section}
-                        isDark={isDark}
                         searchQuery={searchQuery}
                         openItems={openItems}
                         toggleItem={toggleItem}
@@ -397,7 +345,7 @@ export default function GuiaPage() {
 
                 {visibleSections.length === 0 && searchQuery && (
                     <div className="text-center py-16">
-                        <p className={`text-xl ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
+                        <p className={`text-xl text-gray-500 dark:text-white/60`}>
                             No se encontraron resultados para &quot;{searchQuery}&quot;
                         </p>
                         <button
@@ -411,12 +359,12 @@ export default function GuiaPage() {
             </main>
 
             {/* Footer CTA */}
-            <footer className={`py-12 ${isDark ? 'bg-white/5' : 'bg-gray-100'}`}>
+            <footer className={`py-12 bg-gray-100 dark:bg-white/5`}>
                 <div className="max-w-4xl mx-auto px-4 text-center">
-                    <h3 className={`text-2xl font-bold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    <h3 className={`text-2xl font-bold mb-3 text-gray-900 dark:text-white`}>
                         ¿Tenés alguna duda?
                     </h3>
-                    <p className={`mb-6 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
+                    <p className={`mb-6 text-gray-600 dark:text-white/70`}>
                         Acercate al CEI o contactanos por Instagram
                     </p>
                     <a
@@ -431,7 +379,7 @@ export default function GuiaPage() {
                         @mli.fiuba
                     </a>
 
-                    <p className={`mt-8 text-sm ${isDark ? 'text-white/40' : 'text-gray-400'}`}>
+                    <p className={`mt-8 text-sm text-gray-400 dark:text-white/40`}>
                         Guía del Estudiante Fiubense — MLI 2026
                     </p>
                 </div>
