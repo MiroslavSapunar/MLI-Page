@@ -2,24 +2,12 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export function proxy(request: NextRequest) {
   const hostname = request.headers.get('host') || ''
-  const { pathname } = request.nextUrl
 
-  // Handle padron2026 subdomain (with or without www prefix)
+  // The padrón lookup was retired after the April 2026 election; send old links to the main site
   if (hostname.startsWith('padron2026.') || hostname.startsWith('www.padron2026.')) {
-    // Avoid rewriting if already on the padron2026 path or requesting static assets
-    if (pathname.startsWith('/padron2026') || pathname.startsWith('/_next') || pathname.startsWith('/api')) {
-      return NextResponse.next()
-    }
-
-    const url = request.nextUrl.clone()
-    url.pathname = `/padron2026${pathname}`
-    return NextResponse.rewrite(url)
+    const mainHost = hostname.replace(/^(www\.)?padron2026\./, '').split(':')[0]
+    return NextResponse.redirect(`https://${mainHost}/`, 308)
   }
-
-  // Block direct access to /padron2026 on the main domain (optional, remove if you want both)
-  // if (pathname.startsWith('/padron2026')) {
-  //   return NextResponse.redirect(new URL('/', request.url))
-  // }
 
   return NextResponse.next()
 }
