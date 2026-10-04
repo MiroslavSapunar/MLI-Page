@@ -47,7 +47,6 @@ export default function NavBar() {
                             src="/instagram.svg"
                             height={20}
                             width={20}
-                            priority
                             alt="Instagram"
                         />
                     </a>

@@ -42,7 +42,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MLI - Movimiento Linealmente Independiente | FIUBA",
     description: "Agrupación estudiantil independiente de la Facultad de Ingeniería de la UBA. 20 años transformando FIUBA.",
-    images: ["/og-image.png"],
   },
   robots: {
     index: true,

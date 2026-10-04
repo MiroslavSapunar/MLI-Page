@@ -146,6 +146,7 @@ function LogroSectionComponent({ section, index, openItems, toggleItem }: {
                                     alt={img.alt}
                                     width={600}
                                     height={400}
+                                    sizes={section.images!.length === 1 ? '(min-width: 768px) 672px, 100vw' : '(min-width: 768px) 448px, 50vw'}
                                     className="w-full h-48 md:h-56 object-cover"
                                 />
                             </div>
