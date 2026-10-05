@@ -17,7 +17,7 @@ const sections = [
 
 const stats = [
     { value: '20+', label: 'Años de historia' },
-    { value: '32.12%', label: 'Votos 2026' },
+    { value: '50+ MLIes', label: 'Estudiantes, graduados y docentes' },
     { value: '100%', label: 'Fiubenses' },
     { value: '1ra fuerza', label: 'Mayoría estudiantil' },
 ]
@@ -41,11 +41,12 @@ const guias = [
     { href: 'https://www.instagram.com/mli.fiuba', label: 'Escribinos al Instagram', sub: '@mli.fiuba', external: true },
 ]
 
-// Two collinear vectors and one that leaves their span — the name, drawn
+// v₁, v₂ span the xy plane; v₃ leaves it along z — the name, drawn.
+// Oblique projection, origin (120,155): x → (-0.55, 0.32), y → (1, 0), z → (0, -1)
 function Figure() {
     return (
         <figure className="enter-up" style={{ animationDelay: '250ms' }}>
-            <svg viewBox="0 0 320 240" className="w-full h-auto" role="img" aria-label="Tres vectores: v₁ y v₂ alineados, v₃ fuera de su recta">
+            <svg viewBox="0 0 320 210" className="w-full h-auto" role="img" aria-label="Tres vectores: v₁ y v₂ generan un plano, v₃ sale de él">
                 <defs>
                     <marker id="tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" className="text-faint">
                         <path d="M0 0L10 5L0 10z" fill="currentColor" />
@@ -54,20 +55,28 @@ function Figure() {
                         <path d="M0 0L10 5L0 10z" fill="currentColor" />
                     </marker>
                 </defs>
+                <path d="M26 180.6L216 180.6L304 129.4L114 129.4z" className="text-faint" fill="currentColor" fillOpacity={0.1} stroke="currentColor" strokeWidth="1" />
                 <g className="text-faint" stroke="currentColor" strokeWidth="1">
-                    <line x1="20" y1="192" x2="306" y2="192" />
-                    <line x1="48" y1="228" x2="48" y2="14" />
+                    <line x1="164" y1="129.4" x2="65" y2="187" />
+                    <line x1="70" y1="155" x2="292" y2="155" />
+                    <line x1="120" y1="168" x2="120" y2="14" />
                 </g>
-                <line x1="16" y1="200" x2="312" y2="126" className="text-faint" stroke="currentColor" strokeWidth="1" strokeDasharray="3 4" />
+                <path d="M120 155L149 161.4L149 46.4" className="text-faint" stroke="currentColor" strokeWidth="1" strokeDasharray="3 4" fill="none" />
                 <g className="text-muted" stroke="currentColor" strokeWidth="2.5" fill="none">
-                    <path d="M48 192L232 146" pathLength={1} className="draw" style={{ animationDelay: '500ms' }} markerEnd="url(#tip)" />
-                    <path d="M48 192L136 170" pathLength={1} className="draw" style={{ animationDelay: '350ms' }} markerEnd="url(#tip)" />
+                    <path d="M120 155L57 174.2" pathLength={1} className="draw" style={{ animationDelay: '350ms' }} markerEnd="url(#tip)" />
+                    <path d="M120 155L252 142.2" pathLength={1} className="draw" style={{ animationDelay: '500ms' }} markerEnd="url(#tip)" />
                 </g>
-                <path d="M48 192L150 42" pathLength={1} className="draw text-secundary" stroke="currentColor" strokeWidth="3.5" fill="none" style={{ animationDelay: '800ms' }} markerEnd="url(#tip-red)" />
+                <path d="M120 155L149 46.4" pathLength={1} className="draw text-secundary" stroke="currentColor" strokeWidth="3.5" fill="none" style={{ animationDelay: '800ms' }} markerEnd="url(#tip-red)" />
                 <g className="font-mono text-[12px]" fill="currentColor">
-                    <text x="128" y="190" className="text-muted">v₁</text>
-                    <text x="226" y="166" className="text-muted">v₂</text>
-                    <text x="158" y="44" className="text-secundary font-medium">v₃</text>
+                    <text x="32" y="198" className="text-muted">v₁</text>
+                    <text x="256" y="138" className="text-muted">v₂</text>
+                    <text x="157" y="50" className="text-secundary font-medium">v₃</text>
+                </g>
+                <g className="font-mono text-[10px] text-faint" fill="currentColor">
+                    <text x="62" y="200">x</text>
+                    <text x="296" y="158">y</text>
+                    <text x="126" y="20">z</text>
+                    <text x="216" y="198" textAnchor="end">gen{'{'}v₁, v₂{'}'}</text>
                 </g>
             </svg>
             <figcaption className="mt-3 font-mono text-[11px] uppercase tracking-[0.15em] text-faint">
@@ -157,8 +166,8 @@ export default function Home() {
                             <dl className="grid grid-cols-2 lg:grid-cols-4 gap-6 py-4">
                                 {stats.map(s => (
                                     <div key={s.label} className="min-w-0 flex flex-col">
-                                        <dt className="order-2 mt-2 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-subtle truncate">{s.label}</dt>
-                                        <dd className="order-1 font-heading text-3xl sm:text-4xl lg:text-5xl font-black leading-none text-body tabular-nums">{s.value}</dd>
+                                        <dt className="order-2 mt-2 font-mono text-[11px] sm:text-[10px] uppercase tracking-[0.15em] text-subtle">{s.label}</dt>
+                                        <dd className="order-1 font-heading text-xl sm:text-2xl lg:text-3xl font-black leading-none text-body tabular-nums">{s.value}</dd>
                                     </div>
                                 ))}
                             </dl>
