@@ -1,7 +1,14 @@
+import { WIDTHS } from './src/imageLoader.mjs';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
   images: {
-    formats: ['image/avif', 'image/webp'],
+    loader: 'custom',
+    loaderFile: './src/imageLoader.mjs',
+    deviceSizes: WIDTHS,
+    imageSizes: [],
   },
 };
 

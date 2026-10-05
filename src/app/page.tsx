@@ -6,7 +6,6 @@ import Image from 'next/image'
 import { useInView } from "@/hooks/useInView"
 import NavBar from './components/navbar'
 import { frame, gutter, kicker, reveal, btnPrimary, btnSecondary, textLink, Arrow, Corners, ColumnVector, SectionHead } from './components/base'
-import clasePublica from '../../public/Clase publica calle1.jpeg'
 
 const sections = [
     { id: 'inicio', label: 'Inicio' },
@@ -213,7 +212,7 @@ export default function Home() {
             {/* ══ Photo band ══ */}
             <section aria-label="Clase pública" className="duotone h-[70svh] min-h-[420px] max-h-[760px] border-b border-ui">
                 <Image
-                    src={clasePublica}
+                    src="/Clase publica calle1.jpeg"
                     alt="Estudiantes cursando una clase pública en la calle, frente a la facultad"
                     fill
                     sizes="100vw"
